@@ -25,3 +25,8 @@ imxrt1010 = []
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
+
+[workspace]
+members = [
+    "imxrt-iomuxc-build"
+]
