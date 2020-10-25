@@ -1,0 +1,45 @@
+name: CI
+
+on: [push, pull_request]  
+
+jobs:
+
+  # Ensure code is properly formatted with rustfmt
+  format:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: rustup component add rustfmt
+    - name: Check library formatting
+      uses: actions-rs/cargo@v1
+      with:
+        command: fmt
+        args: --verbose --all -- --check
+  
+  # Lint the library
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        components: clippy
+        override: true
+        profile: minimal
+    - uses: actions-rs/clippy-check@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        args: --verbose --all-features -- -D warnings
+        name: Lint the library
+
+  # Run all tests
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run unit and documentation tests
+      uses: actions-rs/cargo@v1
+      with:
+        command: test
+        args: --verbose --all-features --workspace
