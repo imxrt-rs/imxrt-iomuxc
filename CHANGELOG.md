@@ -13,11 +13,16 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Support for ADC pins
 - i.MX RT 1010 support with the `"imxrt1010"` feature:
   - I2C
   - SPI
   - UART
+
+## [0.1.2] - 2020-11-23
+
+### Added
+
+- Support for ADC pins
 
 ## [0.1.1] - 2020-09-10
 
@@ -38,6 +43,7 @@ First release
   - SPI
   - UART
 
-[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/imxrt-rs/imxrt-iomuxc/releases/tag/v0.1.0
