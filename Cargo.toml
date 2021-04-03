@@ -7,7 +7,7 @@ description = """Pad configuration interface for NXP i.MX RT processors.
 
 Part of the imxrt-rs project.
 """
-repository = "https://github.com/imxrt-rs/imxrt-rs"
+repository = "https://github.com/imxrt-rs/imxrt-iomuxc"
 license = "MIT OR Apache-2.0"
 keywords = ["imxrt", "nxp", "embedded", "no_std"]
 categories = ["embedded", "no-std"]

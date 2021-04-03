@@ -5,7 +5,7 @@ Generate Daisy constants from an i.MX RT SVD file
 
 Example usage: to create SPI-related Daisy constants,
 
-    ./process.py path/to/imxrt.svd | grep LPSPI
+    ./daisy.py path/to/imxrt.svd | grep LPSPI
 
 Copy and paste the constants into a Rust module.
 """
