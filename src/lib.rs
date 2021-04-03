@@ -89,6 +89,8 @@ pub mod adc;
 mod config;
 pub mod i2c;
 pub mod pwm;
+#[macro_use]
+pub mod sai;
 pub mod spi;
 pub mod uart;
 

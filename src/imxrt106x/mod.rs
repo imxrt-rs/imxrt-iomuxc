@@ -91,6 +91,7 @@
 mod adc;
 mod i2c;
 mod pwm;
+mod sai;
 mod spi;
 mod uart;
 
