@@ -83,6 +83,7 @@
 
 #![no_std]
 #![cfg_attr(docsrs, feature(doc_cfg))]
+#![allow(clippy::upper_case_acronyms)] // TODO remove before 0.2 release
 
 pub mod adc;
 mod config;
