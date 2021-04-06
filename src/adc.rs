@@ -15,8 +15,8 @@ pub type ADC2 = crate::consts::U2;
 pub trait Pin<U: Unsigned>: super::gpio::Pin {
     /// The input pin identifier
     ///
-    /// Starts at `U0`, and increments up.
-    type Input: super::consts::Unsigned;
+    /// Starts at `0`, and increments up.
+    const INPUT: u32;
 }
 
 /// Prepare an ADC pin
