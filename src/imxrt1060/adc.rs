@@ -6,77 +6,74 @@
 //! section of the reference manual.
 
 use super::{ad_b0::*, ad_b1::*};
-use crate::{
-    adc::{Pin, ADC1, ADC2},
-    consts::*,
-};
+use crate::adc::{Pin, ADC1, ADC2};
 
 //
 // ADC1
 //
 
 impl Pin<ADC1> for AD_B1_11 {
-    type Input = U0;
+    const INPUT: u32 = 0;
 }
 
 impl Pin<ADC1> for AD_B0_12 {
-    type Input = U1;
+    const INPUT: u32 = 1;
 }
 
 impl Pin<ADC1> for AD_B0_13 {
-    type Input = U2;
+    const INPUT: u32 = 2;
 }
 
 impl Pin<ADC1> for AD_B0_14 {
-    type Input = U3;
+    const INPUT: u32 = 3;
 }
 
 impl Pin<ADC1> for AD_B0_15 {
-    type Input = U4;
+    const INPUT: u32 = 4;
 }
 
 impl Pin<ADC1> for AD_B1_00 {
-    type Input = U5;
+    const INPUT: u32 = 5;
 }
 
 impl Pin<ADC1> for AD_B1_01 {
-    type Input = U6;
+    const INPUT: u32 = 6;
 }
 
 impl Pin<ADC1> for AD_B1_02 {
-    type Input = U7;
+    const INPUT: u32 = 7;
 }
 
 impl Pin<ADC1> for AD_B1_03 {
-    type Input = U8;
+    const INPUT: u32 = 8;
 }
 
 impl Pin<ADC1> for AD_B1_04 {
-    type Input = U9;
+    const INPUT: u32 = 9;
 }
 
 impl Pin<ADC1> for AD_B1_05 {
-    type Input = U10;
+    const INPUT: u32 = 10;
 }
 
 impl Pin<ADC1> for AD_B1_06 {
-    type Input = U11;
+    const INPUT: u32 = 11;
 }
 
 impl Pin<ADC1> for AD_B1_07 {
-    type Input = U12;
+    const INPUT: u32 = 12;
 }
 
 impl Pin<ADC1> for AD_B1_08 {
-    type Input = U13;
+    const INPUT: u32 = 13;
 }
 
 impl Pin<ADC1> for AD_B1_09 {
-    type Input = U14;
+    const INPUT: u32 = 14;
 }
 
 impl Pin<ADC1> for AD_B1_10 {
-    type Input = U15;
+    const INPUT: u32 = 15;
 }
 
 //
@@ -84,65 +81,65 @@ impl Pin<ADC1> for AD_B1_10 {
 //
 
 impl Pin<ADC2> for AD_B1_11 {
-    type Input = U0;
+    const INPUT: u32 = 0;
 }
 
 impl Pin<ADC2> for AD_B1_12 {
-    type Input = U1;
+    const INPUT: u32 = 1;
 }
 
 impl Pin<ADC2> for AD_B1_13 {
-    type Input = U2;
+    const INPUT: u32 = 2;
 }
 
 impl Pin<ADC2> for AD_B1_14 {
-    type Input = U3;
+    const INPUT: u32 = 3;
 }
 
 impl Pin<ADC2> for AD_B1_15 {
-    type Input = U4;
+    const INPUT: u32 = 4;
 }
 
 impl Pin<ADC2> for AD_B1_00 {
-    type Input = U5;
+    const INPUT: u32 = 5;
 }
 
 impl Pin<ADC2> for AD_B1_01 {
-    type Input = U6;
+    const INPUT: u32 = 6;
 }
 
 impl Pin<ADC2> for AD_B1_02 {
-    type Input = U7;
+    const INPUT: u32 = 7;
 }
 
 impl Pin<ADC2> for AD_B1_03 {
-    type Input = U8;
+    const INPUT: u32 = 8;
 }
 
 impl Pin<ADC2> for AD_B1_04 {
-    type Input = U9;
+    const INPUT: u32 = 9;
 }
 
 impl Pin<ADC2> for AD_B1_05 {
-    type Input = U10;
+    const INPUT: u32 = 10;
 }
 
 impl Pin<ADC2> for AD_B1_06 {
-    type Input = U11;
+    const INPUT: u32 = 11;
 }
 
 impl Pin<ADC2> for AD_B1_07 {
-    type Input = U12;
+    const INPUT: u32 = 12;
 }
 
 impl Pin<ADC2> for AD_B1_08 {
-    type Input = U13;
+    const INPUT: u32 = 13;
 }
 
 impl Pin<ADC2> for AD_B1_09 {
-    type Input = U14;
+    const INPUT: u32 = 14;
 }
 
 impl Pin<ADC2> for AD_B1_10 {
-    type Input = U15;
+    const INPUT: u32 = 15;
 }
