@@ -46,3 +46,15 @@ pub fn prepare<P: Pin>(pin: &mut P) {
         unsafe { daisy.write() };
     }
 }
+
+#[allow(unused)] // Used in chip-specific modules...
+macro_rules! uart {
+    (module: $module:ty, alt: $alt:expr, pad: $pad:ty, direction: $direction:ty, daisy: $daisy:expr) => {
+        impl Pin for $pad {
+            const ALT: u32 = $alt;
+            const DAISY: Option<Daisy> = $daisy;
+            type Direction = $direction;
+            type Module = $module;
+        }
+    };
+}

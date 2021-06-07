@@ -85,13 +85,18 @@
 #![cfg_attr(docsrs, feature(doc_cfg))]
 #![allow(clippy::upper_case_acronyms)] // TODO remove before 0.2 release
 
+#[macro_use]
 pub mod adc;
 mod config;
+#[macro_use]
 pub mod i2c;
+#[macro_use]
 pub mod pwm;
 #[macro_use]
 pub mod sai;
+#[macro_use]
 pub mod spi;
+#[macro_use]
 pub mod uart;
 
 use core::ptr;

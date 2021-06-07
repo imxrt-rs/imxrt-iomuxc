@@ -41,3 +41,12 @@ pub fn prepare<ADCx: ADC, P: Pin<ADCx>>(pin: &mut P) {
     super::alternate(pin, <P as super::gpio::Pin>::ALT);
     super::configure(pin, super::Config::modify().set_pull_keeper(None));
 }
+
+#[allow(unused)] // Used in chip-specific modules...
+macro_rules! adc {
+    (module: $module:ty, pad: $pad:ty, input: $input:ty) => {
+        impl Pin<$module> for $pad {
+            type Input = $input;
+        }
+    };
+}

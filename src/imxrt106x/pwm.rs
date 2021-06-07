@@ -5,87 +5,26 @@ use crate::{
     consts::*,
     pwm::{Pin, A, B},
 };
+pwm!(module: U1, submodule: U0, alt: 1, pad: SD_B0_00, output: A);
 
-impl Pin for SD_B0_00 {
-    const ALT: u32 = 1;
-    type Output = A;
-    type Module = U1; // FlexPWM1
-    type Submodule = U0; // FlexPWM1
-}
+pwm!(module: U1, submodule: U0, alt: 1, pad: SD_B0_01, output: B);
 
-impl Pin for SD_B0_01 {
-    const ALT: u32 = 1;
-    type Output = B;
-    type Module = U1; // FlexPWM1
-    type Submodule = U0; // FlexPWM1
-}
+pwm!(module: U1, submodule: U3, alt: 1, pad: AD_B0_10, output: A);
 
-impl Pin for AD_B0_10 {
-    const ALT: u32 = 1;
-    type Output = A;
-    type Module = U1; // FlexPWM1
-    type Submodule = U3; // PWM3
-}
+pwm!(module: U1, submodule: U3, alt: 1, pad: AD_B0_11, output: B);
 
-impl Pin for AD_B0_11 {
-    const ALT: u32 = 1;
-    type Output = B;
-    type Module = U1; // FlexPWM1
-    type Submodule = U3; // PWM3
-}
+pwm!(module: U2, submodule: U2, alt: 2, pad: B0_10, output: A);
 
-impl Pin for B0_10 {
-    const ALT: u32 = 2;
-    type Output = A;
-    type Module = U2; // FlexPWM2
-    type Submodule = U2; // FlexPWM2
-}
+pwm!(module: U2, submodule: U2, alt: 2, pad: B0_11, output: B);
 
-impl Pin for B0_11 {
-    const ALT: u32 = 2;
-    type Output = B;
-    type Module = U2; // FlexPWM2
-    type Submodule = U2; // FlexPWM2
-}
+pwm!(module: U1, submodule: U3, alt: 6, pad: B1_01, output: B);
 
-impl Pin for B1_01 {
-    const ALT: u32 = 6;
-    type Output = B;
-    type Module = U1;
-    type Submodule = U3;
-}
+pwm!(module: U1, submodule: U3, alt: 6, pad: B1_00, output: A);
 
-impl Pin for B1_00 {
-    const ALT: u32 = 6;
-    type Output = A;
-    type Module = U1;
-    type Submodule = U3;
-}
+pwm!(module: U4, submodule: U2, alt: 1, pad: EMC_04, output: A);
 
-impl Pin for EMC_04 {
-    const ALT: u32 = 1;
-    type Output = A;
-    type Module = U4;
-    type Submodule = U2;
-}
+pwm!(module: U4, submodule: U2, alt: 1, pad: EMC_05, output: B);
 
-impl Pin for EMC_05 {
-    const ALT: u32 = 1;
-    type Output = B;
-    type Module = U4;
-    type Submodule = U2;
-}
+pwm!(module: U2, submodule: U0, alt: 1, pad: EMC_06, output: A);
 
-impl Pin for EMC_06 {
-    const ALT: u32 = 1;
-    type Output = A;
-    type Module = U2;
-    type Submodule = U0;
-}
-
-impl Pin for EMC_08 {
-    const ALT: u32 = 1;
-    type Output = A;
-    type Module = U2;
-    type Submodule = U1;
-}
+pwm!(module: U2, submodule: U1, alt: 1, pad: EMC_08, output: A);
