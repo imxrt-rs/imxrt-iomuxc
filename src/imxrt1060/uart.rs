@@ -11,73 +11,33 @@ use crate::{
 // UART1
 //
 
-impl Pin for AD_B0_13 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = None;
-    type Direction = RX;
-    type Module = U1;
-}
+uart!(module: U1, alt: 2, pad: AD_B0_13, direction: RX, daisy: None);
 
-impl Pin for AD_B0_12 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = None;
-    type Direction = TX;
-    type Module = U1;
-}
+uart!(module: U1, alt: 2, pad: AD_B0_12, direction: TX, daisy: None);
 
 //
 // UART2
 //
 
-impl Pin for AD_B1_03 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART2_RX_AD_B1_03);
-    type Direction = RX;
-    type Module = U2;
-}
+uart!(module: U2, alt: 2, pad: AD_B1_03, direction: RX, daisy: Some(DAISY_LPUART2_RX_AD_B1_03));
 
-impl Pin for AD_B1_02 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART2_TX_AD_B1_02);
-    type Direction = TX;
-    type Module = U2;
-}
+uart!(module: U2, alt: 2, pad: AD_B1_02, direction: TX, daisy: Some(DAISY_LPUART2_TX_AD_B1_02));
 
 //
 // UART3
 //
 
-impl Pin for AD_B1_07 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART3_RX_AD_B1_07);
-    type Direction = RX;
-    type Module = U3;
-}
+uart!(module: U3, alt: 2, pad: AD_B1_07, direction: RX, daisy: Some(DAISY_LPUART3_RX_AD_B1_07));
 
-impl Pin for AD_B1_06 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART3_TX_AD_B1_06);
-    type Direction = TX;
-    type Module = U3;
-}
+uart!(module: U3, alt: 2, pad: AD_B1_06, direction: TX, daisy: Some(DAISY_LPUART3_TX_AD_B1_06));
 
 //
 // UART4
 //
 
-impl Pin for B1_01 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART4_RX_B1_01);
-    type Direction = RX;
-    type Module = U4;
-}
+uart!(module: U4, alt: 2, pad: B1_01, direction: RX, daisy: Some(DAISY_LPUART4_RX_B1_01));
 
-impl Pin for B1_00 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART4_TX_B1_00);
-    type Direction = TX;
-    type Module = U4;
-}
+uart!(module: U4, alt: 2, pad: B1_00, direction: TX, daisy: Some(DAISY_LPUART4_TX_B1_00));
 
 //
 // UART5
@@ -89,55 +49,25 @@ impl Pin for B1_00 {
 // UART6
 //
 
-impl Pin for AD_B0_03 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART6_RX_AD_B0_03);
-    type Direction = RX;
-    type Module = U6;
-}
+uart!(module: U6, alt: 2, pad: AD_B0_03, direction: RX, daisy: Some(DAISY_LPUART6_RX_AD_B0_03));
 
-impl Pin for AD_B0_02 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART6_TX_AD_B0_02);
-    type Direction = TX;
-    type Module = U6;
-}
+uart!(module: U6, alt: 2, pad: AD_B0_02, direction: TX, daisy: Some(DAISY_LPUART6_TX_AD_B0_02));
 
 //
 // UART7
 //
 
-impl Pin for EMC_32 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART7_RX_EMC_32);
-    type Direction = RX;
-    type Module = U7;
-}
+uart!(module: U7, alt: 2, pad: EMC_32, direction: RX, daisy: Some(DAISY_LPUART7_RX_EMC_32));
 
-impl Pin for EMC_31 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART7_TX_EMC_31);
-    type Direction = TX;
-    type Module = U7;
-}
+uart!(module: U7, alt: 2, pad: EMC_31, direction: TX, daisy: Some(DAISY_LPUART7_TX_EMC_31));
 
 //
 // UART8
 //
 
-impl Pin for AD_B1_11 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART8_RX_AD_B1_11);
-    type Direction = RX;
-    type Module = U8;
-}
+uart!(module: U8, alt: 2, pad: AD_B1_11, direction: RX, daisy: Some(DAISY_LPUART8_RX_AD_B1_11));
 
-impl Pin for AD_B1_10 {
-    const ALT: u32 = 2;
-    const DAISY: Option<Daisy> = Some(DAISY_LPUART8_TX_AD_B1_10);
-    type Direction = TX;
-    type Module = U8;
-}
+uart!(module: U8, alt: 2, pad: AD_B1_10, direction: TX, daisy: Some(DAISY_LPUART8_TX_AD_B1_10));
 
 /// Auto-generated Daisy constants
 mod daisy {

@@ -12,128 +12,44 @@ use crate::{
 //
 
 // SCL
+i2c!(module: U1, alt: 0, pad: AD_14,    signal: Scl, daisy: DAISY_LPI2C1_SCL_AD_14);
 
-impl Pin for AD_14 {
-    const ALT: u32 = 0;
-    const DAISY: Daisy = DAISY_LPI2C1_SCL_AD_14;
-    type Signal = Scl;
-    type Module = U1;
-}
+i2c!(module: U1, alt: 1, pad: SD_06,    signal: Scl, daisy: DAISY_LPI2C1_SCL_SD_06);
 
-impl Pin for SD_06 {
-    const ALT: u32 = 1;
-    const DAISY: Daisy = DAISY_LPI2C1_SCL_SD_06;
-    type Signal = Scl;
-    type Module = U1;
-}
+i2c!(module: U1, alt: 1, pad: GPIO_12,  signal: Scl, daisy: DAISY_LPI2C1_SCL_12);
 
-impl Pin for GPIO_12 {
-    const ALT: u32 = 1;
-    const DAISY: Daisy = DAISY_LPI2C1_SCL_12;
-    type Signal = Scl;
-    type Module = U1;
-}
-
-impl Pin for GPIO_02 {
-    const ALT: u32 = 3;
-    const DAISY: Daisy = DAISY_LPI2C1_SCL_02;
-    type Signal = Scl;
-    type Module = U1;
-}
+i2c!(module: U1, alt: 3, pad: GPIO_02,  signal: Scl, daisy: DAISY_LPI2C1_SCL_02);
 
 // SDA
+i2c!(module: U1, alt: 0, pad: AD_13,    signal: Sda, daisy: DAISY_LPI2C1_SDA_AD_13);
 
-impl Pin for AD_13 {
-    const ALT: u32 = 0;
-    const DAISY: Daisy = DAISY_LPI2C1_SDA_AD_13;
-    type Signal = Sda;
-    type Module = U1;
-}
+i2c!(module: U1, alt: 1, pad: SD_05,    signal: Sda, daisy: DAISY_LPI2C1_SDA_SD_05);
 
-impl Pin for SD_05 {
-    const ALT: u32 = 1;
-    const DAISY: Daisy = DAISY_LPI2C1_SDA_SD_05;
-    type Signal = Sda;
-    type Module = U1;
-}
+i2c!(module: U1, alt: 1, pad: GPIO_11,  signal: Sda, daisy: DAISY_LPI2C1_SDA_11);
 
-impl Pin for GPIO_11 {
-    const ALT: u32 = 1;
-    const DAISY: Daisy = DAISY_LPI2C1_SDA_11;
-    type Signal = Sda;
-    type Module = U1;
-}
-
-impl Pin for GPIO_01 {
-    const ALT: u32 = 3;
-    const DAISY: Daisy = DAISY_LPI2C1_SDA_01;
-    type Signal = Sda;
-    type Module = U1;
-}
+i2c!(module: U1, alt: 3, pad: GPIO_01,  signal: Sda, daisy: DAISY_LPI2C1_SDA_01);
 
 //
 // I2C2
 //
 
 // SCL
+i2c!(module: U2, alt: 0, pad: AD_08,    signal: Scl, daisy: DAISY_LPI2C2_SCL_AD_08);
 
-impl Pin for AD_08 {
-    const ALT: u32 = 0;
-    const DAISY: Daisy = DAISY_LPI2C2_SCL_AD_08;
-    type Signal = Scl;
-    type Module = U2;
-}
+i2c!(module: U2, alt: 1, pad: SD_08,    signal: Scl, daisy: DAISY_LPI2C2_SCL_SD_08);
 
-impl Pin for SD_08 {
-    const ALT: u32 = 1;
-    const DAISY: Daisy = DAISY_LPI2C2_SCL_SD_08;
-    type Signal = Scl;
-    type Module = U2;
-}
+i2c!(module: U2, alt: 3, pad: AD_02,    signal: Scl, daisy: DAISY_LPI2C2_SCL_AD_02);
 
-impl Pin for AD_02 {
-    const ALT: u32 = 3;
-    const DAISY: Daisy = DAISY_LPI2C2_SCL_AD_02;
-    type Signal = Scl;
-    type Module = U2;
-}
-
-impl Pin for GPIO_10 {
-    const ALT: u32 = 3;
-    const DAISY: Daisy = DAISY_LPI2C2_SCL_10;
-    type Signal = Scl;
-    type Module = U2;
-}
+i2c!(module: U2, alt: 3, pad: GPIO_10,  signal: Scl, daisy: DAISY_LPI2C2_SCL_10);
 
 // SDA
+i2c!(module: U2, alt: 0, pad: AD_07,    signal: Sda, daisy: DAISY_LPI2C2_SDA_AD_07);
 
-impl Pin for AD_07 {
-    const ALT: u32 = 0;
-    const DAISY: Daisy = DAISY_LPI2C2_SDA_AD_07;
-    type Signal = Sda;
-    type Module = U2;
-}
+i2c!(module: U2, alt: 1, pad: SD_07,    signal: Sda, daisy: DAISY_LPI2C2_SDA_SD_07);
 
-impl Pin for SD_07 {
-    const ALT: u32 = 1;
-    const DAISY: Daisy = DAISY_LPI2C2_SDA_SD_07;
-    type Signal = Sda;
-    type Module = U2;
-}
+i2c!(module: U2, alt: 3, pad: AD_01,    signal: Sda, daisy: DAISY_LPI2C2_SDA_AD_01);
 
-impl Pin for AD_01 {
-    const ALT: u32 = 3;
-    const DAISY: Daisy = DAISY_LPI2C2_SDA_AD_01;
-    type Signal = Sda;
-    type Module = U2;
-}
-
-impl Pin for GPIO_09 {
-    const ALT: u32 = 3;
-    const DAISY: Daisy = DAISY_LPI2C2_SDA_09;
-    type Signal = Sda;
-    type Module = U2;
-}
+i2c!(module: U2, alt: 3, pad: GPIO_09,  signal: Sda, daisy: DAISY_LPI2C2_SDA_09);
 
 mod daisy {
     #![allow(unused)]

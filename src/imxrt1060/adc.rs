@@ -15,134 +15,70 @@ use crate::{
 // ADC1
 //
 
-impl Pin<ADC1> for AD_B1_11 {
-    type Input = U0;
-}
+adc!(module: ADC1, pad: AD_B1_11, input: U0);
 
-impl Pin<ADC1> for AD_B0_12 {
-    type Input = U1;
-}
+adc!(module: ADC1, pad: AD_B0_12, input: U1);
 
-impl Pin<ADC1> for AD_B0_13 {
-    type Input = U2;
-}
+adc!(module: ADC1, pad: AD_B0_13, input: U2);
 
-impl Pin<ADC1> for AD_B0_14 {
-    type Input = U3;
-}
+adc!(module: ADC1, pad: AD_B0_14, input: U3);
 
-impl Pin<ADC1> for AD_B0_15 {
-    type Input = U4;
-}
+adc!(module: ADC1, pad: AD_B0_15, input: U4);
 
-impl Pin<ADC1> for AD_B1_00 {
-    type Input = U5;
-}
+adc!(module: ADC1, pad: AD_B1_00, input: U5);
 
-impl Pin<ADC1> for AD_B1_01 {
-    type Input = U6;
-}
+adc!(module: ADC1, pad: AD_B1_01, input: U6);
 
-impl Pin<ADC1> for AD_B1_02 {
-    type Input = U7;
-}
+adc!(module: ADC1, pad: AD_B1_02, input: U7);
 
-impl Pin<ADC1> for AD_B1_03 {
-    type Input = U8;
-}
+adc!(module: ADC1, pad: AD_B1_03, input: U8);
 
-impl Pin<ADC1> for AD_B1_04 {
-    type Input = U9;
-}
+adc!(module: ADC1, pad: AD_B1_04, input: U9);
 
-impl Pin<ADC1> for AD_B1_05 {
-    type Input = U10;
-}
+adc!(module: ADC1, pad: AD_B1_05, input: U10);
 
-impl Pin<ADC1> for AD_B1_06 {
-    type Input = U11;
-}
+adc!(module: ADC1, pad: AD_B1_06, input: U11);
 
-impl Pin<ADC1> for AD_B1_07 {
-    type Input = U12;
-}
+adc!(module: ADC1, pad: AD_B1_07, input: U12);
 
-impl Pin<ADC1> for AD_B1_08 {
-    type Input = U13;
-}
+adc!(module: ADC1, pad: AD_B1_08, input: U13);
 
-impl Pin<ADC1> for AD_B1_09 {
-    type Input = U14;
-}
+adc!(module: ADC1, pad: AD_B1_09, input: U14);
 
-impl Pin<ADC1> for AD_B1_10 {
-    type Input = U15;
-}
+adc!(module: ADC1, pad: AD_B1_10, input: U15);
 
 //
 // ADC2
 //
 
-impl Pin<ADC2> for AD_B1_11 {
-    type Input = U0;
-}
+adc!(module: ADC2, pad: AD_B1_11, input: U0);
 
-impl Pin<ADC2> for AD_B1_12 {
-    type Input = U1;
-}
+adc!(module: ADC2, pad: AD_B1_12, input: U1);
 
-impl Pin<ADC2> for AD_B1_13 {
-    type Input = U2;
-}
+adc!(module: ADC2, pad: AD_B1_13, input: U2);
 
-impl Pin<ADC2> for AD_B1_14 {
-    type Input = U3;
-}
+adc!(module: ADC2, pad: AD_B1_14, input: U3);
 
-impl Pin<ADC2> for AD_B1_15 {
-    type Input = U4;
-}
+adc!(module: ADC2, pad: AD_B1_15, input: U4);
 
-impl Pin<ADC2> for AD_B1_00 {
-    type Input = U5;
-}
+adc!(module: ADC2, pad: AD_B1_00, input: U5);
 
-impl Pin<ADC2> for AD_B1_01 {
-    type Input = U6;
-}
+adc!(module: ADC2, pad: AD_B1_01, input: U6);
 
-impl Pin<ADC2> for AD_B1_02 {
-    type Input = U7;
-}
+adc!(module: ADC2, pad: AD_B1_02, input: U7);
 
-impl Pin<ADC2> for AD_B1_03 {
-    type Input = U8;
-}
+adc!(module: ADC2, pad: AD_B1_03, input: U8);
 
-impl Pin<ADC2> for AD_B1_04 {
-    type Input = U9;
-}
+adc!(module: ADC2, pad: AD_B1_04, input: U9);
 
-impl Pin<ADC2> for AD_B1_05 {
-    type Input = U10;
-}
+adc!(module: ADC2, pad: AD_B1_05, input: U10);
 
-impl Pin<ADC2> for AD_B1_06 {
-    type Input = U11;
-}
+adc!(module: ADC2, pad: AD_B1_06, input: U11);
 
-impl Pin<ADC2> for AD_B1_07 {
-    type Input = U12;
-}
+adc!(module: ADC2, pad: AD_B1_07, input: U12);
 
-impl Pin<ADC2> for AD_B1_08 {
-    type Input = U13;
-}
+adc!(module: ADC2, pad: AD_B1_08, input: U13);
 
-impl Pin<ADC2> for AD_B1_09 {
-    type Input = U14;
-}
+adc!(module: ADC2, pad: AD_B1_09, input: U14);
 
-impl Pin<ADC2> for AD_B1_10 {
-    type Input = U15;
-}
+adc!(module: ADC2, pad: AD_B1_10, input: U15);

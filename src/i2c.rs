@@ -38,3 +38,15 @@ pub fn prepare<P: Pin>(pin: &mut P) {
     super::set_sion(pin);
     unsafe { P::DAISY.write() };
 }
+
+#[allow(unused)] // Used in chip-specific modules...
+macro_rules! i2c {
+    (module: $module:ty, alt: $alt:expr, pad: $pad:ty, signal: $signal:ty, daisy: $daisy:expr) => {
+        impl Pin for $pad {
+            const ALT: u32 = $alt;
+            const DAISY: Daisy = $daisy;
+            type Signal = $signal;
+            type Module = $module;
+        }
+    };
+}

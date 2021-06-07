@@ -11,19 +11,9 @@ use crate::{
 // I2C1
 //
 
-impl Pin for AD_B1_00 {
-    const ALT: u32 = 3;
-    const DAISY: Daisy = DAISY_LPI2C1_SCL_AD_B1_00;
-    type Signal = Scl;
-    type Module = U1;
-}
+i2c!(module: U1, alt: 3, pad: AD_B1_00, signal: Scl, daisy: DAISY_LPI2C1_SCL_AD_B1_00);
 
-impl Pin for AD_B1_01 {
-    const ALT: u32 = 3;
-    const DAISY: Daisy = DAISY_LPI2C1_SDA_AD_B1_01;
-    type Signal = Sda;
-    type Module = U1;
-}
+i2c!(module: U1, alt: 3, pad: AD_B1_01, signal: Sda, daisy: DAISY_LPI2C1_SDA_AD_B1_01);
 
 //
 // I2C2
@@ -35,51 +25,21 @@ impl Pin for AD_B1_01 {
 // I2C3
 //
 
-impl Pin for AD_B1_07 {
-    const ALT: u32 = 1;
-    const DAISY: Daisy = DAISY_LPI2C3_SCL_AD_B1_07;
-    type Signal = Scl;
-    type Module = U3;
-}
+i2c!(module: U3, alt: 1, pad: AD_B1_07, signal: Scl, daisy: DAISY_LPI2C3_SCL_AD_B1_07);
 
-impl Pin for AD_B1_06 {
-    const ALT: u32 = 1;
-    const DAISY: Daisy = DAISY_LPI2C3_SDA_AD_B1_06;
-    type Signal = Sda;
-    type Module = U3;
-}
+i2c!(module: U3, alt: 1, pad: AD_B1_06, signal: Sda, daisy: DAISY_LPI2C3_SDA_AD_B1_06);
 
-impl Pin for SD_B0_00 {
-    const ALT: u32 = 2;
-    const DAISY: Daisy = DAISY_LPI2C3_SCL_SD_B0_00;
-    type Signal = Scl;
-    type Module = U3;
-}
+i2c!(module: U3, alt: 2, pad: SD_B0_00, signal: Scl, daisy: DAISY_LPI2C3_SCL_SD_B0_00);
 
-impl Pin for SD_B0_01 {
-    const ALT: u32 = 2;
-    const DAISY: Daisy = DAISY_LPI2C3_SDA_SD_B0_01;
-    type Signal = Sda;
-    type Module = U3;
-}
+i2c!(module: U3, alt: 2, pad: SD_B0_01, signal: Sda, daisy: DAISY_LPI2C3_SDA_SD_B0_01);
 
 //
 // I2C4
 //
 
-impl Pin for AD_B0_12 {
-    const ALT: u32 = 0;
-    const DAISY: Daisy = DAISY_LPI2C4_SCL_AD_B0_12;
-    type Signal = Scl;
-    type Module = U4;
-}
+i2c!(module: U4, alt: 0, pad: AD_B0_12, signal: Scl, daisy: DAISY_LPI2C4_SCL_AD_B0_12);
 
-impl Pin for AD_B0_13 {
-    const ALT: u32 = 0;
-    const DAISY: Daisy = DAISY_LPI2C4_SDA_AD_B0_13;
-    type Signal = Sda;
-    type Module = U4;
-}
+i2c!(module: U4, alt: 0, pad: AD_B0_13, signal: Sda, daisy: DAISY_LPI2C4_SDA_AD_B0_13);
 
 /// Auto-generated Daisy constants
 mod daisy {

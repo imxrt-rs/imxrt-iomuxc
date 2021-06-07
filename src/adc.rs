@@ -44,3 +44,12 @@ pub fn prepare<ADCx: Adc, P: Pin<ADCx>>(pin: &mut P) {
         super::Config::modify().set_pull_keep(super::PullKeep::Disabled),
     );
 }
+
+#[allow(unused)] // Used in chip-specific modules...
+macro_rules! adc {
+    (module: $module:ty, pad: $pad:ty, input: $input:ty) => {
+        impl Pin<$module> for $pad {
+            type Input = $input;
+        }
+    };
+}

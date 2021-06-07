@@ -84,13 +84,18 @@
 #![no_std]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
+#[macro_use]
 pub mod adc;
 mod config;
+#[macro_use]
 pub mod i2c;
+#[macro_use]
 pub mod pwm;
 #[macro_use]
 pub mod sai;
+#[macro_use]
 pub mod spi;
+#[macro_use]
 pub mod uart;
 
 use core::ptr;
