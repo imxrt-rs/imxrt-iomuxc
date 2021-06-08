@@ -18,6 +18,9 @@ All notable changes to this project will be documented in this file.
   - SPI
   - UART
 
+- Add `unsafe` static functions on every pad to set alternate, change SION, and set configurations.
+  These functions do not require ownership of the pad object.
+
 ## [0.1.3] - 2021-04-24
 
 ### Added
