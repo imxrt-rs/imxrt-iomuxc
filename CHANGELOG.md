@@ -16,6 +16,22 @@ All notable changes to this project will be documented in this file.
   - `SCL` => `Scl`
   - etc.
 
+- **BREAKING** in the ADC module, we remove the `ADC` trait. Users should
+  replace usages of `adc::ADC` with `consts::Unsigned`. The `Adc1` and `Adc2`
+  types are now aliases for `U1` and `U2`.
+
+  `adc::Pin::INPUT` is now an associated `u32` constant, not a type. Cast the
+  `u32` as needed for your implementation. See the before and after below for
+  migration tips.
+
+  ```rust
+  // Before
+  let channel: u16 = <P as Pin<ADC1>>::Input::U16;
+
+  // After
+  let channel: u16 = <P as Pin<ADC1>>::INPUT as u16;
+  ```
+
 - Add `unsafe` static functions on every pad to set alternate, change SION, and set configurations.
   These functions do not require ownership of the pad object.
 
