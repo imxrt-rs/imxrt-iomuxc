@@ -349,6 +349,67 @@ where
             offset: Offset::USIZE,
         }
     }
+
+    /// Set the alternate value for this pad.
+    ///
+    /// Performs a read-modify-write on the pad's mux register to set the
+    /// alternate value to `alt`.
+    ///
+    /// # Safety
+    ///
+    /// This function performs a read-modify-write operation on peripheral
+    /// memory. It could race with other calls that modify this pad's mux register.
+    /// For a safer interface, see [`alternate()`](crate::alternate()).
+    #[inline(always)]
+    pub unsafe fn set_alternate(alt: u32) {
+        let mut pad = Self::new();
+        alternate(&mut pad, alt);
+    }
+
+    /// Set the pad's SION bit.
+    ///
+    /// Performs a read-modify-write on the pad's mux register to set the SION
+    /// bit.
+    ///
+    /// # Safety
+    ///
+    /// This function performs a read-modify-write operation on peripheral
+    /// memory. It could race with other calls that modify this pad's mux register.
+    /// For a safer interface, see [`set_sion()`](crate::set_sion()).
+    #[inline(always)]
+    pub unsafe fn set_sion() {
+        let mut pad = Self::new();
+        set_sion(&mut pad);
+    }
+
+    /// Clear the pad's SION bit.
+    ///
+    /// Performs a read-modify-write on the pad's mux register to Clear the SION
+    /// bit.
+    ///
+    /// # Safety
+    ///
+    /// This function performs a read-modify-write operation on peripheral
+    /// memory. It could race with other calls that modify this pad's mux register.
+    /// For a safer interface, see [`clear_sion()`](crate::clear_sion()).
+    #[inline(always)]
+    pub unsafe fn clear_sion() {
+        let mut pad = Self::new();
+        clear_sion(&mut pad);
+    }
+
+    /// Set the pad's configuration.
+    ///
+    /// # Safety
+    ///
+    /// This function performs a read-modify-write operation on peripheral memory.
+    /// It could race with any other function that modifies this pad's registers.
+    /// For a safer interface, see [`configure()`](crate::configure()).
+    #[inline(always)]
+    pub unsafe fn configure(config: Config) {
+        let mut pad = Self::new();
+        configure(&mut pad, config);
+    }
 }
 
 unsafe impl<Base, Offset> crate::Iomuxc for Pad<Base, Offset>
