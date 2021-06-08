@@ -10,51 +10,34 @@ use crate::{
 //
 // SPI1
 //
-
 spi!(module: U1, alt: 4, pad: SD_B0_01, signal: PCS0, daisy: DAISY_LPSPI1_PCS0_SD_B0_01);
-
 spi!(module: U1, alt: 3, pad: EMC_30,   signal: PCS0, daisy: DAISY_LPSPI1_PCS0_EMC_30);
-
 spi!(module: U1, alt: 4, pad: SD_B0_00, signal: SCK,  daisy: DAISY_LPSPI1_SCK_SD_B0_00);
-
 spi!(module: U1, alt: 4, pad: SD_B0_03, signal: SDI,  daisy: DAISY_LPSPI1_SDI_SD_B0_03);
-
 spi!(module: U1, alt: 4, pad: SD_B0_02, signal: SDO,  daisy: DAISY_LPSPI1_SDO_SD_B0_02);
 
 //
 // SPI2
 //
-
 spi!(module: U2, alt: 4, pad: SD_B1_07, signal: SCK,  daisy: DAISY_LPSPI2_SCK_SD_B1_07);
-
 spi!(module: U2, alt: 4, pad: SD_B1_08, signal: SDO,  daisy: DAISY_LPSPI2_SDO_SD_B1_08);
-
 spi!(module: U2, alt: 4, pad: SD_B1_09, signal: SDI,  daisy: DAISY_LPSPI2_SDI_SD_B1_09);
-
 spi!(module: U2, alt: 4, pad: SD_B1_06, signal: PCS0, daisy: DAISY_LPSPI2_PCS0_SD_B1_06);
 
 //
 // SPI3
 //
-
 spi!(module: U3, alt: 7, pad: AD_B0_00, signal: SCK,  daisy: DAISY_LPSPI3_SCK_AD_B0_00);
-
 spi!(module: U3, alt: 7, pad: AD_B0_01, signal: SDO,  daisy: DAISY_LPSPI3_SDO_AD_B0_01);
-
 spi!(module: U3, alt: 7, pad: AD_B0_02, signal: SDI,  daisy: DAISY_LPSPI3_SDI_AD_B0_02);
-
 spi!(module: U3, alt: 7, pad: AD_B0_03, signal: PCS0, daisy: DAISY_LPSPI3_PCS0_AD_B0_03);
 
 //
 // SPI4
 //
-
 spi!(module: U4, alt: 3, pad: B0_03, signal: SCK,  daisy: DAISY_LPSPI4_SCK_B0_03);
-
 spi!(module: U4, alt: 3, pad: B0_02, signal: SDO,  daisy: DAISY_LPSPI4_SDO_B0_02);
-
 spi!(module: U4, alt: 3, pad: B0_01, signal: SDI,  daisy: DAISY_LPSPI4_SDI_B0_01);
-
 spi!(module: U4, alt: 3, pad: B0_00, signal: PCS0, daisy: DAISY_LPSPI4_PCS0_B0_00);
 
 /// Auto-generated DAISY values

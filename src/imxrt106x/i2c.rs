@@ -10,9 +10,7 @@ use crate::{
 //
 // I2C1
 //
-
 i2c!(module: U1, alt: 3, pad: AD_B1_00, signal: SCL, daisy: DAISY_LPI2C1_SCL_AD_B1_00);
-
 i2c!(module: U1, alt: 3, pad: AD_B1_01, signal: SDA, daisy: DAISY_LPI2C1_SDA_AD_B1_01);
 
 //
@@ -24,21 +22,15 @@ i2c!(module: U1, alt: 3, pad: AD_B1_01, signal: SDA, daisy: DAISY_LPI2C1_SDA_AD_
 //
 // I2C3
 //
-
 i2c!(module: U3, alt: 1, pad: AD_B1_07, signal: SCL, daisy: DAISY_LPI2C3_SCL_AD_B1_07);
-
 i2c!(module: U3, alt: 1, pad: AD_B1_06, signal: SDA, daisy: DAISY_LPI2C3_SDA_AD_B1_06);
-
 i2c!(module: U3, alt: 2, pad: SD_B0_00, signal: SCL, daisy: DAISY_LPI2C3_SCL_SD_B0_00);
-
 i2c!(module: U3, alt: 2, pad: SD_B0_01, signal: SDA, daisy: DAISY_LPI2C3_SDA_SD_B0_01);
 
 //
 // I2C4
 //
-
 i2c!(module: U4, alt: 0, pad: AD_B0_12, signal: SCL, daisy: DAISY_LPI2C4_SCL_AD_B0_12);
-
 i2c!(module: U4, alt: 0, pad: AD_B0_13, signal: SDA, daisy: DAISY_LPI2C4_SDA_AD_B0_13);
 
 /// Auto-generated Daisy constants
