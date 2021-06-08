@@ -17,7 +17,7 @@ mod private {
 }
 
 /// A PWM pin
-pub trait Pin: super::IOMUX {
+pub trait Pin: super::Iomuxc {
     /// The alternate mode for the PWM pin
     const ALT: u32;
     /// The output identifier

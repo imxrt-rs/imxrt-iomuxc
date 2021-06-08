@@ -1,7 +1,7 @@
 //! ADC pad configuration
 
 /// An ADC input bank, like `ADC1` and `ADC2`
-pub trait ADC: private::Sealed {}
+pub trait Adc: private::Sealed {}
 
 mod private {
     pub trait Sealed {}
@@ -11,18 +11,18 @@ mod private {
 
 /// Indicates an ADC1-compatible pin
 pub enum ADC1 {}
-impl ADC for ADC1 {}
+impl Adc for ADC1 {}
 
 /// Indicates an ADC2-compatible pin
 pub enum ADC2 {}
-impl ADC for ADC2 {}
+impl Adc for ADC2 {}
 
 /// Describes an ADC input pin
 ///
 /// ADC pins are specialized GPIO pins. Some pads may be used in both `ADC1`
 /// and `ADC2`, so implementations will indicate their compatibility by
 /// supplying an identifier in place of `ADCx`.
-pub trait Pin<ADCx: ADC>: super::gpio::Pin {
+pub trait Pin<ADCx: Adc>: super::gpio::Pin {
     /// The input pin identifier
     ///
     /// Starts at `U0`, and increments up.
@@ -33,7 +33,7 @@ pub trait Pin<ADCx: ADC>: super::gpio::Pin {
 ///
 /// Due to a requirement in the ADC module, `prepare` will disable the pull/keeper
 /// on the pin. The configuration change will not affect any other settings.
-pub fn prepare<ADCx: ADC, P: Pin<ADCx>>(pin: &mut P) {
+pub fn prepare<ADCx: Adc, P: Pin<ADCx>>(pin: &mut P) {
     // See the note in the ADC section of the reference manual
     // (using iMXRT1060, rev 2). ADC input signals connect to
     // GPIO, and we need to disable the keeper to prevent signal

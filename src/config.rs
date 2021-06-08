@@ -1,6 +1,6 @@
 //! Pad configuration
 
-use crate::IOMUX;
+use crate::Iomuxc;
 use core::ptr;
 
 /// Applies the configuration `config` for the supplied pad
@@ -13,9 +13,9 @@ use core::ptr;
 ///
 /// ```no_run
 /// use imxrt_iomuxc::{configure, Config, OpenDrain, PullKeep};
-/// # use imxrt_iomuxc::IOMUX; #[allow(non_camel_case_types)] pub struct AD_B0_03;
+/// # use imxrt_iomuxc::Iomuxc;; #[allow(non_camel_case_types)] pub struct AD_B0_03;
 /// # impl AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
-/// # unsafe impl IOMUX for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
+/// # unsafe impl Iomuxc for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
 ///
 /// const CONFIG: Config = Config::zero()
 ///     .set_open_drain(OpenDrain::Enabled)
@@ -26,7 +26,7 @@ use core::ptr;
 /// configure(&mut pad, CONFIG);
 /// ```
 #[inline(always)]
-pub fn configure<I: IOMUX>(pad: &mut I, config: Config) {
+pub fn configure<I: Iomuxc>(pad: &mut I, config: Config) {
     // Safety: same justification as set_sion.
     unsafe {
         let cfg = ptr::read_volatile(pad.pad());
@@ -203,8 +203,8 @@ impl Config {
     /// to the register. Those that are not set explicitly set are written as zero.
     ///
     /// ```
-    /// # use imxrt_iomuxc::IOMUX;
-    /// # struct Pad(u32); unsafe impl IOMUX for Pad { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
+    /// # use imxrt_iomuxc::Iomuxc;
+    /// # struct Pad(u32); unsafe impl Iomuxc for Pad { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
     /// # let mut ad_b0_13 = Pad(0xFFFF_FFFFu32);
     /// use imxrt_iomuxc::{
     ///     Config, configure, SlewRate,
@@ -249,8 +249,8 @@ impl Config {
     /// Any field that is is *not* specified in the configuration will not be touched.
     ///
     /// ```
-    /// # use imxrt_iomuxc::IOMUX;
-    /// # struct Pad(u32); unsafe impl IOMUX for Pad { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
+    /// # use imxrt_iomuxc::Iomuxc;
+    /// # struct Pad(u32); unsafe impl Iomuxc for Pad { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
     /// # let mut ad_b0_13 = Pad(0xFFFF_FFFFu32);
     /// use imxrt_iomuxc::{Config, configure, SlewRate, DriveStrength, Hysteresis};
     ///
@@ -370,7 +370,7 @@ mod tests {
     /// The high bits represent the valid fields in pad registers.
     const PAD_BITMASK: u32 = 0b1_1111_1000_1111_1001u32;
 
-    unsafe impl IOMUX for Pad {
+    unsafe impl Iomuxc for Pad {
         unsafe fn mux(&mut self) -> *mut u32 {
             panic!("Nothing calls mux() in these tests");
         }

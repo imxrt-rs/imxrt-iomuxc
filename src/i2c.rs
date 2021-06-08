@@ -1,24 +1,24 @@
 //! I2C pad configuration
 
 /// Tag that indicates the SCL signal
-pub enum SCL {}
+pub enum Scl {}
 /// Tag that indicates the SDA signal
-pub enum SDA {}
+pub enum Sda {}
 
 /// An I2C signal; one of `SCL` or `SDA`
 pub trait Signal: private::Sealed {}
 
-impl Signal for SCL {}
-impl Signal for SDA {}
+impl Signal for Scl {}
+impl Signal for Sda {}
 
 mod private {
     pub trait Sealed {}
-    impl Sealed for super::SCL {}
-    impl Sealed for super::SDA {}
+    impl Sealed for super::Scl {}
+    impl Sealed for super::Sda {}
 }
 
 /// An I2C pin
-pub trait Pin: super::IOMUX {
+pub trait Pin: super::Iomuxc {
     /// Alternate value for this pin
     const ALT: u32;
     /// Daisy register

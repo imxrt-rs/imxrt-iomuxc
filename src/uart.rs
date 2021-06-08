@@ -18,7 +18,7 @@ mod private {
 }
 
 /// A UART pin
-pub trait Pin: super::IOMUX {
+pub trait Pin: super::Iomuxc {
     /// The alternate value for the UART pin
     const ALT: u32;
     /// The daisy register which will select the pad

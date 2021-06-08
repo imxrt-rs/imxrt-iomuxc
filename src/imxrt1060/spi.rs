@@ -3,7 +3,7 @@
 use super::pads::{ad_b0::*, b0::*, emc::*, sd_b0::*, sd_b1::*};
 use crate::{
     consts::*,
-    spi::{Pin, PCS0, SCK, SDI, SDO},
+    spi::{Pcs0, Pin, Sck, Sdi, Sdo},
     Daisy,
 };
 
@@ -14,35 +14,35 @@ use crate::{
 impl Pin for SD_B0_01 {
     const ALT: u32 = 4;
     const DAISY: Daisy = DAISY_LPSPI1_PCS0_SD_B0_01;
-    type Signal = PCS0;
+    type Signal = Pcs0;
     type Module = U1;
 }
 
 impl Pin for EMC_30 {
     const ALT: u32 = 3;
     const DAISY: Daisy = DAISY_LPSPI1_PCS0_EMC_30;
-    type Signal = PCS0;
+    type Signal = Pcs0;
     type Module = U1;
 }
 
 impl Pin for SD_B0_00 {
     const ALT: u32 = 4;
     const DAISY: Daisy = DAISY_LPSPI1_SCK_SD_B0_00;
-    type Signal = SCK;
+    type Signal = Sck;
     type Module = U1;
 }
 
 impl Pin for SD_B0_03 {
     const ALT: u32 = 4;
     const DAISY: Daisy = DAISY_LPSPI1_SDI_SD_B0_03;
-    type Signal = SDI;
+    type Signal = Sdi;
     type Module = U1;
 }
 
 impl Pin for SD_B0_02 {
     const ALT: u32 = 4;
     const DAISY: Daisy = DAISY_LPSPI1_SDO_SD_B0_02;
-    type Signal = SDO;
+    type Signal = Sdo;
     type Module = U1;
 }
 
@@ -53,28 +53,28 @@ impl Pin for SD_B0_02 {
 impl Pin for SD_B1_07 {
     const ALT: u32 = 4;
     const DAISY: Daisy = DAISY_LPSPI2_SCK_SD_B1_07;
-    type Signal = SCK;
+    type Signal = Sck;
     type Module = U2;
 }
 
 impl Pin for SD_B1_08 {
     const ALT: u32 = 4;
     const DAISY: Daisy = DAISY_LPSPI2_SDO_SD_B1_08;
-    type Signal = SDO;
+    type Signal = Sdo;
     type Module = U2;
 }
 
 impl Pin for SD_B1_09 {
     const ALT: u32 = 4;
     const DAISY: Daisy = DAISY_LPSPI2_SDI_SD_B1_09;
-    type Signal = SDI;
+    type Signal = Sdi;
     type Module = U2;
 }
 
 impl Pin for SD_B1_06 {
     const ALT: u32 = 4;
     const DAISY: Daisy = DAISY_LPSPI2_PCS0_SD_B1_06;
-    type Signal = PCS0;
+    type Signal = Pcs0;
     type Module = U2;
 }
 
@@ -85,28 +85,28 @@ impl Pin for SD_B1_06 {
 impl Pin for AD_B0_00 {
     const ALT: u32 = 7;
     const DAISY: Daisy = DAISY_LPSPI3_SCK_AD_B0_00;
-    type Signal = SCK;
+    type Signal = Sck;
     type Module = U3;
 }
 
 impl Pin for AD_B0_01 {
     const ALT: u32 = 7;
     const DAISY: Daisy = DAISY_LPSPI3_SDO_AD_B0_01;
-    type Signal = SDO;
+    type Signal = Sdo;
     type Module = U3;
 }
 
 impl Pin for AD_B0_02 {
     const ALT: u32 = 7;
     const DAISY: Daisy = DAISY_LPSPI3_SDI_AD_B0_02;
-    type Signal = SDI;
+    type Signal = Sdi;
     type Module = U3;
 }
 
 impl Pin for AD_B0_03 {
     const ALT: u32 = 7;
     const DAISY: Daisy = DAISY_LPSPI3_PCS0_AD_B0_03;
-    type Signal = PCS0;
+    type Signal = Pcs0;
     type Module = U3;
 }
 
@@ -117,28 +117,28 @@ impl Pin for AD_B0_03 {
 impl Pin for B0_03 {
     const ALT: u32 = 3;
     const DAISY: Daisy = DAISY_LPSPI4_SCK_B0_03;
-    type Signal = SCK;
+    type Signal = Sck;
     type Module = U4;
 }
 
 impl Pin for B0_02 {
     const ALT: u32 = 3;
     const DAISY: Daisy = DAISY_LPSPI4_SDO_B0_02;
-    type Signal = SDO;
+    type Signal = Sdo;
     type Module = U4;
 }
 
 impl Pin for B0_01 {
     const ALT: u32 = 3;
     const DAISY: Daisy = DAISY_LPSPI4_SDI_B0_01;
-    type Signal = SDI;
+    type Signal = Sdi;
     type Module = U4;
 }
 
 impl Pin for B0_00 {
     const ALT: u32 = 3;
     const DAISY: Daisy = DAISY_LPSPI4_PCS0_B0_00;
-    type Signal = PCS0;
+    type Signal = Pcs0;
     type Module = U4;
 }
 

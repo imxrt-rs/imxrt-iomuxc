@@ -4,29 +4,29 @@
 pub trait Signal: private::Sealed {}
 
 /// A tag that indicates a SPI clock pad
-pub enum SCK {}
+pub enum Sck {}
 /// A tag that indicates a SPI data out pad
-pub enum SDO {}
+pub enum Sdo {}
 /// A tag that indicates a SPI data in pad
-pub enum SDI {}
+pub enum Sdi {}
 /// A tag that indicates a SPI chip select pad
-pub enum PCS0 {}
+pub enum Pcs0 {}
 
-impl Signal for SCK {}
-impl Signal for SDO {}
-impl Signal for SDI {}
-impl Signal for PCS0 {}
+impl Signal for Sck {}
+impl Signal for Sdo {}
+impl Signal for Sdi {}
+impl Signal for Pcs0 {}
 
 mod private {
     pub trait Sealed {}
-    impl Sealed for super::SCK {}
-    impl Sealed for super::SDO {}
-    impl Sealed for super::SDI {}
-    impl Sealed for super::PCS0 {}
+    impl Sealed for super::Sck {}
+    impl Sealed for super::Sdo {}
+    impl Sealed for super::Sdi {}
+    impl Sealed for super::Pcs0 {}
 }
 
 /// A SPI pin
-pub trait Pin: super::IOMUX {
+pub trait Pin: super::Iomuxc {
     /// Alternate value for this pin
     const ALT: u32;
     /// Daisy register

@@ -97,7 +97,7 @@ impl Sealed for RxData {}
 /// A pin that can be used for a SAI peripheral
 ///
 /// `SAIx` is a type number, like `U2`, which indicates 'SAI2'.
-pub trait Pin<SAIx: crate::consts::Unsigned>: super::IOMUX {
+pub trait Pin<SAIx: crate::consts::Unsigned>: super::Iomuxc {
     /// The alternate value for the UART pin
     const ALT: u32;
     /// The daisy register which will select the pad

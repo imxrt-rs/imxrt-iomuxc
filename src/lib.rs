@@ -47,8 +47,8 @@
 //!         # UART
 //!     }
 //! }
-//! # struct AD_B0_03; impl AD_B0_03 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::IOMUX for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
-//! # struct AD_B0_04; impl AD_B0_04 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::IOMUX for AD_B0_04 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
+//! # struct AD_B0_03; impl AD_B0_03 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
+//! # struct AD_B0_04; impl AD_B0_04 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for AD_B0_04 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
 //! # impl imxrt_iomuxc::uart::Pin for AD_B0_03 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::uart::TX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
 //! # impl imxrt_iomuxc::uart::Pin for AD_B0_04 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::uart::RX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
 //!
@@ -83,7 +83,6 @@
 
 #![no_std]
 #![cfg_attr(docsrs, feature(doc_cfg))]
-#![allow(clippy::upper_case_acronyms)] // TODO remove before 0.2 release
 
 pub mod adc;
 mod config;
@@ -175,6 +174,7 @@ pub unsafe trait Base {
 macro_rules! define_base {
     ($base_name: ident, $mux_base: expr, $pad_base: expr) => {
         #[allow(non_camel_case_types)] // Conform with reference manual
+        #[allow(clippy::upper_case_acronyms)] // Conform with reference manual
         #[derive(Debug)]
         pub struct $base_name;
 
@@ -205,7 +205,7 @@ pub mod imxrt1060;
 ///
 /// **DO NOT IMPLEMENT THIS TRAIT**. It's exposed to support documentation
 /// browsing.
-pub unsafe trait IOMUX {
+pub unsafe trait Iomuxc {
     /// Returns the absolute address of the multiplex register
     ///
     /// # Safety
@@ -231,7 +231,7 @@ const SION_BIT: u32 = 1 << 4;
 /// However, you should use `set_sion()` if you're using any type-erased pads, since those
 /// pads cannot be used with a peripheral's `prepare()` function.
 #[inline(always)]
-pub fn set_sion<I: IOMUX>(pad: &mut I) {
+pub fn set_sion<I: Iomuxc>(pad: &mut I) {
     // Safety:
     //
     // Pointer reads and writes are unsafe. But, because we control
@@ -261,7 +261,7 @@ pub fn set_sion<I: IOMUX>(pad: &mut I) {
 /// However, you should use `clear_sion()` if you're using any type-erased pads, since those
 /// pads cannot be used with a peripheral's `prepare()` function.
 #[inline(always)]
-pub fn clear_sion<I: IOMUX>(pad: &mut I) {
+pub fn clear_sion<I: Iomuxc>(pad: &mut I) {
     // Safety: same justification as set_sion
     unsafe {
         let mut mux = ptr::read_volatile(pad.mux());
@@ -279,7 +279,7 @@ pub fn clear_sion<I: IOMUX>(pad: &mut I) {
 /// However, you should use `alternate()` if you're using any type-erased pads, since those
 /// pads cannot be used with a peripheral's `prepare()` function.
 #[inline(always)]
-pub fn alternate<I: IOMUX>(pad: &mut I, alt: u32) {
+pub fn alternate<I: Iomuxc>(pad: &mut I, alt: u32) {
     const ALT_MASK: u32 = 0b1111;
     // Safety: same justification as set_sion. Argument extends to
     // pad values and alternate values.
@@ -346,7 +346,7 @@ where
     }
 }
 
-unsafe impl<Base, Offset> crate::IOMUX for Pad<Base, Offset>
+unsafe impl<Base, Offset> crate::Iomuxc for Pad<Base, Offset>
 where
     Base: crate::Base,
     Offset: crate::consts::Unsigned,
@@ -399,7 +399,7 @@ pub struct ErasedPad {
     offset: usize,
 }
 
-unsafe impl crate::IOMUX for ErasedPad {
+unsafe impl crate::Iomuxc for ErasedPad {
     /// # Safety
     ///
     /// Returns a pointer to an address that may be mutably aliased elsewhere.
@@ -480,9 +480,9 @@ impl Daisy {
 ///
 /// You should use `no_run` to prevent execution, or you'll probably derefence a null pointer.
 /// ```
-/// # use imxrt_iomuxc::IOMUX; #[allow(non_camel_case_types)] pub struct AD_B0_03;
+/// # use imxrt_iomuxc::Iomuxc; #[allow(non_camel_case_types)] pub struct AD_B0_03;
 /// # impl AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
-/// # unsafe impl IOMUX for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
+/// # unsafe impl Iomuxc for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
 /// ```
 #[cfg(doctest)]
 pub struct DocPadSnippet;
@@ -490,7 +490,7 @@ pub struct DocPadSnippet;
 /// GPIO pad configuration
 pub mod gpio {
     /// A GPIO pin
-    pub trait Pin: super::IOMUX {
+    pub trait Pin: super::Iomuxc {
         /// The alternate value for this pad
         const ALT: u32;
         /// The GPIO module; `U5` for `GPIO5`

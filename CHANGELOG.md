@@ -11,6 +11,11 @@ All notable changes to this project will be documented in this file.
   For rational on this change, see
   [here](https://github.com/imxrt-rs/imxrt-rs/pull/91).
 
+- **BREAKING** favor Rust's API naming guidelines for select traits, marker types:
+  - `ADC` => `Adc`
+  - `SCL` => `Scl`
+  - etc.
+
 ### Added
 
 - i.MX RT 1010 support with the `"imxrt1010"` feature:
