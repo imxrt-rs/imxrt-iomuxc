@@ -10,33 +10,25 @@ use crate::{
 //
 // UART1
 //
-
 uart!(module: U1, alt: 2, pad: AD_B0_13, direction: RX, daisy: None);
-
 uart!(module: U1, alt: 2, pad: AD_B0_12, direction: TX, daisy: None);
 
 //
 // UART2
 //
-
 uart!(module: U2, alt: 2, pad: AD_B1_03, direction: RX, daisy: Some(DAISY_LPUART2_RX_AD_B1_03));
-
 uart!(module: U2, alt: 2, pad: AD_B1_02, direction: TX, daisy: Some(DAISY_LPUART2_TX_AD_B1_02));
 
 //
 // UART3
 //
-
 uart!(module: U3, alt: 2, pad: AD_B1_07, direction: RX, daisy: Some(DAISY_LPUART3_RX_AD_B1_07));
-
 uart!(module: U3, alt: 2, pad: AD_B1_06, direction: TX, daisy: Some(DAISY_LPUART3_TX_AD_B1_06));
 
 //
 // UART4
 //
-
 uart!(module: U4, alt: 2, pad: B1_01, direction: RX, daisy: Some(DAISY_LPUART4_RX_B1_01));
-
 uart!(module: U4, alt: 2, pad: B1_00, direction: TX, daisy: Some(DAISY_LPUART4_TX_B1_00));
 
 //
@@ -48,25 +40,19 @@ uart!(module: U4, alt: 2, pad: B1_00, direction: TX, daisy: Some(DAISY_LPUART4_T
 //
 // UART6
 //
-
 uart!(module: U6, alt: 2, pad: AD_B0_03, direction: RX, daisy: Some(DAISY_LPUART6_RX_AD_B0_03));
-
 uart!(module: U6, alt: 2, pad: AD_B0_02, direction: TX, daisy: Some(DAISY_LPUART6_TX_AD_B0_02));
 
 //
 // UART7
 //
-
 uart!(module: U7, alt: 2, pad: EMC_32, direction: RX, daisy: Some(DAISY_LPUART7_RX_EMC_32));
-
 uart!(module: U7, alt: 2, pad: EMC_31, direction: TX, daisy: Some(DAISY_LPUART7_TX_EMC_31));
 
 //
 // UART8
 //
-
 uart!(module: U8, alt: 2, pad: AD_B1_11, direction: RX, daisy: Some(DAISY_LPUART8_RX_AD_B1_11));
-
 uart!(module: U8, alt: 2, pad: AD_B1_10, direction: TX, daisy: Some(DAISY_LPUART8_TX_AD_B1_10));
 
 /// Auto-generated Daisy constants
