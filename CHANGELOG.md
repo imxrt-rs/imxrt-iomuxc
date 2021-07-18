@@ -32,6 +32,13 @@ All notable changes to this project will be documented in this file.
   let channel: u16 = <P as Pin<ADC1>>::INPUT as u16;
   ```
 
+- **BREAKING** rename modules to match i.MX RT peripherals. Specific renames include
+
+  - `i2c` => `lpi2c`
+  - `pwm` => `flexpwm`
+  - `spi` => `lpspi`
+  - `uart` => `lpuart`
+
 - Add `unsafe` static functions on every pad to set alternate, change SION, and set configurations.
   These functions do not require ownership of the pad object.
 

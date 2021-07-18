@@ -8,7 +8,7 @@
 //! In the example below, we implement a hypothetical `uart_new` function, which is responsible
 //! for preparing a UART peripheral. To properly configure the peripheral, we need the two
 //! pads that represent a peripheral's TX and RX pins. The implementation will use the
-//! `imxrt_iomuxc::uart::prepare()` function to prepare the pins.
+//! `imxrt_iomuxc::lpuart::prepare()` function to prepare the pins.
 //!
 //! Note the trait bounds on `uart_new`. The usage requires that
 //!
@@ -17,7 +17,7 @@
 //!
 //! ```no_run
 //! use imxrt_iomuxc as iomuxc;
-//! use iomuxc::uart::{Pin, TX, RX};
+//! use iomuxc::lpuart::{Pin, TX, RX};
 //!
 //! # struct UART;
 //! /// Creates a UART peripheral from the TX and RX pads, and a baud rate
@@ -29,8 +29,8 @@
 //!     // Check the imxrt-iomuxc documentation to understand why
 //!     // this is unsafe.
 //!     unsafe {
-//!         iomuxc::uart::prepare(&mut tx);
-//!         iomuxc::uart::prepare(&mut rx);
+//!         iomuxc::lpuart::prepare(&mut tx);
+//!         iomuxc::lpuart::prepare(&mut rx);
 //!     }
 //!     // Prepare the rest of the UART peripheral, and return it...
 //!     # UART
@@ -46,7 +46,7 @@
 //!
 //! ```compile_fail
 //! # use imxrt_iomuxc as iomuxc;
-//! # use iomuxc::uart::{Pin, TX, RX};
+//! # use iomuxc::lpuart::{Pin, TX, RX};
 //! # struct UART;
 //! # fn uart_new<T, R>(mut tx: T, mut rx: R, baud: u32) -> UART
 //! # where
@@ -54,8 +54,8 @@
 //! #     R: Pin<Direction = RX, Module = <T as Pin>::Module>,
 //! # {
 //! #     unsafe {
-//! #         iomuxc::uart::prepare(&mut tx);
-//! #         iomuxc::uart::prepare(&mut rx);
+//! #         iomuxc::lpuart::prepare(&mut tx);
+//! #         iomuxc::lpuart::prepare(&mut rx);
 //! #     }
 //! #     UART
 //! # }
@@ -69,7 +69,7 @@
 //!
 //! ```compile_fail
 //! # use imxrt_iomuxc as iomuxc;
-//! # use iomuxc::uart::{Pin, TX, RX};
+//! # use iomuxc::lpuart::{Pin, TX, RX};
 //! # struct UART;
 //! # fn uart_new<T, R>(mut tx: T, mut rx: R, baud: u32) -> UART
 //! # where
@@ -77,8 +77,8 @@
 //! #     R: Pin<Direction = RX, Module = <T as Pin>::Module>,
 //! # {
 //! #     unsafe {
-//! #         iomuxc::uart::prepare(&mut tx);
-//! #         iomuxc::uart::prepare(&mut rx);
+//! #         iomuxc::lpuart::prepare(&mut tx);
+//! #         iomuxc::lpuart::prepare(&mut rx);
 //! #     }
 //! #     UART
 //! # }
@@ -89,12 +89,11 @@
 //! ```
 
 mod adc;
-mod i2c;
-mod pwm;
+mod flexpwm;
+mod lpi2c;
+mod lpspi;
+mod lpuart;
 mod sai;
-mod spi;
-mod uart;
-
 include!(concat!(env!("OUT_DIR"), "/imxrt1060.rs"));
 pub use pads::*;
 

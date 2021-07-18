@@ -3,7 +3,7 @@
 use super::pads::{ad_b0::*, b0::*, b1::*, emc::*, sd_b0::*};
 use crate::{
     consts::*,
-    pwm::{Pin, A, B},
+    flexpwm::{Pin, A, B},
 };
 
 pwm!(module: U1, submodule: U0, alt: 1, pad: SD_B0_00, output: A);

@@ -3,7 +3,7 @@
 use super::pads::{ad_b0::*, ad_b1::*, b1::*, emc::*};
 use crate::{
     consts::*,
-    uart::{Pin, RX, TX},
+    lpuart::{Pin, RX, TX},
     Daisy,
 };
 
