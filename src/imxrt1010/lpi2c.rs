@@ -3,7 +3,7 @@
 use super::pads::{ad::*, gpio::*, sd::*};
 use crate::{
     consts::*,
-    i2c::{Pin, Scl, Sda},
+    lpi2c::{Pin, Scl, Sda},
     Daisy,
 };
 

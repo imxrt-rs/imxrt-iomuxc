@@ -27,7 +27,7 @@
 //! The API will expect that the user is responsible for manually configuring the type-erased pad.
 //!
 //! ```no_run
-//! use imxrt_iomuxc::{ErasedPad, uart::{Pin, TX, RX}};
+//! use imxrt_iomuxc::{ErasedPad, lpuart::{Pin, TX, RX}};
 //! # pub struct UART;
 //!
 //! impl UART {
@@ -36,8 +36,8 @@
 //!         T: Pin<Direction = TX>,
 //!         R: Pin<Direction = RX, Module = <T as Pin>::Module>,
 //!     {
-//!         imxrt_iomuxc::uart::prepare(&mut tx);
-//!         imxrt_iomuxc::uart::prepare(&mut rx);
+//!         imxrt_iomuxc::lpuart::prepare(&mut tx);
+//!         imxrt_iomuxc::lpuart::prepare(&mut rx);
 //!         // ...
 //!         # UART
 //!     }
@@ -49,8 +49,8 @@
 //! }
 //! # struct AD_B0_03; impl AD_B0_03 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
 //! # struct AD_B0_04; impl AD_B0_04 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for AD_B0_04 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
-//! # impl imxrt_iomuxc::uart::Pin for AD_B0_03 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::uart::TX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
-//! # impl imxrt_iomuxc::uart::Pin for AD_B0_04 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::uart::RX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
+//! # impl imxrt_iomuxc::lpuart::Pin for AD_B0_03 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::TX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
+//! # impl imxrt_iomuxc::lpuart::Pin for AD_B0_04 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::RX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
 //!
 //! // Preferred: create a UART peripheral with strongly-typed pads...
 //! let ad_b0_03 = unsafe { AD_B0_03::new() };
@@ -70,8 +70,8 @@
 //!     // Daisy registers and values aren't attached
 //!     // to erased pads, so we have to reference this
 //!     // manually.
-//!     <AD_B0_03 as imxrt_iomuxc::uart::Pin>::DAISY.map(|daisy| daisy.write());
-//!     <AD_B0_04 as imxrt_iomuxc::uart::Pin>::DAISY.map(|daisy| daisy.write());
+//!     <AD_B0_03 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
+//!     <AD_B0_04 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
 //! }
 //! imxrt_iomuxc::alternate(&mut tx_pad, 2);
 //! imxrt_iomuxc::alternate(&mut rx_pad, 2);
@@ -88,15 +88,15 @@
 pub mod adc;
 mod config;
 #[macro_use]
-pub mod i2c;
+pub mod flexpwm;
 #[macro_use]
-pub mod pwm;
+pub mod lpi2c;
+#[macro_use]
+pub mod lpspi;
+#[macro_use]
+pub mod lpuart;
 #[macro_use]
 pub mod sai;
-#[macro_use]
-pub mod spi;
-#[macro_use]
-pub mod uart;
 
 use core::ptr;
 
@@ -125,7 +125,9 @@ pub mod prelude {
         configure, Config, DriveStrength, Hysteresis, OpenDrain, PullKeep, PullKeepSelect,
         PullUpDown, SlewRate, Speed,
     };
-    pub use crate::{consts, gpio, i2c, pwm, spi, uart, Daisy, ErasedPad, Pad, WrongPadError};
+    pub use crate::{
+        consts, flexpwm, gpio, lpi2c, lpspi, lpuart, Daisy, ErasedPad, Pad, WrongPadError,
+    };
 }
 
 /// Type-level constants and traits

@@ -3,7 +3,7 @@
 use super::pads::{ad::*, sd::*};
 use crate::{
     consts::*,
-    spi::{Pcs0, Pin, Sck, Sdi, Sdo},
+    lpspi::{Pcs0, Pin, Sck, Sdi, Sdo},
     Daisy,
 };
 

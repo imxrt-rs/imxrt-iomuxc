@@ -13,7 +13,9 @@ mod iomuxc {
 /// Ensure that prelude modules are re-exported as expected
 #[test]
 fn use_prelude() {
-    use iomuxc::{consts, gpio, i2c, pwm, spi, uart, Daisy, ErasedPad, Pad, WrongPadError};
+    use iomuxc::{
+        consts, flexpwm, gpio, lpi2c, lpspi, lpuart, Daisy, ErasedPad, Pad, WrongPadError,
+    };
 }
 
 /// Ensure that the imxrt1060 modules are re-exported
