@@ -30,11 +30,11 @@
 //!
 //! let mut sai1: SAI1 = // Create SAI1 driver...
 //!     # SAI { _u: core::marker::PhantomData };
-//! let sd_b1_02 = // 1060 SAI1 TX_DATA01 pin...
-//!     # unsafe { imxrt_iomuxc::imxrt1060::sd_b1::SD_B1_02::new() };
+//! let gpio_sd_b1_02 = // 1060 SAI1 TX_DATA01 pin...
+//!     # unsafe { imxrt_iomuxc::imxrt1060::gpio_sd_b1::GPIO_SD_B1_02::new() };
 //!
 //!
-//! sai1.add_tx_pin(sd_b1_02);
+//! sai1.add_tx_pin(gpio_sd_b1_02);
 //! ```
 
 /// An SAI pin signal

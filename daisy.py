@@ -28,7 +28,6 @@ def daisy_constant(path):
             for field in register.findall("./fields/field"):
                 for values in field.findall("./enumeratedValues/enumeratedValue"):
                     pad = values.find("./name").text
-                    pad = pad.replace("GPIO_", "")
                     if "_ALT" in pad:
                         pad = pad[:-5]  # _ALTx
                     daisy = int(values.find("./value").text, 16)

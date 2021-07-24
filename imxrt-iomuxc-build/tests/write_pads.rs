@@ -49,7 +49,7 @@ fn test_write_pads() {
                     /// Erase all of the pads
                     ///
                     /// The return type is an array, where the index indicates the pad offset
-                    /// from the start of the group. For example, `AD_B0_03` would be referenced
+                    /// from the start of the group. For example, `GPIO_AD_B0_03` would be referenced
                     /// as `erased_pads[3]`.
                     ///
                     /// See [`ErasedPad`](../struct.ErasedPad.html) for more information.
@@ -101,7 +101,7 @@ fn test_write_pads() {
                     /// Erase all of the pads
                     ///
                     /// The return type is an array, where the index indicates the pad offset
-                    /// from the start of the group. For example, `AD_B0_03` would be referenced
+                    /// from the start of the group. For example, `GPIO_AD_B0_03` would be referenced
                     /// as `erased_pads[3]`.
                     ///
                     /// See [`ErasedPad`](../struct.ErasedPad.html) for more information.
@@ -130,7 +130,7 @@ fn test_write_pads() {
             /// # Convention
             ///
             /// The members of `ErasedPads` are arrays that provide erased pads
-            /// as objects. Pads are grouped by their prefix, like `ad_b0`. The array
+            /// as objects. Pads are grouped by their prefix, like `gpio_ad_b0`. The array
             /// index corresponds to the final pad identifier.
             ///
             /// Use [`Pads::erase()`](struct.Pads.html#method.erase) to get an `ErasedPads`.

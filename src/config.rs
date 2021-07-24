@@ -13,15 +13,15 @@ use core::ptr;
 ///
 /// ```no_run
 /// use imxrt_iomuxc::{configure, Config, OpenDrain, PullKeep};
-/// # use imxrt_iomuxc::Iomuxc;; #[allow(non_camel_case_types)] pub struct AD_B0_03;
-/// # impl AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
-/// # unsafe impl Iomuxc for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
+/// # use imxrt_iomuxc::Iomuxc;; #[allow(non_camel_case_types)] pub struct GPIO_AD_B0_03;
+/// # impl GPIO_AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
+/// # unsafe impl Iomuxc for GPIO_AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
 ///
 /// const CONFIG: Config = Config::zero()
 ///     .set_open_drain(OpenDrain::Enabled)
 ///     .set_pull_keep(PullKeep::Enabled);
 ///
-/// let mut pad = unsafe { AD_B0_03::new() };
+/// let mut pad = unsafe { GPIO_AD_B0_03::new() };
 ///
 /// configure(&mut pad, CONFIG);
 /// ```
@@ -205,7 +205,7 @@ impl Config {
     /// ```
     /// # use imxrt_iomuxc::Iomuxc;
     /// # struct Pad(u32); unsafe impl Iomuxc for Pad { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
-    /// # let mut ad_b0_13 = Pad(0xFFFF_FFFFu32);
+    /// # let mut gpio_ad_b0_13 = Pad(0xFFFF_FFFFu32);
     /// use imxrt_iomuxc::{
     ///     Config, configure, SlewRate,
     ///     Hysteresis, PullUpDown, DriveStrength
@@ -214,25 +214,25 @@ impl Config {
     /// unsafe {
     ///     // Set a configuration
     ///     configure(
-    ///         &mut ad_b0_13,
+    ///         &mut gpio_ad_b0_13,
     ///         Config::zero()
     ///             .set_slew_rate(SlewRate::Fast)
     ///             .set_drive_strength(DriveStrength::R0_7)
     ///     );
     ///     assert_eq!(
-    ///         *ad_b0_13.pad(),
+    ///         *gpio_ad_b0_13.pad(),
     ///         DriveStrength::R0_7 as u32 | SlewRate::Fast as u32
     ///     );
     ///
     ///     // Completely change that configuration
     ///     configure(
-    ///         &mut ad_b0_13,
+    ///         &mut gpio_ad_b0_13,
     ///         Config::zero()
     ///             .set_hysteresis(Hysteresis::Enabled)
     ///             .set_pullupdown(PullUpDown::Pullup22k)
     ///     );
     ///     assert_eq!(
-    ///         *ad_b0_13.pad(),
+    ///         *gpio_ad_b0_13.pad(),
     ///         Hysteresis::Enabled as u32 | PullUpDown::Pullup22k as u32
     ///     );
     /// }
@@ -251,31 +251,31 @@ impl Config {
     /// ```
     /// # use imxrt_iomuxc::Iomuxc;
     /// # struct Pad(u32); unsafe impl Iomuxc for Pad { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
-    /// # let mut ad_b0_13 = Pad(0xFFFF_FFFFu32);
+    /// # let mut gpio_ad_b0_13 = Pad(0xFFFF_FFFFu32);
     /// use imxrt_iomuxc::{Config, configure, SlewRate, DriveStrength, Hysteresis};
     ///
     /// unsafe {
     ///     // Assume a starting value in the register...
     ///     configure(
-    ///         &mut ad_b0_13,
+    ///         &mut gpio_ad_b0_13,
     ///         Config::zero()
     ///             .set_slew_rate(SlewRate::Fast)
     ///             .set_drive_strength(DriveStrength::R0_7)
     ///     );
     ///     assert_eq!(
-    ///         *ad_b0_13.pad(),
+    ///         *gpio_ad_b0_13.pad(),
     ///         DriveStrength::R0_7 as u32 | SlewRate::Fast as u32
     ///     );
     ///
     ///     // Now change the slew rate, and add hysteresis
     ///     configure(
-    ///         &mut ad_b0_13,
+    ///         &mut gpio_ad_b0_13,
     ///         Config::modify()
     ///             .set_slew_rate(SlewRate::Slow)
     ///             .set_hysteresis(Hysteresis::Enabled)
     ///     );
     ///     assert_eq!(
-    ///         *ad_b0_13.pad(),
+    ///         *gpio_ad_b0_13.pad(),
     ///         DriveStrength::R0_7 as u32 | Hysteresis::Enabled as u32
     ///     );
     /// }

@@ -11,6 +11,11 @@ All notable changes to this project will be documented in this file.
   For rational on this change, see
   [here](https://github.com/imxrt-rs/imxrt-rs/pull/91).
 
+- **BREAKING** add the prefix 'GPIO_' to nearly all pad types and pad modules.
+
+  - `AD_B1_23` => `GPIO_AD_B1_23`
+  - `ad_b1` => `gpio_ad_b1`
+
 - **BREAKING** favor Rust's API naming guidelines for select traits, marker types:
   - `ADC` => `Adc`
   - `SCL` => `Scl`

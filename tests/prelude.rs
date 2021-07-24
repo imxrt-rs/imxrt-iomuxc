@@ -22,5 +22,8 @@ fn use_prelude() {
 #[cfg(feature = "imxrt1060")]
 #[test]
 fn use_imxrt1060() {
-    use iomuxc::{ad_b0, ad_b1, b0, b1, emc, sd_b0, sd_b1, ErasedPads, Pads};
+    use iomuxc::{
+        gpio_ad_b0, gpio_ad_b1, gpio_b0, gpio_b1, gpio_emc, gpio_sd_b0, gpio_sd_b1, ErasedPads,
+        Pads,
+    };
 }

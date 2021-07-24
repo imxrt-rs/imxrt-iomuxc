@@ -36,10 +36,10 @@
 //!     # UART
 //! }
 //!
-//! # let ad_b0_13 = unsafe { imxrt_iomuxc::imxrt1060::ad_b0::AD_B0_13::new() };
-//! # let ad_b0_12 = unsafe { imxrt_iomuxc::imxrt1060::ad_b0::AD_B0_12::new() };
-//! // AD_B0_13 and AD_B0_12 are a suitable pair of UART pins
-//! uart_new(ad_b0_12, ad_b0_13, 115_200);
+//! # let gpio_ad_b0_13 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_13::new() };
+//! # let gpio_ad_b0_12 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_12::new() };
+//! // GPIO_AD_B0_13 and GPIO_AD_B0_12 are a suitable pair of UART pins
+//! uart_new(gpio_ad_b0_12, gpio_ad_b0_13, 115_200);
 //! ```
 //!
 //! Specifically, the trait bounds guard against non-UART pins:
@@ -59,10 +59,10 @@
 //! #     }
 //! #     UART
 //! # }
-//! # let ad_b0_10 = unsafe { imxrt_iomuxc::imxrt1060::ad_b0::AD_B0_10::new() };
-//! # let ad_b0_11 = unsafe { imxrt_iomuxc::imxrt1060::ad_b0::AD_B0_11::new() };
+//! # let gpio_ad_b0_10 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_10::new() };
+//! # let gpio_ad_b0_11 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_11::new() };
 //! // Neither pad is a valid UART pin
-//! uart_new(ad_b0_10, ad_b0_11, 115_200);
+//! uart_new(gpio_ad_b0_10, gpio_ad_b0_11, 115_200);
 //! ```
 //!
 //! It also guards against mismatched UART pins:
@@ -82,10 +82,10 @@
 //! #     }
 //! #     UART
 //! # }
-//! # let ad_b0_13 = unsafe { imxrt_iomuxc::imxrt1060::ad_b0::AD_B0_13::new() };
-//! # let ad_b1_02 = unsafe { imxrt_iomuxc::imxrt1060::ad_b0::AD_B1_02::new() };
-//! // AD_B1_02 is a UART2 TX pin, but AD_B0_13 is a UART1 RX pin
-//! uart_new(ad_b1_02, ad_b0_13, 115_200);
+//! # let gpio_ad_b0_13 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_13::new() };
+//! # let gpio_ad_b1_02 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B1_02::new() };
+//! // GPIO_AD_B1_02 is a UART2 TX pin, but GPIO_AD_B0_13 is a UART1 RX pin
+//! uart_new(gpio_ad_b1_02, gpio_ad_b0_13, 115_200);
 //! ```
 
 mod adc;
@@ -98,11 +98,11 @@ include!(concat!(env!("OUT_DIR"), "/imxrt1060.rs"));
 pub use pads::*;
 
 mod bases {
-    define_base!(EMC, 0x401F_8014, 0x401F_8204);
-    define_base!(AD_B0, 0x401F_80BC, 0x401F_82AC);
-    define_base!(AD_B1, 0x401F_80FC, 0x401F_82EC);
-    define_base!(B0, 0x401F_813C, 0x401F_832C);
-    define_base!(B1, 0x401F_817C, 0x401F_836C);
-    define_base!(SD_B0, 0x401F_81BC, 0x401F_83AC);
-    define_base!(SD_B1, 0x401F_81D4, 0x401F_83C4);
+    define_base!(GPIO_EMC, 0x401F_8014, 0x401F_8204);
+    define_base!(GPIO_AD_B0, 0x401F_80BC, 0x401F_82AC);
+    define_base!(GPIO_AD_B1, 0x401F_80FC, 0x401F_82EC);
+    define_base!(GPIO_B0, 0x401F_813C, 0x401F_832C);
+    define_base!(GPIO_B1, 0x401F_817C, 0x401F_836C);
+    define_base!(GPIO_SD_B0, 0x401F_81BC, 0x401F_83AC);
+    define_base!(GPIO_SD_B1, 0x401F_81D4, 0x401F_83C4);
 }

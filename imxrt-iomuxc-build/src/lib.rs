@@ -21,17 +21,17 @@
 //!     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
 //!     let mut pads_rs = fs::File::create(out_dir.join("pads.rs"))?;
 //!
-//!     let emc = build::PadRange::new("EMC", 0..42);
-//!     let ad_b0 = build::PadRange::new("AD_B0", 0..16);
-//!     let ad_b1 = build::PadRange::new("AD_B1", 0..16);
-//!     let b0 = build::PadRange::new("B0", 0..16);
-//!     let b1 = build::PadRange::new("B1", 0..16);
-//!     let sd_b0 = build::PadRange::new("SD_B0", 0..6);
-//!     let sd_b1 = build::PadRange::new("SD_B1", 0..12);
+//!     let gpio_emc = build::PadRange::new("GPIO_EMC", 0..42);
+//!     let gpio_ad_b0 = build::PadRange::new("GPIO_AD_B0", 0..16);
+//!     let gpio_ad_b1 = build::PadRange::new("GPIO_AD_B1", 0..16);
+//!     let gpio_b0 = build::PadRange::new("GPIO_B0", 0..16);
+//!     let gpio_b1 = build::PadRange::new("GPIO_B1", 0..16);
+//!     let gpio_sd_b0 = build::PadRange::new("GPIO_SD_B0", 0..6);
+//!     let gpio_sd_b1 = build::PadRange::new("GPIO_SD_B1", 0..12);
 //!
 //!     build::write_pads(
 //!         &mut pads_rs,
-//!         vec![&emc, &ad_b0, &ad_b1, &b0, &b1, &sd_b0, &sd_b1],
+//!         vec![&gpio_emc, &gpio_ad_b0, &gpio_ad_b1, &gpio_b0, &gpio_b1, &gpio_sd_b0, &gpio_sd_b1],
 //!     )?;
 //!     Ok(())
 //! }
@@ -53,24 +53,24 @@
 //!
 //! ```no_run
 //! # use imxrt_iomuxc_build as build;
-//! # let ad_b0 = build::PadRange::new("AD_B0", 0..16);
-//! # let ad_b1 = build::PadRange::new("AD_B1", 0..16);
-//! # let b0 = build::PadRange::new("B0", 0..16);
-//! # let b1 = build::PadRange::new("B1", 0..16);
+//! # let gpio_ad_b0 = build::PadRange::new("GPIO_AD_B0", 0..16);
+//! # let gpio_ad_b1 = build::PadRange::new("GPIO_AD_B1", 0..16);
+//! # let gpio_b0 = build::PadRange::new("GPIO_B0", 0..16);
+//! # let gpio_b1 = build::PadRange::new("GPIO_B1", 0..16);
 //! # let mut pads_rs: Vec<u8> = Vec::new();
 //! build::write_impl_gpio_pins(
 //!     &mut pads_rs,
 //!     vec![
 //!         // GPIO1
-//!         build::ImplGpioPin::from_range(&ad_b0, build::GpioRange::no_offset(1, 5)),
-//!         build::ImplGpioPin::from_range(&ad_b1, build::GpioRange {
+//!         build::ImplGpioPin::from_range(&gpio_ad_b0, build::GpioRange::no_offset(1, 5)),
+//!         build::ImplGpioPin::from_range(&gpio_ad_b1, build::GpioRange {
 //!             module: 1,
 //!             offset: 16,
 //!             alt: 5,
 //!         }),
 //!         // GPIO2
-//!         build::ImplGpioPin::from_range(&b0, build::GpioRange::no_offset(2, 5)),
-//!         build::ImplGpioPin::from_range(&b1, build::GpioRange {
+//!         build::ImplGpioPin::from_range(&gpio_b0, build::GpioRange::no_offset(2, 5)),
+//!         build::ImplGpioPin::from_range(&gpio_b1, build::GpioRange {
 //!             module: 2,
 //!             offset: 16,
 //!             alt: 5,
@@ -86,15 +86,15 @@ use std::ops::Range;
 ///
 /// ```
 /// # use imxrt_iomuxc_build::PadRange;
-/// let pad_range = PadRange::new("EMC", 0..42);
+/// let pad_range = PadRange::new("GPIO_EMC", 0..42);
 /// ```
 ///
 /// In the example above, we assume
 ///
-/// - the processor module defines a struct, `EMC`, available in the module's
+/// - the processor module defines a struct, `GPIO_EMC`, available in the module's
 ///   `bases` module. It may be referenced within the module using
-///   `use crate::processor_variant::bases::EMC`.
-/// - the processor has 42 pads with the "EMC" prefix, numbered 0 through
+///   `use crate::processor_variant::bases::GPIO_EMC`.
+/// - the processor has 42 pads with the "GPIO_EMC" prefix, numbered 0 through
 ///   41
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct PadRange {
@@ -215,7 +215,7 @@ where
                     /// Erase all of the pads
                     ///
                     /// The return type is an array, where the index indicates the pad offset
-                    /// from the start of the group. For example, `AD_B0_03` would be referenced
+                    /// from the start of the group. For example, `GPIO_AD_B0_03` would be referenced
                     /// as `erased_pads[3]`.
                     ///
                     /// See [`ErasedPad`](../struct.ErasedPad.html) for more information.
@@ -276,7 +276,7 @@ where
             /// # Convention
             ///
             /// The members of `ErasedPads` are arrays that provide erased pads
-            /// as objects. Pads are grouped by their prefix, like `ad_b0`. The array
+            /// as objects. Pads are grouped by their prefix, like `gpio_ad_b0`. The array
             /// index corresponds to the final pad identifier.
             ///
             /// Use [`Pads::erase()`](struct.Pads.html#method.erase) to get an `ErasedPads`.
@@ -316,9 +316,9 @@ where
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 struct GpioPinDetail {
-    /// Super module of the pad name: `ad_b0`
+    /// Super module of the pad name: `gpio_ad_b0`
     pad_module: String,
-    /// The pad name: `AD_B0_00`
+    /// The pad name: `GPIO_AD_B0_00`
     name: String,
     /// The pad alt
     alt: u32,
@@ -336,9 +336,9 @@ struct GpioPinDetail {
 /// use imxrt_iomuxc_build as build;
 /// use build::{ImplGpioPin, GpioRange, PadRange};
 ///
-/// let ad_b0 = PadRange::new("AD_B0", 0..4);
-/// // States that the four AD_B0 pads are driven by GPIO3_IO8 through GPIO03_IO12
-/// ImplGpioPin::from_range(&ad_b0, GpioRange {
+/// let gpio_ad_b0 = PadRange::new("GPIO_AD_B0", 0..4);
+/// // States that the four GPIO_AD_B0 pads are driven by GPIO3_IO8 through GPIO03_IO12
+/// ImplGpioPin::from_range(&gpio_ad_b0, GpioRange {
 ///     module: 3,
 ///     offset: 8,
 ///     alt: 5,
@@ -349,25 +349,25 @@ struct GpioPinDetail {
 /// generate Rust code that resembles
 ///
 /// ```ignore
-/// impl crate::gpio::Pin for ad_b0::AD_B0_00 {
+/// impl crate::gpio::Pin for gpio_ad_b0::GPIO_AD_B0_00 {
 ///     const ALT: u32 = 5;
 ///     type Module = U3;
 ///     type Offset = U8;
 /// }
 ///
-/// impl crate::gpio::Pin for ad_b0::AD_B0_01 {
+/// impl crate::gpio::Pin for gpio_ad_b0::GPIO_AD_B0_01 {
 ///     const ALT: u32 = 5;
 ///     type Module = U3;
 ///     type Offset = U9;
 /// }
 ///
-/// impl crate::gpio::Pin for ad_b0::AD_B0_02 {
+/// impl crate::gpio::Pin for gpio_ad_b0::GPIO_AD_B0_02 {
 ///     const ALT: u32 = 5;
 ///     type Module = U3;
 ///     type Offset = U11;
 /// }
 ///
-/// impl crate::gpio::Pin for ad_b0::AD_B0_03 {
+/// impl crate::gpio::Pin for gpio_ad_b0::GPIO_AD_B0_03 {
 ///     const ALT: u32 = 5;
 ///     type Module = U3;
 ///     type Offset = U11;

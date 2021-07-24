@@ -47,22 +47,22 @@
 //!         # UART
 //!     }
 //! }
-//! # struct AD_B0_03; impl AD_B0_03 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
-//! # struct AD_B0_04; impl AD_B0_04 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for AD_B0_04 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
-//! # impl imxrt_iomuxc::lpuart::Pin for AD_B0_03 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::TX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
-//! # impl imxrt_iomuxc::lpuart::Pin for AD_B0_04 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::RX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
+//! # struct GPIO_AD_B0_03; impl GPIO_AD_B0_03 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for GPIO_AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
+//! # struct GPIO_AD_B0_04; impl GPIO_AD_B0_04 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for GPIO_AD_B0_04 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
+//! # impl imxrt_iomuxc::lpuart::Pin for GPIO_AD_B0_03 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::TX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
+//! # impl imxrt_iomuxc::lpuart::Pin for GPIO_AD_B0_04 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::RX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
 //!
 //! // Preferred: create a UART peripheral with strongly-typed pads...
-//! let ad_b0_03 = unsafe { AD_B0_03::new() };
-//! let ad_b0_04 = unsafe { AD_B0_04::new() };
-//! let uart1 = UART::new(ad_b0_03, ad_b0_04);
+//! let gpio_ad_b0_03 = unsafe { GPIO_AD_B0_03::new() };
+//! let gpio_ad_b0_04 = unsafe { GPIO_AD_B0_04::new() };
+//! let uart1 = UART::new(gpio_ad_b0_03, gpio_ad_b0_04);
 //!
 //! // Optional: create a UART peripheral from type-erased pads...
-//! let ad_b0_03 = unsafe { AD_B0_03::new() };
-//! let ad_b0_04 = unsafe { AD_B0_04::new() };
+//! let gpio_ad_b0_03 = unsafe { GPIO_AD_B0_03::new() };
+//! let gpio_ad_b0_04 = unsafe { GPIO_AD_B0_04::new() };
 //!
-//! let mut tx_pad = ad_b0_03.erase();
-//! let mut rx_pad = ad_b0_04.erase();
+//! let mut tx_pad = gpio_ad_b0_03.erase();
+//! let mut rx_pad = gpio_ad_b0_04.erase();
 //!
 //! // User is responsible for configuring the pad,
 //! // since we can't call `prepare()` on the pad...
@@ -70,8 +70,8 @@
 //!     // Daisy registers and values aren't attached
 //!     // to erased pads, so we have to reference this
 //!     // manually.
-//!     <AD_B0_03 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
-//!     <AD_B0_04 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
+//!     <GPIO_AD_B0_03 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
+//!     <GPIO_AD_B0_04 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
 //! }
 //! imxrt_iomuxc::alternate(&mut tx_pad, 2);
 //! imxrt_iomuxc::alternate(&mut rx_pad, 2);
@@ -145,7 +145,7 @@ pub mod consts {
 
 /// A pad group base
 ///
-/// A 'Base' defines the start of similarly-named pads, like `AD_B0`. `Base`s
+/// A 'Base' defines the start of similarly-named pads, like `GPIO_AD_B0`. `Base`s
 /// provide access to a multiplexer register base and a pad configuration register
 /// base.
 ///
@@ -159,24 +159,24 @@ pub mod consts {
 pub unsafe trait Base {
     /// Starting register for a multiplexer register
     ///
-    /// For the `AD_B0` base, this would be the MUX register of `AD_B0_00`.
+    /// For the `GPIO_AD_B0` base, this would be the MUX register of `GPIO_AD_B0_00`.
     fn mux_base() -> *mut u32;
     /// Starting register for a pad configuration register
     ///
-    /// For the `AD_B0` base, this would be the PAD register of `AD_B0_00`.
+    /// For the `GPIO_AD_B0` base, this would be the PAD register of `GPIO_AD_B0_00`.
     fn pad_base() -> *mut u32;
 }
 
 /// Define an IOMUXC base
 ///
 /// `base_name` is the name of the IOMUXC register base. For something like
-/// `AD_B0_03`, the base is `AD_B0`.
+/// `GPIO_AD_B0_03`, the base is `GPIO_AD_B0`.
 ///
 /// `mux_base` is a `u32` that represents the base's mux address. For the IOMUXC
-/// registers starting with `AD_B0`, this is the mux address of `AD_B0_00`.
+/// registers starting with `GPIO_AD_B0`, this is the mux address of `GPIO_AD_B0_00`.
 ///
 /// `pad_base` is a `u32` that represents the base's pad address. For the IOMUXC
-/// registers starting with `AD_B0`, this is the pad address of `AD_B0_00`.
+/// registers starting with `GPIO_AD_B0`, this is the pad address of `GPIO_AD_B0_00`.
 #[allow(unused)] // May be used in processor-specific modules
 macro_rules! define_base {
     ($base_name: ident, $mux_base: expr, $pad_base: expr) => {
@@ -299,7 +299,7 @@ pub fn alternate<I: Iomuxc>(pad: &mut I, alt: u32) {
 
 /// An i.MXT RT pad
 ///
-/// The `Base` is the pad tag, like `AD_B0`. The `Offset` is the
+/// The `Base` is the pad tag, like `GPIO_AD_B0`. The `Offset` is the
 /// constant (type) that describes the pad number.
 ///
 /// `Pad`s have no size.
@@ -447,10 +447,10 @@ where
 ///
 /// ```no_run
 /// use imxrt_iomuxc as iomuxc;
-/// # struct AD_B0; unsafe impl imxrt_iomuxc::Base for AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// # type AD_B0_03 = iomuxc::Pad<AD_B0, imxrt_iomuxc::consts::U3>;
-/// let ad_b0_03 = unsafe { AD_B0_03::new() };
-/// let mut erased = ad_b0_03.erase();
+/// # struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
+/// # type GPIO_AD_B0_03 = iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// let gpio_ad_b0_03 = unsafe { GPIO_AD_B0_03::new() };
+/// let mut erased = gpio_ad_b0_03.erase();
 ///
 /// // Erased pads may be manually manipulated
 /// iomuxc::alternate(&mut erased, 7);
@@ -458,7 +458,7 @@ where
 ///
 /// // Try to convert the erased pad back to its strongly-typed counterpart
 /// use core::convert::TryFrom;
-/// let ad_b0_03 = AD_B0_03::try_from(erased).unwrap();
+/// let gpio_ad_b0_03 = GPIO_AD_B0_03::try_from(erased).unwrap();
 /// ```
 #[derive(Debug)]
 pub struct ErasedPad {
@@ -544,13 +544,13 @@ impl Daisy {
     }
 }
 
-/// Use these snippets in documentation to create a fake example pad, `AD_B0_03.
+/// Use these snippets in documentation to create a fake example pad, `GPIO_AD_B0_03.
 ///
 /// You should use `no_run` to prevent execution, or you'll probably derefence a null pointer.
 /// ```
-/// # use imxrt_iomuxc::Iomuxc; #[allow(non_camel_case_types)] pub struct AD_B0_03;
-/// # impl AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
-/// # unsafe impl Iomuxc for AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
+/// # use imxrt_iomuxc::Iomuxc; #[allow(non_camel_case_types)] pub struct GPIO_AD_B0_03;
+/// # impl GPIO_AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
+/// # unsafe impl Iomuxc for GPIO_AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
 /// ```
 #[cfg(doctest)]
 pub struct DocPadSnippet;
@@ -616,37 +616,37 @@ mod tests {
 
 /// ```
 /// fn is_send<S: Send>(s: S) {}
-/// struct AD_B0; unsafe impl imxrt_iomuxc::Base for AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// type AD_B0_03 = imxrt_iomuxc::Pad<AD_B0, imxrt_iomuxc::consts::U3>;
-/// is_send(unsafe { AD_B0_03::new() }.erase());
+/// struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
+/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// is_send(unsafe { GPIO_AD_B0_03::new() }.erase());
 /// ```
 #[cfg(doctest)]
 struct ErasedPadsAreSend;
 
 /// ```
 /// fn is_send<S: Send>(s: S) {}
-/// struct AD_B0; unsafe impl imxrt_iomuxc::Base for AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// type AD_B0_03 = imxrt_iomuxc::Pad<AD_B0, imxrt_iomuxc::consts::U3>;
-/// is_send(unsafe { AD_B0_03::new() });
-/// is_send(unsafe { AD_B0_03::new() }.erase());
+/// struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
+/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// is_send(unsafe { GPIO_AD_B0_03::new() });
+/// is_send(unsafe { GPIO_AD_B0_03::new() }.erase());
 /// ```
 #[cfg(doctest)]
 struct PadsAreSend;
 
 /// ```compile_fail
 /// fn is_sync<S: Sync>(s: S) {}
-/// struct AD_B0; unsafe impl imxrt_iomuxc::Base for AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// type AD_B0_03 = imxrt_iomuxc::Pad<AD_B0, imxrt_iomuxc::consts::U3>;
-/// is_sync(unsafe { AD_B0_03::new() }.erase())
+/// struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
+/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// is_sync(unsafe { GPIO_AD_B0_03::new() }.erase())
 /// ```
 #[cfg(doctest)]
 struct ErasedPadsAreNotSync;
 
 /// ```compile_fail
 /// fn is_sync<S: Sync>(s: S) {}
-/// struct AD_B0; unsafe impl imxrt_iomuxc::Base for AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// type AD_B0_03 = imxrt_iomuxc::Pad<AD_B0, imxrt_iomuxc::consts::U3>;
-/// is_sync(unsafe { AD_B0_03::new() })
+/// struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
+/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// is_sync(unsafe { GPIO_AD_B0_03::new() })
 /// ```
 #[cfg(doctest)]
 struct PadsAreNotSync;

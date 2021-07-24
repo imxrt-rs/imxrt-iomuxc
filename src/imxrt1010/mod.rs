@@ -36,10 +36,10 @@
 //!     # UART
 //! }
 //!
-//! # let sd_12 = unsafe { imxrt_iomuxc::imxrt1010::sd::SD_12::new() };
-//! # let sd_11 = unsafe { imxrt_iomuxc::imxrt1010::sd::SD_11::new() };
-//! // SD_12 and SD_11 are a suitable pair of UART pins
-//! uart_new(sd_12, sd_11, 115_200);
+//! # let gpio_sd_12 = unsafe { imxrt_iomuxc::imxrt1010::gpio_sd::GPIO_SD_12::new() };
+//! # let gpio_sd_11 = unsafe { imxrt_iomuxc::imxrt1010::gpio_sd::GPIO_SD_11::new() };
+//! // GPIO_SD_12 and GPIO_SD_11 are a suitable pair of UART pins
+//! uart_new(gpio_sd_12, gpio_sd_11, 115_200);
 //! ```
 //!
 //! Specifically, the trait bounds guard against non-UART pins:
@@ -59,10 +59,10 @@
 //! #     }
 //! #     UART
 //! # }
-//! # let ad_10 = unsafe { imxrt_iomuxc::imxrt1010::ad::AD_10::new() };
-//! # let ad_11 = unsafe { imxrt_iomuxc::imxrt1010::ad::AD_11::new() };
+//! # let gpio_ad_10 = unsafe { imxrt_iomuxc::imxrt1010::gpio_ad::GPIO_AD_10::new() };
+//! # let gpio_ad_11 = unsafe { imxrt_iomuxc::imxrt1010::gpio_ad::GPIO_AD_11::new() };
 //! // Neither pad is a valid UART pin
-//! uart_new(ad_10, ad_11, 115_200);
+//! uart_new(gpio_ad_10, gpio_ad_11, 115_200);
 //! ```
 //!
 //! It also guards against mismatched UART pins:
@@ -96,7 +96,7 @@ include!(concat!(env!("OUT_DIR"), "/imxrt1010.rs"));
 pub use pads::*;
 
 mod bases {
-    define_base!(AD, 0x401F_8010, 0x401F_80C0);
-    define_base!(SD, 0x401F_804C, 0x401F_80FC);
+    define_base!(GPIO_AD, 0x401F_8010, 0x401F_80C0);
+    define_base!(GPIO_SD, 0x401F_804C, 0x401F_80FC);
     define_base!(GPIO, 0x401F_8088, 0x401F_8138);
 }
