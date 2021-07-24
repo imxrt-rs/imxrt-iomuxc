@@ -17,14 +17,14 @@
 //!
 //! ```no_run
 //! use imxrt_iomuxc as iomuxc;
-//! use iomuxc::lpuart::{Pin, TX, RX};
+//! use iomuxc::lpuart::{Pin, Tx, Rx};
 //!
 //! # struct UART;
 //! /// Creates a UART peripheral from the TX and RX pads, and a baud rate
 //! fn uart_new<T, R>(mut tx: T, mut rx: R, baud: u32) -> UART
 //! where
-//!     T: Pin<Direction = TX>,
-//!     R: Pin<Direction = RX, Module = <T as Pin>::Module>,
+//!     T: Pin<Direction = Tx>,
+//!     R: Pin<Direction = Rx, Module = <T as Pin>::Module>,
 //! {
 //!     // Check the imxrt-iomuxc documentation to understand why
 //!     // this is unsafe.
@@ -46,12 +46,12 @@
 //!
 //! ```compile_fail
 //! # use imxrt_iomuxc as iomuxc;
-//! # use iomuxc::lpuart::{Pin, TX, RX};
+//! # use iomuxc::lpuart::{Pin, Tx, Rx};
 //! # struct UART;
 //! # fn uart_new<T, R>(mut tx: T, mut rx: R, baud: u32) -> UART
 //! # where
-//! #     T: Pin<Direction = TX>,
-//! #     R: Pin<Direction = RX, Module = <T as Pin>::Module>,
+//! #     T: Pin<Direction = Tx>,
+//! #     R: Pin<Direction = Rx, Module = <T as Pin>::Module>,
 //! # {
 //! #     unsafe {
 //! #         iomuxc::lpuart::prepare(&mut tx);
@@ -69,12 +69,12 @@
 //!
 //! ```compile_fail
 //! # use imxrt_iomuxc as iomuxc;
-//! # use iomuxc::lpuart::{Pin, TX, RX};
+//! # use iomuxc::lpuart::{Pin, Tx, Rx};
 //! # struct UART;
 //! # fn uart_new<T, R>(mut tx: T, mut rx: R, baud: u32) -> UART
 //! # where
-//! #     T: Pin<Direction = TX>,
-//! #     R: Pin<Direction = RX, Module = <T as Pin>::Module>,
+//! #     T: Pin<Direction = Tx>,
+//! #     R: Pin<Direction = Rx, Module = <T as Pin>::Module>,
 //! # {
 //! #     unsafe {
 //! #         iomuxc::lpuart::prepare(&mut tx);

@@ -27,14 +27,14 @@
 //! The API will expect that the user is responsible for manually configuring the type-erased pad.
 //!
 //! ```no_run
-//! use imxrt_iomuxc::{ErasedPad, lpuart::{Pin, TX, RX}};
+//! use imxrt_iomuxc::{ErasedPad, lpuart::{Pin, Tx, Rx}};
 //! # pub struct UART;
 //!
 //! impl UART {
 //!     pub fn new<T, R>(mut tx: T, mut rx: R, /* ... */) -> UART
 //!     where
-//!         T: Pin<Direction = TX>,
-//!         R: Pin<Direction = RX, Module = <T as Pin>::Module>,
+//!         T: Pin<Direction = Tx>,
+//!         R: Pin<Direction = Rx, Module = <T as Pin>::Module>,
 //!     {
 //!         imxrt_iomuxc::lpuart::prepare(&mut tx);
 //!         imxrt_iomuxc::lpuart::prepare(&mut rx);
@@ -49,8 +49,8 @@
 //! }
 //! # struct GPIO_AD_B0_03; impl GPIO_AD_B0_03 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for GPIO_AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
 //! # struct GPIO_AD_B0_04; impl GPIO_AD_B0_04 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for GPIO_AD_B0_04 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
-//! # impl imxrt_iomuxc::lpuart::Pin for GPIO_AD_B0_03 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::TX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
-//! # impl imxrt_iomuxc::lpuart::Pin for GPIO_AD_B0_04 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::RX; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
+//! # impl imxrt_iomuxc::lpuart::Pin for GPIO_AD_B0_03 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::Tx; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
+//! # impl imxrt_iomuxc::lpuart::Pin for GPIO_AD_B0_04 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::Rx; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
 //!
 //! // Preferred: create a UART peripheral with strongly-typed pads...
 //! let gpio_ad_b0_03 = unsafe { GPIO_AD_B0_03::new() };

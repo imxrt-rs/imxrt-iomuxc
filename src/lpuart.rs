@@ -1,20 +1,20 @@
 //! UART pad configuration
 
 /// Type tag for the transfer pin
-pub enum TX {}
+pub enum Tx {}
 /// Type tag for the receive pin
-pub enum RX {}
+pub enum Rx {}
 
 /// A pin direction, either transfer or receive
 pub trait Direction: private::Sealed {}
 
-impl Direction for TX {}
-impl Direction for RX {}
+impl Direction for Tx {}
+impl Direction for Rx {}
 
 mod private {
     pub trait Sealed {}
-    impl Sealed for super::TX {}
-    impl Sealed for super::RX {}
+    impl Sealed for super::Tx {}
+    impl Sealed for super::Rx {}
 }
 
 /// A UART pin
