@@ -54,6 +54,29 @@ All notable changes to this project will be documented in this file.
   - SPI
   - UART
 
+- Unify the pullup, pulldown, and keeper configurations into one enum,
+  `PullKeeper`. This lets you more simply express pin configurations:
+
+  ```rust
+  // Before
+  configure(
+      &mut pad,
+      Config::zero()
+          .set_pull_keep(PullKeep::Enabled)
+          .set_pull_keep_select(PullKeepSelect::Pull)
+          .set_pullupdown(PullUpDown::Pullup100k),
+  );
+
+  // After
+  configure(
+      &mut pad,
+      Config::zero().set_pull_keeper(Some(PullKeeper::Pullup100k))
+  );
+  ```
+
+  This approach will replace the existing API that uses separate methods and
+  enums.
+
 ## [0.1.3] - 2021-04-24
 
 ### Added

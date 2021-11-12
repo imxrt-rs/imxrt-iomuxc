@@ -12,14 +12,14 @@ use core::ptr;
 /// # Example
 ///
 /// ```no_run
-/// use imxrt_iomuxc::{configure, Config, OpenDrain, PullKeep};
+/// use imxrt_iomuxc::{configure, Config, OpenDrain, PullKeeper};
 /// # use imxrt_iomuxc::Iomuxc;; #[allow(non_camel_case_types)] pub struct GPIO_AD_B0_03;
 /// # impl GPIO_AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
 /// # unsafe impl Iomuxc for GPIO_AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
 ///
 /// const CONFIG: Config = Config::zero()
 ///     .set_open_drain(OpenDrain::Enabled)
-///     .set_pull_keep(PullKeep::Enabled);
+///     .set_pull_keeper(Some(PullKeeper::Pullup100k));
 ///
 /// let mut pad = unsafe { GPIO_AD_B0_03::new() };
 ///
@@ -88,6 +88,43 @@ const PULLKEEP_MASK: u32 = 1 << PULLKEEP_SHIFT;
 pub enum PullKeep {
     Enabled = 1 << PULLKEEP_SHIFT,
     Disabled = 0 << PULLKEEP_SHIFT,
+}
+
+/// Derives a pull/keep configuration from
+/// the field-specific enums.
+///
+/// Used to define the public API.
+const fn pull_keeper(select: PullKeepSelect, pull: Option<PullUpDown>) -> u32 {
+    PULLKEEP_MASK
+        | (select as u32)
+        | match pull {
+            None => 0u32,
+            Some(pull) => pull as u32,
+        }
+}
+
+const PULL_KEEPER_MASK: u32 = PULLKEEP_MASK | PULLUPDOWN_MASK | PULL_KEEP_SELECT_MASK;
+
+/// The pull up, pull down, or keeper configuration.
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[repr(u32)]
+pub enum PullKeeper {
+    /// 100KOhm pull **down**
+    Pulldown100k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pulldown100k)),
+    /// 47KOhm pull **up**
+    Pullup47k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pullup47k)),
+    /// 100KOhm pull **up**
+    Pullup100k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pullup100k)),
+    /// 22KOhm pull **up**
+    Pullup22k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pullup22k)),
+    /// Use the keeper, instead of a pull up or pull
+    /// down resistor.
+    ///
+    /// From the reference manual,
+    ///
+    /// > A simple latch to hold the input value when OVDD is powered down, or the first inverter
+    /// > is tri-stated. Input buffer’s keeper is always enabled for all the pads.
+    Keeper = pull_keeper(PullKeepSelect::Keeper, None),
 }
 
 const OPENDRAIN_SHIFT: u32 = 11;
@@ -208,7 +245,7 @@ impl Config {
     /// # let mut gpio_ad_b0_13 = Pad(0xFFFF_FFFFu32);
     /// use imxrt_iomuxc::{
     ///     Config, configure, SlewRate,
-    ///     Hysteresis, PullUpDown, DriveStrength
+    ///     Hysteresis, PullKeeper, DriveStrength
     /// };
     ///
     /// unsafe {
@@ -229,11 +266,11 @@ impl Config {
     ///         &mut gpio_ad_b0_13,
     ///         Config::zero()
     ///             .set_hysteresis(Hysteresis::Enabled)
-    ///             .set_pullupdown(PullUpDown::Pullup22k)
+    ///             .set_pull_keeper(Some(PullKeeper::Pullup22k))
     ///     );
     ///     assert_eq!(
     ///         *gpio_ad_b0_13.pad(),
-    ///         Hysteresis::Enabled as u32 | PullUpDown::Pullup22k as u32
+    ///         Hysteresis::Enabled as u32 | PullKeeper::Pullup22k as u32
     ///     );
     /// }
     /// ```
@@ -305,6 +342,19 @@ impl Config {
     pub const fn set_hysteresis(mut self, hys: Hysteresis) -> Self {
         self.value = (self.value & !HYSTERESIS_MASK) | (hys as u32);
         self.mask |= HYSTERESIS_MASK;
+        self
+    }
+
+    /// Set the pull up / pull down / keeper configuration.
+    ///
+    /// A `None` value disables the pull / keeper function.
+    pub const fn set_pull_keeper(mut self, pk: Option<PullKeeper>) -> Self {
+        let pk = match pk {
+            None => 0u32,
+            Some(pk) => pk as u32,
+        };
+        self.value = (self.value & !PULL_KEEPER_MASK) | (pk as u32);
+        self.mask |= PULL_KEEPER_MASK;
         self
     }
 
@@ -391,9 +441,7 @@ mod tests {
         let mut pad = PAD_ALL_HIGH;
         const CONFIG: Config = Config::zero()
             .set_hysteresis(Hysteresis::Enabled)
-            .set_pullupdown(PullUpDown::Pullup22k)
-            .set_pull_keep_select(PullKeepSelect::Pull)
-            .set_pull_keep(PullKeep::Enabled)
+            .set_pull_keeper(Some(PullKeeper::Pullup22k))
             .set_open_drain(OpenDrain::Enabled)
             .set_speed(Speed::Max)
             .set_drive_strength(DriveStrength::R0_7)
@@ -409,9 +457,7 @@ mod tests {
         let mut pad = Pad(PAD_BITMASK);
         const CONFIG: Config = Config::modify()
             .set_hysteresis(Hysteresis::Disabled)
-            .set_pullupdown(PullUpDown::Pulldown100k)
-            .set_pull_keep_select(PullKeepSelect::Keeper)
-            .set_pull_keep(PullKeep::Disabled)
+            .set_pull_keeper(None)
             .set_open_drain(OpenDrain::Disabled)
             .set_speed(Speed::Low)
             .set_drive_strength(DriveStrength::Disabled)
@@ -425,7 +471,7 @@ mod tests {
     #[test]
     fn pull_keeper_none() {
         let mut pad = Pad(0);
-        configure(&mut pad, Config::zero().set_pull_keep(PullKeep::Disabled));
+        configure(&mut pad, Config::zero().set_pull_keeper(None));
         assert_eq!(pad.0, 0);
     }
 
@@ -434,9 +480,7 @@ mod tests {
         let mut pad = Pad(0);
         configure(
             &mut pad,
-            Config::zero()
-                .set_pull_keep(PullKeep::Enabled)
-                .set_pull_keep_select(PullKeepSelect::Keeper),
+            Config::zero().set_pull_keeper(Some(PullKeeper::Keeper)),
         );
         assert_eq!(pad.0, 1 << 12);
     }
@@ -444,39 +488,40 @@ mod tests {
     #[test]
     fn pull_keeper_pullupdown() {
         struct ConfigToField {
-            config: PullUpDown,
+            config: PullKeeper,
             value: u32,
         }
 
         const TESTS: [ConfigToField; 4] = [
             ConfigToField {
-                config: PullUpDown::Pulldown100k,
+                config: PullKeeper::Pulldown100k,
                 value: 0 << 14,
             },
             ConfigToField {
-                config: PullUpDown::Pullup100k,
+                config: PullKeeper::Pullup100k,
                 value: 2 << 14,
             },
             ConfigToField {
-                config: PullUpDown::Pullup22k,
+                config: PullKeeper::Pullup22k,
                 value: 3 << 14,
             },
             ConfigToField {
-                config: PullUpDown::Pullup47k,
+                config: PullKeeper::Pullup47k,
                 value: 1 << 14,
             },
         ];
 
         for test in TESTS {
             let mut pad = Pad(0);
-            configure(
-                &mut pad,
-                Config::zero()
-                    .set_pull_keep(PullKeep::Enabled)
-                    .set_pull_keep_select(PullKeepSelect::Pull)
-                    .set_pullupdown(test.config),
-            );
+            configure(&mut pad, Config::zero().set_pull_keeper(Some(test.config)));
             assert_eq!(pad.0, 1 << 12 | 1 << 13 | test.value);
         }
     }
 }
+
+/// ```rust
+/// use imxrt_iomuxc::{Config, PullKeeper};
+///
+/// const CONFIG: Config = Config::zero().set_pull_keeper(Some(PullKeeper::Keeper));
+#[cfg(doctest)]
+struct PullKeeperConstant;
