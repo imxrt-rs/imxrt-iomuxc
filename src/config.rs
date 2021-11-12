@@ -421,4 +421,62 @@ mod tests {
 
         assert_eq!(pad.0, 0);
     }
+
+    #[test]
+    fn pull_keeper_none() {
+        let mut pad = Pad(0);
+        configure(&mut pad, Config::zero().set_pull_keep(PullKeep::Disabled));
+        assert_eq!(pad.0, 0);
+    }
+
+    #[test]
+    fn pull_keeper_keeper() {
+        let mut pad = Pad(0);
+        configure(
+            &mut pad,
+            Config::zero()
+                .set_pull_keep(PullKeep::Enabled)
+                .set_pull_keep_select(PullKeepSelect::Keeper),
+        );
+        assert_eq!(pad.0, 1 << 12);
+    }
+
+    #[test]
+    fn pull_keeper_pullupdown() {
+        struct ConfigToField {
+            config: PullUpDown,
+            value: u32,
+        }
+
+        const TESTS: [ConfigToField; 4] = [
+            ConfigToField {
+                config: PullUpDown::Pulldown100k,
+                value: 0 << 14,
+            },
+            ConfigToField {
+                config: PullUpDown::Pullup100k,
+                value: 2 << 14,
+            },
+            ConfigToField {
+                config: PullUpDown::Pullup22k,
+                value: 3 << 14,
+            },
+            ConfigToField {
+                config: PullUpDown::Pullup47k,
+                value: 1 << 14,
+            },
+        ];
+
+        for test in TESTS {
+            let mut pad = Pad(0);
+            configure(
+                &mut pad,
+                Config::zero()
+                    .set_pull_keep(PullKeep::Enabled)
+                    .set_pull_keep_select(PullKeepSelect::Pull)
+                    .set_pullupdown(test.config),
+            );
+            assert_eq!(pad.0, 1 << 12 | 1 << 13 | test.value);
+        }
+    }
 }
