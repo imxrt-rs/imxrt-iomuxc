@@ -39,8 +39,5 @@ pub fn prepare<ADCx: ADC, P: Pin<ADCx>>(pin: &mut P) {
     // GPIO, and we need to disable the keeper to prevent signal
     // jumps.
     super::alternate(pin, <P as super::gpio::Pin>::ALT);
-    super::configure(
-        pin,
-        super::Config::modify().set_pull_keep(super::PullKeep::Disabled),
-    );
+    super::configure(pin, super::Config::modify().set_pull_keeper(None));
 }

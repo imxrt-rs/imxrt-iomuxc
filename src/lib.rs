@@ -97,9 +97,10 @@ pub mod uart;
 use core::ptr;
 
 pub use config::{
-    configure, Config, DriveStrength, Hysteresis, OpenDrain, PullKeep, PullKeepSelect, PullUpDown,
-    SlewRate, Speed,
+    configure, Config, DriveStrength, Hysteresis, OpenDrain, PullKeeper, SlewRate, Speed,
 };
+
+pub use config::{PullKeep, PullKeepSelect, PullUpDown};
 
 /// Re-export of top-level components, without the chip-specific modules.
 ///
@@ -118,10 +119,11 @@ pub use config::{
 /// ```
 pub mod prelude {
     pub use crate::config::{
-        configure, Config, DriveStrength, Hysteresis, OpenDrain, PullKeep, PullKeepSelect,
-        PullUpDown, SlewRate, Speed,
+        configure, Config, DriveStrength, Hysteresis, OpenDrain, PullKeeper, SlewRate, Speed,
     };
     pub use crate::{consts, gpio, i2c, pwm, spi, uart, Daisy, ErasedPad, Pad, WrongPadError};
+
+    pub use crate::config::{PullKeep, PullKeepSelect, PullUpDown};
 }
 
 /// Type-level constants and traits
