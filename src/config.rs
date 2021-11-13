@@ -116,12 +116,12 @@ const PULL_KEEPER_MASK: u32 = PULLKEEP_MASK | PULLUPDOWN_MASK | PULL_KEEP_SELECT
 pub enum PullKeeper {
     /// 100KOhm pull **down**
     Pulldown100k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pulldown100k)),
+    /// 22KOhm pull **up**
+    Pullup22k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pullup22k)),
     /// 47KOhm pull **up**
     Pullup47k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pullup47k)),
     /// 100KOhm pull **up**
     Pullup100k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pullup100k)),
-    /// 22KOhm pull **up**
-    Pullup22k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pullup22k)),
     /// Use the keeper, instead of a pull up or pull
     /// down resistor.
     ///
