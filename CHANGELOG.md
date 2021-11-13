@@ -75,7 +75,7 @@ All notable changes to this project will be documented in this file.
   ```
 
   This approach will replace the existing API that uses separate methods and
-  enums.
+  enums. All older enums and methods are now deprecated.
 
 ## [0.1.3] - 2021-04-24
 

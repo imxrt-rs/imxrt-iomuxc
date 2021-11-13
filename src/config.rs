@@ -53,6 +53,7 @@ const PULLUPDOWN_MASK: u32 = 0b11 << PULLUPDOWN_SHIFT;
 /// Controls signals to select pull-up or pull-down internal resistance strength.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u32)]
+#[deprecated(since = "0.2.0", note = "Use PullKeeper and Config::set_pull_keeper")]
 pub enum PullUpDown {
     /// 100KOhm pull Down
     Pulldown100k = 0b00 << PULLUPDOWN_SHIFT,
@@ -70,6 +71,7 @@ const PULL_KEEP_SELECT_MASK: u32 = 1 << PULL_KEEP_SELECT_SHIFT;
 /// Control signal to enable internal pull-up/down resistors or pad keeper functionality.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u32)]
+#[deprecated(since = "0.2.0", note = "Use PullKeeper and Config::set_pull_keeper")]
 pub enum PullKeepSelect {
     /// Keep the previous output value when the output driver is disabled.
     Keeper = 0 << PULL_KEEP_SELECT_SHIFT,
@@ -85,6 +87,7 @@ const PULLKEEP_MASK: u32 = 1 << PULLKEEP_SHIFT;
 /// When the pull/keeper is disabled, `PullKeepSelect` and `PullUpDown` have no functionality.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u32)]
+#[deprecated(since = "0.2.0", note = "Use PullKeeper and Config::set_pull_keeper")]
 pub enum PullKeep {
     Enabled = 1 << PULLKEEP_SHIFT,
     Disabled = 0 << PULLKEEP_SHIFT,
@@ -94,6 +97,7 @@ pub enum PullKeep {
 /// the field-specific enums.
 ///
 /// Used to define the public API.
+#[allow(deprecated)]
 const fn pull_keeper(select: PullKeepSelect, pull: Option<PullUpDown>) -> u32 {
     PULLKEEP_MASK
         | (select as u32)
@@ -108,6 +112,7 @@ const PULL_KEEPER_MASK: u32 = PULLKEEP_MASK | PULLUPDOWN_MASK | PULL_KEEP_SELECT
 /// The pull up, pull down, or keeper configuration.
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 #[repr(u32)]
+#[allow(deprecated)]
 pub enum PullKeeper {
     /// 100KOhm pull **down**
     Pulldown100k = pull_keeper(PullKeepSelect::Pull, Some(PullUpDown::Pulldown100k)),
@@ -359,6 +364,8 @@ impl Config {
     }
 
     /// Set the pull-up / pull-down value
+    #[deprecated(since = "0.2.0", note = "Use PullKeeper and Config::set_pull_keeper")]
+    #[allow(deprecated)]
     pub const fn set_pullupdown(mut self, pud: PullUpDown) -> Self {
         self.value = (self.value & !PULLUPDOWN_MASK) | (pud as u32);
         self.mask |= PULLUPDOWN_MASK;
@@ -366,6 +373,8 @@ impl Config {
     }
 
     /// Set the the pull-up / pull-down or keeper selection bit
+    #[deprecated(since = "0.2.0", note = "Use PullKeeper and Config::set_pull_keeper")]
+    #[allow(deprecated)]
     pub const fn set_pull_keep_select(mut self, pke: PullKeepSelect) -> Self {
         self.value = (self.value & !PULL_KEEP_SELECT_MASK) | (pke as u32);
         self.mask |= PULL_KEEP_SELECT_MASK;
@@ -373,6 +382,8 @@ impl Config {
     }
 
     /// Set the flag that enables the keeper or pull-up / pull-down configuration
+    #[deprecated(since = "0.2.0", note = "Use PullKeeper and Config::set_pull_keeper")]
+    #[allow(deprecated)]
     pub const fn set_pull_keep(mut self, pk: PullKeep) -> Self {
         self.value = (self.value & !PULLKEEP_MASK) | (pk as u32);
         self.mask |= PULLKEEP_MASK;

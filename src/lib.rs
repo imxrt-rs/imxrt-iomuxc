@@ -104,6 +104,7 @@ pub use config::{
     configure, Config, DriveStrength, Hysteresis, OpenDrain, PullKeeper, SlewRate, Speed,
 };
 
+#[allow(deprecated)]
 pub use config::{PullKeep, PullKeepSelect, PullUpDown};
 
 /// Re-export of top-level components, without the chip-specific modules.
@@ -126,6 +127,7 @@ pub mod prelude {
         configure, Config, DriveStrength, Hysteresis, OpenDrain, PullKeeper, SlewRate, Speed,
     };
 
+    #[allow(deprecated)]
     pub use crate::config::{PullKeep, PullKeepSelect, PullUpDown};
 
     pub use crate::{
