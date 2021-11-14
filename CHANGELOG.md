@@ -44,8 +44,8 @@ All notable changes to this project will be documented in this file.
   - `spi` => `lpspi`
   - `uart` => `lpuart`
 
-- Add `unsafe` static functions on every pad to set alternate, change SION, and set configurations.
-  These functions do not require ownership of the pad object.
+- Deprecated the old pull / keeper configuration API. See the 0.1.4 release for
+  the new API.
 
 ### Added
 
@@ -53,6 +53,11 @@ All notable changes to this project will be documented in this file.
   - I2C
   - SPI
   - UART
+
+## [0.1.4] - 2021-11-14
+
+- Add `unsafe` static functions on every pad to set alternate, change SION, and set configurations.
+  These functions do not require ownership of the pad object.
 
 - Unify the pullup, pulldown, and keeper configurations into one enum,
   `PullKeeper`. This lets you more simply express pin configurations:
@@ -75,7 +80,7 @@ All notable changes to this project will be documented in this file.
   ```
 
   This approach will replace the existing API that uses separate methods and
-  enums. All older enums and methods are now deprecated.
+  enums.
 
 ## [0.1.3] - 2021-04-24
 
@@ -108,7 +113,8 @@ First release
   - SPI
   - UART
 
-[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.4...v0.1
+[0.1.4]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.0...v0.1.1
