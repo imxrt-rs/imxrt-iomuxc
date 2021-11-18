@@ -135,16 +135,34 @@ pub mod prelude {
 }
 
 /// Type-level constants and traits
-///
-/// Re-exported from the [`typenum` crate](https://crates.io/crates/typenum), but scoped for the requirements
-/// of the IOMUXC peripheral.
 pub mod consts {
-    pub use typenum::consts::{
-        U0, U1, U10, U11, U12, U13, U14, U15, U16, U17, U18, U19, U2, U20, U21, U22, U23, U24, U25,
-        U26, U27, U28, U29, U3, U30, U31, U32, U33, U34, U35, U36, U37, U38, U39, U4, U40, U41, U5,
-        U6, U7, U8, U9,
-    };
-    pub use typenum::Unsigned;
+    #[derive(Debug)]
+    pub enum Const<const N: u8> {}
+    pub trait Unsigned {
+        const USIZE: usize;
+        fn to_usize() -> usize {
+            Self::USIZE
+        }
+    }
+    impl<const N: u8> Unsigned for Const<N> {
+        const USIZE: usize = N as usize;
+    }
+    macro_rules! ux {
+        ($($Ux:ident => $N:literal,)+) => {
+            $(pub type $Ux = Const<$N>;)+
+        };
+    }
+    ux! {
+        U0 => 0, U1 => 1, U2 => 2, U3 => 3, U4 => 4,
+        U5 => 5, U6 => 6, U7 => 7, U8 => 8, U9 => 9,
+        U10 => 10, U11 => 11, U12 => 12, U13 => 13, U14 => 14,
+        U15 => 15, U16 => 16, U17 => 17, U18 => 18, U19 => 19,
+        U20 => 20, U21 => 21, U22 => 22, U23 => 23, U24 => 24,
+        U25 => 25, U26 => 26, U27 => 27, U28 => 28, U29 => 29,
+        U30 => 30, U31 => 31, U32 => 32, U33 => 33, U34 => 34,
+        U35 => 35, U36 => 36, U37 => 37, U38 => 38, U39 => 39,
+        U40 => 40, U41 => 41,
+    }
 }
 
 /// Define an IOMUXC base

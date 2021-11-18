@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- **BREAKING** Remove typenum dependency, and use const generics. Requires
+  at least Rust 1.51.
+
 - **BREAKING** rename feature flags and module: `"imxrt106x" => "imxrt1060"`
 
   For rational on this change, see
