@@ -17,9 +17,9 @@ fn main() -> io::Result<()> {
 fn imxrt1010<W: io::Write>(mut pads_rs: W) -> io::Result<()> {
     use imxrt_iomuxc_build as build;
 
-    let gpio_ad = build::PadRange::new("GPIO_AD", 0..16);
-    let gpio_sd = build::PadRange::new("GPIO_SD", 0..16);
-    let gpio = build::PadRange::new("GPIO", 0..16);
+    let gpio_ad = build::PadRange::new("GPIO_AD", 0..15);
+    let gpio_sd = build::PadRange::new("GPIO_SD", 0..15);
+    let gpio = build::PadRange::new("GPIO", 0..14);
 
     build::write_pads(&mut pads_rs, vec![&gpio_ad, &gpio_sd, &gpio])?;
     build::write_impl_gpio_pins(
