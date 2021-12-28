@@ -11,12 +11,13 @@ fn test_write_pads() {
             #![allow(non_camel_case_types)] // Conform with reference manual
 
             #[doc = "Pads with the prefix 'FOO'"]
+            #[allow(clippy::identity_op, clippy::erasing_op)]
             pub mod foo {
-                use crate::{ErasedPad, Pad, consts::*};
+                use crate::{ErasedPad, Pad};
                 use super::super::bases::*;
 
-                pub type FOO_02 = Pad<FOO, U2>;
-                pub type FOO_03 = Pad<FOO, U3>;
+                pub type FOO_02 = Pad<{ FOO::MUX + (4 * 2u32) }, { FOO::PAD + (4 * 2u32) }>;
+                pub type FOO_03 = Pad<{ FOO::MUX + (4 * 3u32) }, { FOO::PAD + (4 * 3u32) }>;
 
                 #[doc = "Pads with the prefix 'FOO'"]
                 pub struct Pads {
@@ -63,12 +64,13 @@ fn test_write_pads() {
             }
 
             #[doc = "Pads with the prefix 'BAR'"]
+            #[allow(clippy::identity_op, clippy::erasing_op)]
             pub mod bar {
-                use crate::{ErasedPad, Pad, consts::*};
+                use crate::{ErasedPad, Pad};
                 use super::super::bases::*;
 
-                pub type BAR_37 = Pad<BAR, U37>;
-                pub type BAR_38 = Pad<BAR, U38>;
+                pub type BAR_37 = Pad<{ BAR::MUX + (4 * 37u32) }, { BAR::PAD + (4 * 37u32) }>;
+                pub type BAR_38 = Pad<{ BAR::MUX + (4 * 38u32) }, { BAR::PAD + (4 * 38u32) }>;
 
                 #[doc = "Pads with the prefix 'BAR'"]
                 pub struct Pads {

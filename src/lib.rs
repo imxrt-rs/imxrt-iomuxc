@@ -145,30 +145,6 @@ pub mod consts {
     pub use typenum::Unsigned;
 }
 
-/// A pad group base
-///
-/// A 'Base' defines the start of similarly-named pads, like `GPIO_AD_B0`. `Base`s
-/// provide access to a multiplexer register base and a pad configuration register
-/// base.
-///
-/// This trait is for developers who are preparing processor-specific crates that implement
-/// the `imxrt-iomuxc` traits. **Do not** implement this trait if you are an end user.
-///
-/// # Safety
-///
-/// You must ensure that the two pointers are correct for your processor.
-#[doc(hidden)] // Private trait that needs to be pulic
-pub unsafe trait Base {
-    /// Starting register for a multiplexer register
-    ///
-    /// For the `GPIO_AD_B0` base, this would be the MUX register of `GPIO_AD_B0_00`.
-    fn mux_base() -> *mut u32;
-    /// Starting register for a pad configuration register
-    ///
-    /// For the `GPIO_AD_B0` base, this would be the PAD register of `GPIO_AD_B0_00`.
-    fn pad_base() -> *mut u32;
-}
-
 /// Define an IOMUXC base
 ///
 /// `base_name` is the name of the IOMUXC register base. For something like
@@ -182,18 +158,10 @@ pub unsafe trait Base {
 #[allow(unused)] // May be used in processor-specific modules
 macro_rules! define_base {
     ($base_name: ident, $mux_base: expr, $pad_base: expr) => {
-        #[allow(non_camel_case_types)] // Conform with reference manual
-        #[allow(clippy::upper_case_acronyms)] // Conform with reference manual
-        #[derive(Debug)]
-        pub struct $base_name;
-
-        unsafe impl crate::Base for $base_name {
-            fn mux_base() -> *mut u32 {
-                $mux_base as *mut u32
-            }
-            fn pad_base() -> *mut u32 {
-                $pad_base as *mut u32
-            }
+        #[allow(non_snake_case)]
+        pub(crate) mod $base_name {
+            pub const MUX: u32 = $mux_base;
+            pub const PAD: u32 = $pad_base;
         }
     };
 }
@@ -306,15 +274,13 @@ pub fn alternate<I: Iomuxc>(pad: &mut I, alt: u32) {
 ///
 /// `Pad`s have no size.
 #[derive(Debug)]
-pub struct Pad<Base, Offset> {
-    base: ::core::marker::PhantomData<Base>,
-    offset: ::core::marker::PhantomData<Offset>,
+pub struct Pad<const MUX: u32, const PAD: u32> {
     // Block auto-implement of Send / Sync. We'll manually implement
     // the traits.
     _not_send_sync: ::core::marker::PhantomData<*const ()>,
 }
 
-impl<Base, Offset> Pad<Base, Offset> {
+impl<const MUX: u32, const PAD: u32> Pad<MUX, PAD> {
     /// Creates a handle to the pad
     ///
     /// # Safety
@@ -325,32 +291,28 @@ impl<Base, Offset> Pad<Base, Offset> {
     #[inline(always)]
     pub const unsafe fn new() -> Self {
         Self {
-            base: ::core::marker::PhantomData,
-            offset: ::core::marker::PhantomData,
             _not_send_sync: ::core::marker::PhantomData,
         }
     }
+    /// Cast the MUX address.
+    const fn mux() -> *mut u32 {
+        MUX as *mut u32
+    }
+    /// Cast the PAD address.
+    const fn pad() -> *mut u32 {
+        PAD as *mut u32
+    }
 }
 
-unsafe impl<Base, Offset> Send for Pad<Base, Offset>
-where
-    Base: Send,
-    Offset: Send,
-{
-}
+unsafe impl<const MUX: u32, const PAD: u32> Send for Pad<MUX, PAD> {}
 
-impl<Base, Offset> Pad<Base, Offset>
-where
-    Base: crate::Base,
-    Offset: crate::consts::Unsigned,
-{
+impl<const MUX: u32, const PAD: u32> Pad<MUX, PAD> {
     /// Erase the pad's type, returning an `ErasedPad`
     #[inline(always)]
     pub fn erase(self) -> ErasedPad {
         ErasedPad {
-            mux_base: Base::mux_base(),
-            pad_base: Base::pad_base(),
-            offset: Offset::USIZE,
+            mux: Self::mux(),
+            pad: Self::pad(),
         }
     }
 
@@ -416,21 +378,17 @@ where
     }
 }
 
-impl<Base, Offset> private::Sealed for Pad<Base, Offset> {}
+impl<const MUX: u32, const PAD: u32> private::Sealed for Pad<MUX, PAD> {}
 
-unsafe impl<Base, Offset> crate::Iomuxc for Pad<Base, Offset>
-where
-    Base: crate::Base,
-    Offset: crate::consts::Unsigned,
-{
+unsafe impl<const MUX: u32, const PAD: u32> crate::Iomuxc for Pad<MUX, PAD> {
     #[inline(always)]
     fn mux(&mut self) -> *mut u32 {
-        (Base::mux_base() as usize + 4 * Offset::USIZE) as *mut u32
+        Self::mux()
     }
 
     #[inline(always)]
     fn pad(&mut self) -> *mut u32 {
-        (Base::pad_base() as usize + 4 * Offset::USIZE) as *mut u32
+        Self::pad()
     }
 }
 
@@ -438,15 +396,14 @@ where
 ///
 /// `ErasedPad` moves the pad state to run time, rather than compile time.
 /// The type may provide more flexibility for some APIs. Each `ErasedPad` is
-/// three pointers large.
+/// two pointers large.
 ///
 /// `ErasedPad` may be converted back into their strongly-typed analogs using
 /// `TryFrom` and `TryInto` conversions.
 ///
 /// ```no_run
 /// use imxrt_iomuxc as iomuxc;
-/// # struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// # type GPIO_AD_B0_03 = iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// # type GPIO_AD_B0_03 = iomuxc::Pad<0xDEAD, 0xBEEF>;
 /// let gpio_ad_b0_03 = unsafe { GPIO_AD_B0_03::new() };
 /// let mut erased = gpio_ad_b0_03.erase();
 ///
@@ -460,9 +417,8 @@ where
 /// ```
 #[derive(Debug)]
 pub struct ErasedPad {
-    mux_base: *mut u32,
-    pad_base: *mut u32,
-    offset: usize,
+    mux: *mut u32,
+    pad: *mut u32,
 }
 
 impl private::Sealed for ErasedPad {}
@@ -470,12 +426,12 @@ impl private::Sealed for ErasedPad {}
 unsafe impl crate::Iomuxc for ErasedPad {
     #[inline(always)]
     fn mux(&mut self) -> *mut u32 {
-        (self.mux_base as usize + 4 * self.offset) as *mut u32
+        self.mux
     }
 
     #[inline(always)]
     fn pad(&mut self) -> *mut u32 {
-        (self.pad_base as usize + 4 * self.offset) as *mut u32
+        self.pad
     }
 }
 
@@ -489,17 +445,10 @@ unsafe impl Send for ErasedPad {}
 #[derive(Debug)]
 pub struct WrongPadError(pub ErasedPad);
 
-impl<Base, Offset> ::core::convert::TryFrom<ErasedPad> for Pad<Base, Offset>
-where
-    Base: crate::Base,
-    Offset: crate::consts::Unsigned,
-{
+impl<const MUX: u32, const PAD: u32> ::core::convert::TryFrom<ErasedPad> for Pad<MUX, PAD> {
     type Error = WrongPadError;
     fn try_from(erased_pad: ErasedPad) -> Result<Self, Self::Error> {
-        if erased_pad.mux_base == Base::mux_base()
-            && erased_pad.pad_base == Base::pad_base()
-            && erased_pad.offset == Offset::USIZE
-        {
+        if erased_pad.mux == Self::mux() && erased_pad.pad == Self::pad() {
             Ok(unsafe { Self::new() })
         } else {
             Err(WrongPadError(erased_pad))
@@ -559,23 +508,11 @@ pub mod gpio {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::consts::{U0, U1};
 
     #[derive(Debug)]
     struct TestBase;
 
-    unsafe impl crate::Base for TestBase {
-        fn mux_base() -> *mut u32 {
-            static mut MEM: u32 = 0;
-            unsafe { &mut MEM as *mut u32 }
-        }
-        fn pad_base() -> *mut u32 {
-            static mut MEM: u32 = 0;
-            unsafe { &mut MEM as *mut u32 }
-        }
-    }
-
-    type TestPad = Pad<TestBase, U0>;
+    type TestPad = Pad<0, 0>;
 
     #[test]
     fn erased_pad_convert_success() {
@@ -592,15 +529,14 @@ mod tests {
         let erased = pad.erase();
 
         use core::convert::TryFrom;
-        type OtherPad = Pad<TestBase, U1>;
+        type OtherPad = Pad<1, 1>;
         OtherPad::try_from(erased).expect_err("This is a different pad");
     }
 }
 
 /// ```
 /// fn is_send<S: Send>(s: S) {}
-/// struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<0xDEAD, 0xBEEF>;
 /// is_send(unsafe { GPIO_AD_B0_03::new() }.erase());
 /// ```
 #[cfg(doctest)]
@@ -608,8 +544,7 @@ struct ErasedPadsAreSend;
 
 /// ```
 /// fn is_send<S: Send>(s: S) {}
-/// struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<0xDEAD, 0xBEEF>;
 /// is_send(unsafe { GPIO_AD_B0_03::new() });
 /// is_send(unsafe { GPIO_AD_B0_03::new() }.erase());
 /// ```
@@ -618,8 +553,7 @@ struct PadsAreSend;
 
 /// ```compile_fail
 /// fn is_sync<S: Sync>(s: S) {}
-/// struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<0xDEAD, 0xBEEF>;
 /// is_sync(unsafe { GPIO_AD_B0_03::new() }.erase())
 /// ```
 #[cfg(doctest)]
@@ -627,8 +561,7 @@ struct ErasedPadsAreNotSync;
 
 /// ```compile_fail
 /// fn is_sync<S: Sync>(s: S) {}
-/// struct GPIO_AD_B0; unsafe impl imxrt_iomuxc::Base for GPIO_AD_B0 { fn mux_base() -> *mut u32 { 0 as *mut u32 } fn pad_base() -> *mut u32 { 0 as *mut u32 } }
-/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<GPIO_AD_B0, imxrt_iomuxc::consts::U3>;
+/// type GPIO_AD_B0_03 = imxrt_iomuxc::Pad<0xDEAD, 0xBEEF>;
 /// is_sync(unsafe { GPIO_AD_B0_03::new() })
 /// ```
 #[cfg(doctest)]
