@@ -165,31 +165,6 @@ pub mod consts {
     }
 }
 
-/// Define an IOMUXC base
-///
-/// `base_name` is the name of the IOMUXC register base. For something like
-/// `GPIO_AD_B0_03`, the base is `GPIO_AD_B0`.
-///
-/// `mux_base` is a `u32` that represents the base's mux address. For the IOMUXC
-/// registers starting with `GPIO_AD_B0`, this is the mux address of `GPIO_AD_B0_00`.
-///
-/// `pad_base` is a `u32` that represents the base's pad address. For the IOMUXC
-/// registers starting with `GPIO_AD_B0`, this is the pad address of `GPIO_AD_B0_00`.
-#[allow(unused)] // May be used in processor-specific modules
-macro_rules! define_base {
-    ($base_name: ident, $mux_base: expr, $pad_base: expr) => {
-        #[allow(non_snake_case)]
-        pub(crate) mod $base_name {
-            pub const MUX: u32 = $mux_base;
-            pub const PAD: u32 = $pad_base;
-        }
-    };
-}
-
-//
-// Listing the processor modules here, since they may depend on the
-// above `define_base!()` macro...
-//
 #[cfg(feature = "imxrt1010")]
 #[cfg_attr(docsrs, doc(cfg(feature = "imxrt1010")))]
 pub mod imxrt1010;
