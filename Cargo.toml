@@ -12,9 +12,6 @@ license = "MIT OR Apache-2.0"
 keywords = ["imxrt", "nxp", "embedded", "no_std"]
 categories = ["embedded", "no-std"]
 
-[build-dependencies]
-imxrt-iomuxc-build = { version = "0.1.0", path = "imxrt-iomuxc-build" }
-
 [features]
 imxrt1060 = []
 imxrt1010 = []
@@ -22,8 +19,3 @@ imxrt1010 = []
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
-
-[workspace]
-members = [
-    "imxrt-iomuxc-build"
-]
