@@ -15,7 +15,7 @@ use core::ptr;
 /// use imxrt_iomuxc::{configure, Config, OpenDrain, PullKeeper};
 /// # use imxrt_iomuxc::Iomuxc;; #[allow(non_camel_case_types)] pub struct GPIO_AD_B0_03;
 /// # impl GPIO_AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
-/// # unsafe impl Iomuxc for GPIO_AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
+/// # unsafe impl Iomuxc for GPIO_AD_B0_03 { fn mux(&mut self) -> *mut u32 { self.ptr() } fn pad(&mut self) -> *mut u32 { self.ptr() }}
 ///
 /// const CONFIG: Config = Config::zero()
 ///     .set_open_drain(OpenDrain::Enabled)
@@ -246,7 +246,7 @@ impl Config {
     ///
     /// ```
     /// # use imxrt_iomuxc::Iomuxc;
-    /// # struct Pad(u32); unsafe impl Iomuxc for Pad { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
+    /// # struct Pad(u32); unsafe impl Iomuxc for Pad { fn mux(&mut self) -> *mut u32 { panic!() } fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
     /// # let mut gpio_ad_b0_13 = Pad(0xFFFF_FFFFu32);
     /// use imxrt_iomuxc::{
     ///     Config, configure, SlewRate,
@@ -292,7 +292,7 @@ impl Config {
     ///
     /// ```
     /// # use imxrt_iomuxc::Iomuxc;
-    /// # struct Pad(u32); unsafe impl Iomuxc for Pad { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
+    /// # struct Pad(u32); unsafe impl Iomuxc for Pad { fn mux(&mut self) -> *mut u32 { panic!() } fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
     /// # let mut gpio_ad_b0_13 = Pad(0xFFFF_FFFFu32);
     /// use imxrt_iomuxc::{Config, configure, SlewRate, DriveStrength, Hysteresis};
     ///
@@ -432,10 +432,10 @@ mod tests {
     const PAD_BITMASK: u32 = 0b1_1111_1000_1111_1001u32;
 
     unsafe impl Iomuxc for Pad {
-        unsafe fn mux(&mut self) -> *mut u32 {
+        fn mux(&mut self) -> *mut u32 {
             panic!("Nothing calls mux() in these tests");
         }
-        unsafe fn pad(&mut self) -> *mut u32 {
+        fn pad(&mut self) -> *mut u32 {
             &mut self.0 as *mut _
         }
     }
