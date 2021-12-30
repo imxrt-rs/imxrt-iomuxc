@@ -309,7 +309,7 @@ unsafe impl<const MUX: u32, const PAD: u32> Send for Pad<MUX, PAD> {}
 impl<const MUX: u32, const PAD: u32> Pad<MUX, PAD> {
     /// Erase the pad's type, returning an `ErasedPad`
     #[inline(always)]
-    pub fn erase(self) -> ErasedPad {
+    pub const fn erase(self) -> ErasedPad {
         ErasedPad {
             mux: Self::mux(),
             pad: Self::pad(),
