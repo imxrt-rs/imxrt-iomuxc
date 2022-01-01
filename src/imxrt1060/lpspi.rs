@@ -2,6 +2,7 @@
 
 use super::pads::{
     gpio_ad_b0::*, gpio_ad_b1::*, gpio_b0::*, gpio_emc::*, gpio_sd_b0::*, gpio_sd_b1::*,
+    gpio_b1::*,
 };
 use crate::{
     consts::*,
