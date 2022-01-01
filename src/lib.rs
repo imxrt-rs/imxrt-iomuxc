@@ -28,6 +28,7 @@
 //!
 //! ```no_run
 //! use imxrt_iomuxc::{ErasedPad, lpuart::{Pin, Tx, Rx}};
+//! # use imxrt_iomuxc::imxrt1060::gpio_ad_b0::{GPIO_AD_B0_13, GPIO_AD_B0_12};
 //! # pub struct UART;
 //!
 //! impl UART {
@@ -42,27 +43,23 @@
 //!         # UART
 //!     }
 //!
-//!     pub unsafe fn new_unchecked(tx: ErasedPad, rx: ErasedPad, /* ... */) -> UART {
+//!     pub fn new_unchecked(tx: ErasedPad, rx: ErasedPad, /* ... */) -> UART {
 //!         // ...
 //!         # UART
 //!     }
 //! }
-//! # struct GPIO_AD_B0_03; impl GPIO_AD_B0_03 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for GPIO_AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
-//! # struct GPIO_AD_B0_04; impl GPIO_AD_B0_04 { unsafe fn new() -> Self { Self } fn erase(self) -> ErasedPad { unimplemented!() }} unsafe impl imxrt_iomuxc::Iomuxc for GPIO_AD_B0_04 { unsafe fn mux(&mut self) -> *mut u32 { panic!() } unsafe fn pad(&mut self) -> *mut u32 { panic!() } }
-//! # impl imxrt_iomuxc::lpuart::Pin for GPIO_AD_B0_03 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::Tx; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
-//! # impl imxrt_iomuxc::lpuart::Pin for GPIO_AD_B0_04 { const ALT: u32 = 0; type Direction = imxrt_iomuxc::lpuart::Rx; type Module = imxrt_iomuxc::consts::U1; const DAISY: Option<imxrt_iomuxc::Daisy> = None; }
 //!
 //! // Preferred: create a UART peripheral with strongly-typed pads...
-//! let gpio_ad_b0_03 = unsafe { GPIO_AD_B0_03::new() };
-//! let gpio_ad_b0_04 = unsafe { GPIO_AD_B0_04::new() };
-//! let uart1 = UART::new(gpio_ad_b0_03, gpio_ad_b0_04);
+//! let gpio_ad_b0_13 = unsafe { GPIO_AD_B0_13::new() };
+//! let gpio_ad_b0_12 = unsafe { GPIO_AD_B0_12::new() };
+//! let uart1 = UART::new(gpio_ad_b0_12, gpio_ad_b0_13);
 //!
 //! // Optional: create a UART peripheral from type-erased pads...
-//! let gpio_ad_b0_03 = unsafe { GPIO_AD_B0_03::new() };
-//! let gpio_ad_b0_04 = unsafe { GPIO_AD_B0_04::new() };
+//! let gpio_ad_b0_13 = unsafe { GPIO_AD_B0_13::new() };
+//! let gpio_ad_b0_12 = unsafe { GPIO_AD_B0_12::new() };
 //!
-//! let mut tx_pad = gpio_ad_b0_03.erase();
-//! let mut rx_pad = gpio_ad_b0_04.erase();
+//! let mut rx_pad = gpio_ad_b0_13.erase();
+//! let mut tx_pad = gpio_ad_b0_12.erase();
 //!
 //! // User is responsible for configuring the pad,
 //! // since we can't call `prepare()` on the pad...
@@ -70,15 +67,15 @@
 //!     // Daisy registers and values aren't attached
 //!     // to erased pads, so we have to reference this
 //!     // manually.
-//!     <GPIO_AD_B0_03 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
-//!     <GPIO_AD_B0_04 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
+//!     <GPIO_AD_B0_13 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
+//!     <GPIO_AD_B0_12 as imxrt_iomuxc::lpuart::Pin>::DAISY.map(|daisy| daisy.write());
 //! }
 //! imxrt_iomuxc::alternate(&mut tx_pad, 2);
 //! imxrt_iomuxc::alternate(&mut rx_pad, 2);
 //! imxrt_iomuxc::clear_sion(&mut tx_pad);
 //! imxrt_iomuxc::clear_sion(&mut rx_pad);
 //! // Pads are configured for UART settings
-//! let uart1 = unsafe { UART::new_unchecked(tx_pad, rx_pad) };
+//! let uart1 = UART::new_unchecked(tx_pad, rx_pad);
 //! ```
 
 #![no_std]
@@ -215,21 +212,21 @@ pub mod imxrt1060;
 
 /// An IOMUXC-capable pad which can support I/O multiplexing
 ///
-/// **DO NOT IMPLEMENT THIS TRAIT**. It's exposed to support documentation
-/// browsing.
-pub unsafe trait Iomuxc {
-    /// Returns the absolute address of the multiplex register
-    ///
-    /// # Safety
-    ///
-    /// Returns a pointer to an address that may be mutably aliased elsewhere.
-    unsafe fn mux(&mut self) -> *mut u32;
-    /// Returns the absolute address of the pad configuration register
-    ///
-    /// # Safety
-    ///
-    /// Returns a pointer to an address that may be mutably aliased elsewhere.
-    unsafe fn pad(&mut self) -> *mut u32;
+/// # Safety
+///
+/// This should only be implemented on types that return pointers to static
+/// memory.
+pub unsafe trait Iomuxc: private::Sealed {
+    /// Returns the absolute address of the multiplex register.
+    #[doc(hidden)]
+    fn mux(&mut self) -> *mut u32;
+    /// Returns the absolute address of the pad configuration register.
+    #[doc(hidden)]
+    fn pad(&mut self) -> *mut u32;
+}
+
+mod private {
+    pub trait Sealed {}
 }
 
 const SION_BIT: u32 = 1 << 4;
@@ -419,25 +416,21 @@ where
     }
 }
 
+impl<Base, Offset> private::Sealed for Pad<Base, Offset> {}
+
 unsafe impl<Base, Offset> crate::Iomuxc for Pad<Base, Offset>
 where
     Base: crate::Base,
     Offset: crate::consts::Unsigned,
 {
-    /// # Safety
-    ///
-    /// Returns a pointer to an address that may be mutably aliased elsewhere.
     #[inline(always)]
-    unsafe fn mux(&mut self) -> *mut u32 {
-        Base::mux_base().add(Offset::USIZE)
+    fn mux(&mut self) -> *mut u32 {
+        (Base::mux_base() as usize + 4 * Offset::USIZE) as *mut u32
     }
 
-    /// # Safety
-    ///
-    /// Returns a pointer to an address that may be mutably aliased elsewhere.
     #[inline(always)]
-    unsafe fn pad(&mut self) -> *mut u32 {
-        Base::pad_base().add(Offset::USIZE)
+    fn pad(&mut self) -> *mut u32 {
+        (Base::pad_base() as usize + 4 * Offset::USIZE) as *mut u32
     }
 }
 
@@ -472,21 +465,17 @@ pub struct ErasedPad {
     offset: usize,
 }
 
+impl private::Sealed for ErasedPad {}
+
 unsafe impl crate::Iomuxc for ErasedPad {
-    /// # Safety
-    ///
-    /// Returns a pointer to an address that may be mutably aliased elsewhere.
     #[inline(always)]
-    unsafe fn mux(&mut self) -> *mut u32 {
-        self.mux_base.add(self.offset)
+    fn mux(&mut self) -> *mut u32 {
+        (self.mux_base as usize + 4 * self.offset) as *mut u32
     }
 
-    /// # Safety
-    ///
-    /// Returns a pointer to an address that may be mutably aliased elsewhere.
     #[inline(always)]
-    unsafe fn pad(&mut self) -> *mut u32 {
-        self.pad_base.add(self.offset)
+    fn pad(&mut self) -> *mut u32 {
+        (self.pad_base as usize + 4 * self.offset) as *mut u32
     }
 }
 
@@ -548,17 +537,6 @@ impl Daisy {
         ptr::write_volatile(self.reg, self.value);
     }
 }
-
-/// Use these snippets in documentation to create a fake example pad, `GPIO_AD_B0_03.
-///
-/// You should use `no_run` to prevent execution, or you'll probably derefence a null pointer.
-/// ```
-/// # use imxrt_iomuxc::Iomuxc; #[allow(non_camel_case_types)] pub struct GPIO_AD_B0_03;
-/// # impl GPIO_AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
-/// # unsafe impl Iomuxc for GPIO_AD_B0_03 { unsafe fn mux(&mut self) -> *mut u32 { self.ptr() } unsafe fn pad(&mut self) -> *mut u32 { self.ptr() }}
-/// ```
-#[cfg(doctest)]
-pub struct DocPadSnippet;
 
 /// GPIO pad configuration
 pub mod gpio {
