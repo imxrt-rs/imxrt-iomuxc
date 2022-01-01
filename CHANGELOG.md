@@ -54,7 +54,7 @@ All notable changes to this project will be documented in this file.
   - SPI
   - UART
 
-## [0.1.5] - 2021-01-01
+## [0.1.5] - 2022-01-01
 
 ### Added
 
