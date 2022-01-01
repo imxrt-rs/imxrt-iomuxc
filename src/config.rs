@@ -13,9 +13,7 @@ use core::ptr;
 ///
 /// ```no_run
 /// use imxrt_iomuxc::{configure, Config, OpenDrain, PullKeeper};
-/// # use imxrt_iomuxc::Iomuxc;; #[allow(non_camel_case_types)] pub struct GPIO_AD_B0_03;
-/// # impl GPIO_AD_B0_03 { unsafe fn new() -> Self { Self } fn ptr(&self) -> *mut u32 { core::ptr::null_mut() }}
-/// # unsafe impl Iomuxc for GPIO_AD_B0_03 { fn mux(&mut self) -> *mut u32 { self.ptr() } fn pad(&mut self) -> *mut u32 { self.ptr() }}
+/// # use imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_03;
 ///
 /// const CONFIG: Config = Config::zero()
 ///     .set_open_drain(OpenDrain::Enabled)
@@ -244,10 +242,9 @@ impl Config {
     /// created using `zero()` will have the effect of writing *all* fields
     /// to the register. Those that are not set explicitly set are written as zero.
     ///
-    /// ```
-    /// # use imxrt_iomuxc::Iomuxc;
-    /// # struct Pad(u32); unsafe impl Iomuxc for Pad { fn mux(&mut self) -> *mut u32 { panic!() } fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
-    /// # let mut gpio_ad_b0_13 = Pad(0xFFFF_FFFFu32);
+    /// ```no_run
+    /// # use imxrt_iomuxc::{Iomuxc, imxrt1060::gpio_ad_b0::GPIO_AD_B0_13};
+    /// # let mut gpio_ad_b0_13 = unsafe { GPIO_AD_B0_13::new() };
     /// use imxrt_iomuxc::{
     ///     Config, configure, SlewRate,
     ///     Hysteresis, PullKeeper, DriveStrength
@@ -290,10 +287,9 @@ impl Config {
     ///
     /// Any field that is is *not* specified in the configuration will not be touched.
     ///
-    /// ```
-    /// # use imxrt_iomuxc::Iomuxc;
-    /// # struct Pad(u32); unsafe impl Iomuxc for Pad { fn mux(&mut self) -> *mut u32 { panic!() } fn pad(&mut self) -> *mut u32 { &mut self.0 as *mut _} }
-    /// # let mut gpio_ad_b0_13 = Pad(0xFFFF_FFFFu32);
+    /// ```no_run
+    /// # use imxrt_iomuxc::{Iomuxc, imxrt1060::gpio_ad_b0::GPIO_AD_B0_13};
+    /// # let mut gpio_ad_b0_13 = unsafe { GPIO_AD_B0_13::new() };
     /// use imxrt_iomuxc::{Config, configure, SlewRate, DriveStrength, Hysteresis};
     ///
     /// unsafe {
@@ -430,6 +426,8 @@ mod tests {
 
     /// The high bits represent the valid fields in pad registers.
     const PAD_BITMASK: u32 = 0b1_1111_1000_1111_1001u32;
+
+    impl crate::private::Sealed for Pad {}
 
     unsafe impl Iomuxc for Pad {
         fn mux(&mut self) -> *mut u32 {
