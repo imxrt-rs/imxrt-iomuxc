@@ -54,6 +54,12 @@ All notable changes to this project will be documented in this file.
   - SPI
   - UART
 
+## [0.1.5] - 2021-01-01
+
+### Added
+
+- Include additional SPI pins for the i.MX RT 1060.
+
 ## [0.1.4] - 2021-11-14
 
 - Add `unsafe` static functions on every pad to set alternate, change SION, and set configurations.
@@ -113,7 +119,8 @@ First release
   - SPI
   - UART
 
-[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.4...v0.1
+[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.5...v0.1
+[0.1.5]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.1...v0.1.2
