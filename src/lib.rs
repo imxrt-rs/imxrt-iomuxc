@@ -209,6 +209,7 @@ pub mod imxrt106x;
 ///
 /// **DO NOT IMPLEMENT THIS TRAIT**. It's exposed to support documentation
 /// browsing.
+#[allow(clippy::missing_safety_doc)]
 pub unsafe trait IOMUX {
     /// Returns the absolute address of the multiplex register
     ///
