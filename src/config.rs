@@ -250,31 +250,25 @@ impl Config {
     ///     Hysteresis, PullKeeper, DriveStrength
     /// };
     ///
-    /// unsafe {
-    ///     // Set a configuration
-    ///     configure(
-    ///         &mut gpio_ad_b0_13,
-    ///         Config::zero()
-    ///             .set_slew_rate(SlewRate::Fast)
-    ///             .set_drive_strength(DriveStrength::R0_7)
-    ///     );
-    ///     assert_eq!(
-    ///         *gpio_ad_b0_13.pad(),
-    ///         DriveStrength::R0_7 as u32 | SlewRate::Fast as u32
-    ///     );
+    /// // Set a configuration
+    /// configure(
+    ///     &mut gpio_ad_b0_13,
+    ///     Config::zero()
+    ///         .set_slew_rate(SlewRate::Fast)
+    ///         .set_drive_strength(DriveStrength::R0_7)
+    /// );
+    /// // DriveStrength::R0_7 as u32 | SlewRate::Fast as u32
     ///
-    ///     // Completely change that configuration
-    ///     configure(
-    ///         &mut gpio_ad_b0_13,
-    ///         Config::zero()
-    ///             .set_hysteresis(Hysteresis::Enabled)
-    ///             .set_pull_keeper(Some(PullKeeper::Pullup22k))
-    ///     );
-    ///     assert_eq!(
-    ///         *gpio_ad_b0_13.pad(),
-    ///         Hysteresis::Enabled as u32 | PullKeeper::Pullup22k as u32
-    ///     );
-    /// }
+    /// // Completely change that configuration
+    /// configure(
+    ///     &mut gpio_ad_b0_13,
+    ///     Config::zero()
+    ///         .set_hysteresis(Hysteresis::Enabled)
+    ///         .set_pull_keeper(Some(PullKeeper::Pullup22k))
+    /// );
+    /// // Hysteresis::Enabled as u32 | PullKeeper::Pullup22k as u32
+    /// //
+    /// // Notice that SlewRate and DriveStrength were set to zero.
     /// ```
     pub const fn zero() -> Self {
         Config {
@@ -292,31 +286,25 @@ impl Config {
     /// # let mut gpio_ad_b0_13 = unsafe { GPIO_AD_B0_13::new() };
     /// use imxrt_iomuxc::{Config, configure, SlewRate, DriveStrength, Hysteresis};
     ///
-    /// unsafe {
-    ///     // Assume a starting value in the register...
-    ///     configure(
-    ///         &mut gpio_ad_b0_13,
-    ///         Config::zero()
-    ///             .set_slew_rate(SlewRate::Fast)
-    ///             .set_drive_strength(DriveStrength::R0_7)
-    ///     );
-    ///     assert_eq!(
-    ///         *gpio_ad_b0_13.pad(),
-    ///         DriveStrength::R0_7 as u32 | SlewRate::Fast as u32
-    ///     );
+    /// // Assume a starting value in the register...
+    /// configure(
+    ///     &mut gpio_ad_b0_13,
+    ///     Config::zero()
+    ///         .set_slew_rate(SlewRate::Fast)
+    ///         .set_drive_strength(DriveStrength::R0_7)
+    /// );
+    /// // DriveStrength::R0_7 as u32 | SlewRate::Fast as u32
     ///
-    ///     // Now change the slew rate, and add hysteresis
-    ///     configure(
-    ///         &mut gpio_ad_b0_13,
-    ///         Config::modify()
-    ///             .set_slew_rate(SlewRate::Slow)
-    ///             .set_hysteresis(Hysteresis::Enabled)
-    ///     );
-    ///     assert_eq!(
-    ///         *gpio_ad_b0_13.pad(),
-    ///         DriveStrength::R0_7 as u32 | Hysteresis::Enabled as u32
-    ///     );
-    /// }
+    /// // Now change the slew rate, and add hysteresis
+    /// configure(
+    ///     &mut gpio_ad_b0_13,
+    ///     Config::modify()
+    ///         .set_slew_rate(SlewRate::Slow)
+    ///         .set_hysteresis(Hysteresis::Enabled)
+    /// );
+    /// // DriveStrength::R0_7 as u32 | Hysteresis::Enabled as u32
+    /// //
+    /// // Notice that the DriveStrength field is preserved.
     /// ```
     pub const fn modify() -> Self {
         Config {

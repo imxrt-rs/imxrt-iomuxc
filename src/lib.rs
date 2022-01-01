@@ -212,12 +212,16 @@ pub mod imxrt1060;
 
 /// An IOMUXC-capable pad which can support I/O multiplexing
 ///
-/// **DO NOT IMPLEMENT THIS TRAIT**. It's exposed to support documentation
-/// browsing.
+/// # Safety
+///
+/// This should only be implemented on types that return pointers to static
+/// memory.
 pub unsafe trait Iomuxc: private::Sealed {
     /// Returns the absolute address of the multiplex register.
+    #[doc(hidden)]
     fn mux(&mut self) -> *mut u32;
     /// Returns the absolute address of the pad configuration register.
+    #[doc(hidden)]
     fn pad(&mut self) -> *mut u32;
 }
 
