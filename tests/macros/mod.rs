@@ -11,14 +11,12 @@ macro_rules! group {
             use imxrt_iomuxc::Iomuxc;
 
             #[test]
-            #[ignore]
             fn erased_pad_count() {
                 let erased = unsafe { pads::$group::Pads::new().erase() };
                 assert_eq!(erased.len(), $count);
             }
 
             #[test]
-            #[ignore]
             fn pad_bounds() {
                 let mut left = unsafe { pads::$group::$id_left::new() };
                 let mut right = unsafe { pads::$group::$id_right::new() };
