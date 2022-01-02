@@ -145,10 +145,12 @@ where
             .zip(range.range.clone())
             .map(|(base, n)| {
                 let name = quote::format_ident!("{}_{:02}", base, n);
-                let unsigned = quote::format_ident!("U{}", n);
                 let base = quote::format_ident!("{}", base);
+                let n = n as u32;
+                let mux = quote::quote! { { #base::MUX + (4 * #n) } };
+                let pad = quote::quote! { { #base::PAD + (4 * #n) } };
                 quote::quote! {
-                    pub type #name = Pad<#base, #unsigned>;
+                    pub type #name = Pad<#mux, #pad>;
                 }
             });
         let pad_members = std::iter::repeat(range.base.clone())
@@ -181,8 +183,9 @@ where
         let erased_doc = format!("Erased pads with the prefix '{}'", range.base);
         quote::quote! {
             #[doc = #doc]
+            #[allow(clippy::identity_op, clippy::erasing_op)]
             pub mod #name {
-                use crate::{ErasedPad, Pad, consts::*};
+                use crate::{ErasedPad, Pad};
                 use super::super::bases::*;
                 #(#types)*
 
