@@ -49,9 +49,7 @@ pub trait Pin: super::Iomuxc {
 pub fn prepare<P: Pin>(pin: &mut P) {
     super::alternate(pin, P::ALT);
     super::clear_sion(pin);
-    if let Some(daisy) = P::DAISY {
-        unsafe { daisy.write() };
-    }
+    unsafe { P::DAISY.write() };
 }
 
 #[allow(unused)] // Used in chip-specific modules...
@@ -59,7 +57,7 @@ macro_rules! usdhc {
     (module: $module:ty, alt: $alt:expr, pad: $pad:ty, signal: $signal:ty, daisy: $daisy:expr) => {
         impl Pin for $pad {
             const ALT: u32 = $alt;
-            const DAISY: Option<Daisy> = $daisy;
+            const DAISY: Daisy = $daisy;
             type Signal = $signal;
             type Module = $module;
         }
