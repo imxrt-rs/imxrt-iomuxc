@@ -93,6 +93,7 @@ pub mod pwm;
 pub mod sai;
 pub mod spi;
 pub mod uart;
+pub mod usdhc;
 
 use core::ptr;
 

@@ -13,7 +13,8 @@ pub enum Data2 {}
 /// Type tag for the data3 pin
 pub enum Data3 {}
 
-/// A pin signal
+/// A uSDHC pin signal
+pub trait Signal: Sealed {}
 mod private {
     pub trait Sealed {}
     impl Sealed for super::Cmd {}
@@ -23,13 +24,14 @@ mod private {
     impl Sealed for super::Data2 {}
     impl Sealed for super::Data3 {}
 }
+use private::Sealed;
 
 /// A uSDHC pin
-pub trait Pin: super::Iomuxc {
+pub trait Pin: super::IOMUX {
     /// The alternate value for the uSDHC pin
     const ALT: u32;
     /// The daisy register which will select the pad
-    const DAISY: Option<super::Daisy>;
+    const DAISY: super::Daisy;
     /// Pin direction
     type Signal: Signal;
     /// UART module; `U1` for `uSDHC1`
