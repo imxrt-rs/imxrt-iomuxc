@@ -93,6 +93,7 @@ pub mod pwm;
 pub mod sai;
 pub mod spi;
 pub mod uart;
+#[macro_use]
 pub mod usdhc;
 
 use core::ptr;
@@ -122,7 +123,9 @@ pub mod prelude {
     pub use crate::config::{
         configure, Config, DriveStrength, Hysteresis, OpenDrain, PullKeeper, SlewRate, Speed,
     };
-    pub use crate::{consts, gpio, i2c, pwm, spi, uart, Daisy, ErasedPad, Pad, WrongPadError};
+    pub use crate::{
+        consts, gpio, i2c, pwm, spi, uart, usdhc, Daisy, ErasedPad, Pad, WrongPadError,
+    };
 
     pub use crate::config::{PullKeep, PullKeepSelect, PullUpDown};
 }

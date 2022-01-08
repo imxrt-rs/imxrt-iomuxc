@@ -4,6 +4,10 @@
 pub enum Cmd {}
 /// Type tag for the reset pin
 pub enum Clk {}
+/// Type tag for the reset pin
+pub enum Wp {}
+/// Type tag for the reset pin
+pub enum CdB {}
 /// Type tag for the data0 pin
 pub enum Data0 {}
 /// Type tag for the data1 pin
@@ -14,24 +18,29 @@ pub enum Data2 {}
 pub enum Data3 {}
 
 /// A uSDHC pin signal
-pub trait Signal: Sealed {}
 mod private {
-    pub trait Sealed {}
-    impl Sealed for super::Cmd {}
-    impl Sealed for super::Clk {}
-    impl Sealed for super::Data0 {}
-    impl Sealed for super::Data1 {}
-    impl Sealed for super::Data2 {}
-    impl Sealed for super::Data3 {}
+    pub trait Signal {}
+    impl Signal for super::Cmd {}
+    impl Signal for super::Clk {}
+    impl Signal for super::Wp {}
+    impl Signal for super::CdB {}
+    impl Signal for super::Data0 {}
+    impl Signal for super::Data1 {}
+    impl Signal for super::Data2 {}
+    impl Signal for super::Data3 {}
 }
-use private::Sealed;
+use private::Signal;
+
+use crate::Config;
 
 /// A uSDHC pin
 pub trait Pin: super::IOMUX {
     /// The alternate value for the uSDHC pin
     const ALT: u32;
     /// The daisy register which will select the pad
-    const DAISY: super::Daisy;
+    const DAISY: Option<super::Daisy>;
+
+    const CONFIG: Config;
     /// Pin direction
     type Signal: Signal;
     /// UART module; `U1` for `uSDHC1`
@@ -50,16 +59,21 @@ pub trait Pin: super::IOMUX {
 /// It may also write a daisy configuration that's incorrect.
 pub fn prepare<P: Pin>(pin: &mut P) {
     super::alternate(pin, P::ALT);
-    super::clear_sion(pin);
-    unsafe { P::DAISY.write() };
+    super::set_sion(pin);
+    super::configure(pin, P::CONFIG);
+    P::DAISY.map(|daisy| unsafe { daisy.write() });
 }
 
 #[allow(unused)] // Used in chip-specific modules...
 macro_rules! usdhc {
-    (module: $module:ty, alt: $alt:expr, pad: $pad:ty, signal: $signal:ty, daisy: $daisy:expr) => {
+    (module: $module:ty, alt: $alt:expr, pad: $pad:ty, signal: $signal:ty, keeper: $keeper:expr, daisy: $daisy:expr) => {
         impl Pin for $pad {
             const ALT: u32 = $alt;
-            const DAISY: Daisy = $daisy;
+            const DAISY: Option<Daisy> = $daisy;
+            const CONFIG: crate::Config = crate::Config::zero()
+                .set_speed(crate::Speed::Fast)
+                .set_drive_strength(crate::DriveStrength::R0_7)
+                .set_pull_keeper($keeper);
             type Signal = $signal;
             type Module = $module;
         }
