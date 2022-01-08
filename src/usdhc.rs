@@ -61,7 +61,9 @@ pub fn prepare<P: Pin>(pin: &mut P) {
     super::alternate(pin, P::ALT);
     super::set_sion(pin);
     super::configure(pin, P::CONFIG);
-    P::DAISY.map(|daisy| unsafe { daisy.write() });
+    if let Some(daisy) = P::DAISY {
+        unsafe { daisy.write() }
+    }
 }
 
 #[allow(unused)] // Used in chip-specific modules...
