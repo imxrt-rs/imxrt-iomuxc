@@ -24,6 +24,9 @@ All notable changes to this project will be documented in this file.
   - SPI
   - UART
 
+- Add uSDHC pin traits.
+- Add select uSDHC pins for the i.MX RT 1060.
+
 ## [0.1.4] - 2021-11-14
 
 - Add `unsafe` static functions on every pad to set alternate, change SION, and set configurations.

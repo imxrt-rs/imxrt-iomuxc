@@ -94,6 +94,7 @@ mod pwm;
 mod sai;
 mod spi;
 mod uart;
+mod usdhc;
 
 include!(concat!(env!("OUT_DIR"), "/imxrt106x.rs"));
 pub use pads::*;
