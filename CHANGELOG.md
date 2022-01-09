@@ -4,28 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [0.1.5] - 2022-01-01
-
-### Added
-
-- Include additional SPI pins for the i.MX RT 1060.
-
-### Changed
-
-- **BREAKING** rename feature flags and module: `"imxrt106x" => "imxrt1060"`
-
-  For rational on this change, see
-  [here](https://github.com/imxrt-rs/imxrt-rs/pull/91).
-
-### Added
-
-- i.MX RT 1010 support with the `"imxrt1010"` feature:
-  - I2C
-  - SPI
-  - UART
-
 - Add uSDHC pin traits.
 - Add select uSDHC pins for the i.MX RT 1060.
+
+## [0.1.5] - 2022-01-01
+
+- Include additional SPI pins for the i.MX RT 1060.
 
 ## [0.1.4] - 2021-11-14
 
