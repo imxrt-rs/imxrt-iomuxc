@@ -1,12 +1,12 @@
 //! USDHC pad configuration
 
-/// Type tag for the reset pin
+/// Type tag for the command pin
 pub enum Cmd {}
-/// Type tag for the reset pin
+/// Type tag for the clock pin
 pub enum Clk {}
-/// Type tag for the reset pin
+/// Type tag for the write protect pin
 pub enum Wp {}
-/// Type tag for the reset pin
+/// Type tag for the card detection pin
 pub enum CdB {}
 /// Type tag for the data0 pin
 pub enum Data0 {}
@@ -39,11 +39,14 @@ pub trait Pin: super::IOMUX {
     const ALT: u32;
     /// The daisy register which will select the pad
     const DAISY: Option<super::Daisy>;
-
+    /// Pin configuration
+    ///
+    /// Applied during pin preparation, overwriting any
+    /// other user-provided configuration.
     const CONFIG: Config;
     /// Pin direction
     type Signal: Signal;
-    /// UART module; `U1` for `uSDHC1`
+    /// uSDHC module; `U1` for `uSDHC1`
     type Module: super::consts::Unsigned;
 }
 
