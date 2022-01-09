@@ -54,6 +54,9 @@ All notable changes to this project will be documented in this file.
   - SPI
   - UART
 
+- Add uSDHC pin traits.
+- Add select uSDHC pins for the i.MX RT 1060.
+
 ## [0.1.5] - 2022-01-01
 
 ### Added

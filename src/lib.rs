@@ -94,6 +94,8 @@ pub mod lpspi;
 pub mod lpuart;
 #[macro_use]
 pub mod sai;
+#[macro_use]
+pub mod usdhc;
 
 use core::ptr;
 
@@ -128,7 +130,7 @@ pub mod prelude {
     pub use crate::config::{PullKeep, PullKeepSelect, PullUpDown};
 
     pub use crate::{
-        consts, flexpwm, gpio, lpi2c, lpspi, lpuart, Daisy, ErasedPad, Pad, WrongPadError,
+        consts, flexpwm, gpio, lpi2c, lpspi, lpuart, usdhc, Daisy, ErasedPad, Pad, WrongPadError,
     };
 }
 

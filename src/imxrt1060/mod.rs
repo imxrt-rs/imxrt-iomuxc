@@ -94,6 +94,7 @@ mod lpi2c;
 mod lpspi;
 mod lpuart;
 mod sai;
+mod usdhc;
 include!(concat!(env!("OUT_DIR"), "/imxrt1060.rs"));
 pub use pads::*;
 
