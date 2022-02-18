@@ -500,6 +500,38 @@ pub mod gpio {
     }
 }
 
+/// CCM pad configuration.
+pub mod ccm {
+    /// A CCM pin.
+    ///
+    /// These can be used for observing clock outputs, or for generating
+    /// outputs for your PMIC.
+    pub trait Pin: super::Iomuxc {
+        /// The alternate value for this pad.
+        const ALT: u32;
+        /// The pin function.
+        type Function: Function;
+    }
+
+    /// Prepare a pad to be used as a CCM pin.
+    pub fn prepare<P: Pin>(pin: &mut P) {
+        super::alternate(pin, P::ALT);
+    }
+
+    mod private {
+        pub trait Sealed {}
+    }
+    /// A CCM pin function.
+    pub trait Function: private::Sealed {}
+
+    /// Observability output.
+    pub enum Observable<const N: u8> {}
+    impl private::Sealed for Observable<1> {}
+    impl private::Sealed for Observable<2> {}
+    impl Function for Observable<1> {}
+    impl Function for Observable<2> {}
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

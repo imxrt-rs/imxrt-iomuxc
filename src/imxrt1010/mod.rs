@@ -95,3 +95,16 @@ mod lpuart;
 
 mod pads;
 pub use pads::*;
+
+mod ccm {
+    pub use crate::ccm::{Function, Observable, Pin};
+
+    impl Pin for super::pads::gpio_sd::GPIO_SD_02 {
+        const ALT: u32 = 3;
+        type Function = Observable<1>;
+    }
+    impl Pin for super::pads::gpio_sd::GPIO_SD_01 {
+        const ALT: u32 = 3;
+        type Function = Observable<2>;
+    }
+}
