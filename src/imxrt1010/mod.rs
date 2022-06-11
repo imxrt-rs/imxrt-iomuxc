@@ -88,6 +88,7 @@
 //! uart_new(gpio_10, gpio_13, 115_200);
 //! ```
 
+mod flexpwm;
 mod lpi2c;
 mod lpspi;
 mod lpuart;

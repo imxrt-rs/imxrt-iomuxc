@@ -53,9 +53,10 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - i.MX RT 1010 support with the `"imxrt1010"` feature:
-  - I2C
-  - SPI
-  - UART
+  - LPI2C
+  - LPSPI
+  - LPUART
+  - FlexPWM
 
 - Add uSDHC pin traits.
 - Add select uSDHC pins for the i.MX RT 1060.
