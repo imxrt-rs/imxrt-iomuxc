@@ -25,8 +25,7 @@ All notable changes to this project will be documented in this file.
   - etc.
 
 - **BREAKING** in the ADC module, we remove the `ADC` trait. Users should
-  replace usages of `adc::ADC` with `consts::Unsigned`. The `Adc1` and `Adc2`
-  types are now aliases for `U1` and `U2`.
+  replace usages of `adc::ADC` with constants that indicate ADC1, ADC2, etc.
 
   `adc::Pin::INPUT` is now an associated `u32` constant, not a type. Cast the
   `u32` as needed for your implementation. See the before and after below for
