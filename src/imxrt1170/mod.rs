@@ -3,6 +3,8 @@
 mod pads;
 pub use pads::*;
 
+mod flexpwm;
+mod lpspi;
 mod lpuart;
 
 mod ccm {
