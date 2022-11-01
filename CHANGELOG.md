@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 - **BREAKING** Remove typenum dependency, and use const generics. Requires
   at least Rust 1.51.
 
+- **BREAKING** the GPIO `Pin` trait is now generic over the GPIO module.
+  A const generic replaces the associated type `Module`.
+
 - **BREAKING** rename feature flags and module: `"imxrt106x" => "imxrt1060"`
 
   For rational on this change, see
@@ -26,6 +29,9 @@ All notable changes to this project will be documented in this file.
 
 - **BREAKING** in the ADC module, we remove the `ADC` trait. Users should
   replace usages of `adc::ADC` with constants that indicate ADC1, ADC2, etc.
+
+  `gpio::Pin` is no longer a trait bound for the `adc::Pin` trait. Users who
+  relied on this guarantee should explicitly require the bound.
 
   `adc::Pin::INPUT` is now an associated `u32` constant, not a type. Cast the
   `u32` as needed for your implementation. See the before and after below for

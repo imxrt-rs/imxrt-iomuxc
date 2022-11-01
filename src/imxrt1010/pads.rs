@@ -8,150 +8,135 @@ pub mod gpio_ad {
     const GPIO_AD_14_PAD_ADDR: u32 = 0x401f80c0;
     pub type GPIO_AD_14 = crate::Pad<GPIO_AD_14_MUX_ADDR, GPIO_AD_14_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_14 {
+    impl crate::gpio::Pin<1> for GPIO_AD_14 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U28;
+        const OFFSET: u32 = 28;
     }
 
     const GPIO_AD_13_MUX_ADDR: u32 = 0x401f8014;
     const GPIO_AD_13_PAD_ADDR: u32 = 0x401f80c4;
     pub type GPIO_AD_13 = crate::Pad<GPIO_AD_13_MUX_ADDR, GPIO_AD_13_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_13 {
+    impl crate::gpio::Pin<1> for GPIO_AD_13 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U27;
+        const OFFSET: u32 = 27;
     }
 
     const GPIO_AD_12_MUX_ADDR: u32 = 0x401f8018;
     const GPIO_AD_12_PAD_ADDR: u32 = 0x401f80c8;
     pub type GPIO_AD_12 = crate::Pad<GPIO_AD_12_MUX_ADDR, GPIO_AD_12_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_12 {
+    impl crate::gpio::Pin<1> for GPIO_AD_12 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U26;
+        const OFFSET: u32 = 26;
     }
 
     const GPIO_AD_11_MUX_ADDR: u32 = 0x401f801c;
     const GPIO_AD_11_PAD_ADDR: u32 = 0x401f80cc;
     pub type GPIO_AD_11 = crate::Pad<GPIO_AD_11_MUX_ADDR, GPIO_AD_11_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_11 {
+    impl crate::gpio::Pin<1> for GPIO_AD_11 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U25;
+        const OFFSET: u32 = 25;
     }
 
     const GPIO_AD_10_MUX_ADDR: u32 = 0x401f8020;
     const GPIO_AD_10_PAD_ADDR: u32 = 0x401f80d0;
     pub type GPIO_AD_10 = crate::Pad<GPIO_AD_10_MUX_ADDR, GPIO_AD_10_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_10 {
+    impl crate::gpio::Pin<1> for GPIO_AD_10 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U24;
+        const OFFSET: u32 = 24;
     }
 
     const GPIO_AD_09_MUX_ADDR: u32 = 0x401f8024;
     const GPIO_AD_09_PAD_ADDR: u32 = 0x401f80d4;
     pub type GPIO_AD_09 = crate::Pad<GPIO_AD_09_MUX_ADDR, GPIO_AD_09_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_09 {
+    impl crate::gpio::Pin<1> for GPIO_AD_09 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U23;
+        const OFFSET: u32 = 23;
     }
 
     const GPIO_AD_08_MUX_ADDR: u32 = 0x401f8028;
     const GPIO_AD_08_PAD_ADDR: u32 = 0x401f80d8;
     pub type GPIO_AD_08 = crate::Pad<GPIO_AD_08_MUX_ADDR, GPIO_AD_08_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_08 {
+    impl crate::gpio::Pin<1> for GPIO_AD_08 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U22;
+        const OFFSET: u32 = 22;
     }
 
     const GPIO_AD_07_MUX_ADDR: u32 = 0x401f802c;
     const GPIO_AD_07_PAD_ADDR: u32 = 0x401f80dc;
     pub type GPIO_AD_07 = crate::Pad<GPIO_AD_07_MUX_ADDR, GPIO_AD_07_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_07 {
+    impl crate::gpio::Pin<1> for GPIO_AD_07 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U21;
+        const OFFSET: u32 = 21;
     }
 
     const GPIO_AD_06_MUX_ADDR: u32 = 0x401f8030;
     const GPIO_AD_06_PAD_ADDR: u32 = 0x401f80e0;
     pub type GPIO_AD_06 = crate::Pad<GPIO_AD_06_MUX_ADDR, GPIO_AD_06_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_06 {
+    impl crate::gpio::Pin<1> for GPIO_AD_06 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U20;
+        const OFFSET: u32 = 20;
     }
 
     const GPIO_AD_05_MUX_ADDR: u32 = 0x401f8034;
     const GPIO_AD_05_PAD_ADDR: u32 = 0x401f80e4;
     pub type GPIO_AD_05 = crate::Pad<GPIO_AD_05_MUX_ADDR, GPIO_AD_05_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_05 {
+    impl crate::gpio::Pin<1> for GPIO_AD_05 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U19;
+        const OFFSET: u32 = 19;
     }
 
     const GPIO_AD_04_MUX_ADDR: u32 = 0x401f8038;
     const GPIO_AD_04_PAD_ADDR: u32 = 0x401f80e8;
     pub type GPIO_AD_04 = crate::Pad<GPIO_AD_04_MUX_ADDR, GPIO_AD_04_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_04 {
+    impl crate::gpio::Pin<1> for GPIO_AD_04 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U18;
+        const OFFSET: u32 = 18;
     }
 
     const GPIO_AD_03_MUX_ADDR: u32 = 0x401f803c;
     const GPIO_AD_03_PAD_ADDR: u32 = 0x401f80ec;
     pub type GPIO_AD_03 = crate::Pad<GPIO_AD_03_MUX_ADDR, GPIO_AD_03_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_03 {
+    impl crate::gpio::Pin<1> for GPIO_AD_03 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U17;
+        const OFFSET: u32 = 17;
     }
 
     const GPIO_AD_02_MUX_ADDR: u32 = 0x401f8040;
     const GPIO_AD_02_PAD_ADDR: u32 = 0x401f80f0;
     pub type GPIO_AD_02 = crate::Pad<GPIO_AD_02_MUX_ADDR, GPIO_AD_02_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_02 {
+    impl crate::gpio::Pin<1> for GPIO_AD_02 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U16;
+        const OFFSET: u32 = 16;
     }
 
     const GPIO_AD_01_MUX_ADDR: u32 = 0x401f8044;
     const GPIO_AD_01_PAD_ADDR: u32 = 0x401f80f4;
     pub type GPIO_AD_01 = crate::Pad<GPIO_AD_01_MUX_ADDR, GPIO_AD_01_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_01 {
+    impl crate::gpio::Pin<1> for GPIO_AD_01 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U15;
+        const OFFSET: u32 = 15;
     }
 
     const GPIO_AD_00_MUX_ADDR: u32 = 0x401f8048;
     const GPIO_AD_00_PAD_ADDR: u32 = 0x401f80f8;
     pub type GPIO_AD_00 = crate::Pad<GPIO_AD_00_MUX_ADDR, GPIO_AD_00_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_AD_00 {
+    impl crate::gpio::Pin<1> for GPIO_AD_00 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U14;
+        const OFFSET: u32 = 14;
     }
 
     /// All pads with prefix GPIO_AD.
@@ -241,146 +226,132 @@ pub mod gpio_sd {
     const GPIO_SD_14_MUX_ADDR: u32 = 0x401f804c;
     const GPIO_SD_14_PAD_ADDR: u32 = 0x401f80fc;
     pub type GPIO_SD_14 = crate::Pad<GPIO_SD_14_MUX_ADDR, GPIO_SD_14_PAD_ADDR>;
-    // GPIO_SD_14 does not have a GPIO alternate.
+    // GPIO_SD_14 does not have any GPIO alternates.
 
     const GPIO_SD_13_MUX_ADDR: u32 = 0x401f8050;
     const GPIO_SD_13_PAD_ADDR: u32 = 0x401f8100;
     pub type GPIO_SD_13 = crate::Pad<GPIO_SD_13_MUX_ADDR, GPIO_SD_13_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_13 {
+    impl crate::gpio::Pin<2> for GPIO_SD_13 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U13;
+        const OFFSET: u32 = 13;
     }
 
     const GPIO_SD_12_MUX_ADDR: u32 = 0x401f8054;
     const GPIO_SD_12_PAD_ADDR: u32 = 0x401f8104;
     pub type GPIO_SD_12 = crate::Pad<GPIO_SD_12_MUX_ADDR, GPIO_SD_12_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_12 {
+    impl crate::gpio::Pin<2> for GPIO_SD_12 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U12;
+        const OFFSET: u32 = 12;
     }
 
     const GPIO_SD_11_MUX_ADDR: u32 = 0x401f8058;
     const GPIO_SD_11_PAD_ADDR: u32 = 0x401f8108;
     pub type GPIO_SD_11 = crate::Pad<GPIO_SD_11_MUX_ADDR, GPIO_SD_11_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_11 {
+    impl crate::gpio::Pin<2> for GPIO_SD_11 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U11;
+        const OFFSET: u32 = 11;
     }
 
     const GPIO_SD_10_MUX_ADDR: u32 = 0x401f805c;
     const GPIO_SD_10_PAD_ADDR: u32 = 0x401f810c;
     pub type GPIO_SD_10 = crate::Pad<GPIO_SD_10_MUX_ADDR, GPIO_SD_10_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_10 {
+    impl crate::gpio::Pin<2> for GPIO_SD_10 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U10;
+        const OFFSET: u32 = 10;
     }
 
     const GPIO_SD_09_MUX_ADDR: u32 = 0x401f8060;
     const GPIO_SD_09_PAD_ADDR: u32 = 0x401f8110;
     pub type GPIO_SD_09 = crate::Pad<GPIO_SD_09_MUX_ADDR, GPIO_SD_09_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_09 {
+    impl crate::gpio::Pin<2> for GPIO_SD_09 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U9;
+        const OFFSET: u32 = 9;
     }
 
     const GPIO_SD_08_MUX_ADDR: u32 = 0x401f8064;
     const GPIO_SD_08_PAD_ADDR: u32 = 0x401f8114;
     pub type GPIO_SD_08 = crate::Pad<GPIO_SD_08_MUX_ADDR, GPIO_SD_08_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_08 {
+    impl crate::gpio::Pin<2> for GPIO_SD_08 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U8;
+        const OFFSET: u32 = 8;
     }
 
     const GPIO_SD_07_MUX_ADDR: u32 = 0x401f8068;
     const GPIO_SD_07_PAD_ADDR: u32 = 0x401f8118;
     pub type GPIO_SD_07 = crate::Pad<GPIO_SD_07_MUX_ADDR, GPIO_SD_07_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_07 {
+    impl crate::gpio::Pin<2> for GPIO_SD_07 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U7;
+        const OFFSET: u32 = 7;
     }
 
     const GPIO_SD_06_MUX_ADDR: u32 = 0x401f806c;
     const GPIO_SD_06_PAD_ADDR: u32 = 0x401f811c;
     pub type GPIO_SD_06 = crate::Pad<GPIO_SD_06_MUX_ADDR, GPIO_SD_06_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_06 {
+    impl crate::gpio::Pin<2> for GPIO_SD_06 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U6;
+        const OFFSET: u32 = 6;
     }
 
     const GPIO_SD_05_MUX_ADDR: u32 = 0x401f8070;
     const GPIO_SD_05_PAD_ADDR: u32 = 0x401f8120;
     pub type GPIO_SD_05 = crate::Pad<GPIO_SD_05_MUX_ADDR, GPIO_SD_05_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_05 {
+    impl crate::gpio::Pin<2> for GPIO_SD_05 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U5;
+        const OFFSET: u32 = 5;
     }
 
     const GPIO_SD_04_MUX_ADDR: u32 = 0x401f8074;
     const GPIO_SD_04_PAD_ADDR: u32 = 0x401f8124;
     pub type GPIO_SD_04 = crate::Pad<GPIO_SD_04_MUX_ADDR, GPIO_SD_04_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_04 {
+    impl crate::gpio::Pin<2> for GPIO_SD_04 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U4;
+        const OFFSET: u32 = 4;
     }
 
     const GPIO_SD_03_MUX_ADDR: u32 = 0x401f8078;
     const GPIO_SD_03_PAD_ADDR: u32 = 0x401f8128;
     pub type GPIO_SD_03 = crate::Pad<GPIO_SD_03_MUX_ADDR, GPIO_SD_03_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_03 {
+    impl crate::gpio::Pin<2> for GPIO_SD_03 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U3;
+        const OFFSET: u32 = 3;
     }
 
     const GPIO_SD_02_MUX_ADDR: u32 = 0x401f807c;
     const GPIO_SD_02_PAD_ADDR: u32 = 0x401f812c;
     pub type GPIO_SD_02 = crate::Pad<GPIO_SD_02_MUX_ADDR, GPIO_SD_02_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_02 {
+    impl crate::gpio::Pin<2> for GPIO_SD_02 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U2;
+        const OFFSET: u32 = 2;
     }
 
     const GPIO_SD_01_MUX_ADDR: u32 = 0x401f8080;
     const GPIO_SD_01_PAD_ADDR: u32 = 0x401f8130;
     pub type GPIO_SD_01 = crate::Pad<GPIO_SD_01_MUX_ADDR, GPIO_SD_01_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_01 {
+    impl crate::gpio::Pin<2> for GPIO_SD_01 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U1;
+        const OFFSET: u32 = 1;
     }
 
     const GPIO_SD_00_MUX_ADDR: u32 = 0x401f8084;
     const GPIO_SD_00_PAD_ADDR: u32 = 0x401f8134;
     pub type GPIO_SD_00 = crate::Pad<GPIO_SD_00_MUX_ADDR, GPIO_SD_00_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_SD_00 {
+    impl crate::gpio::Pin<2> for GPIO_SD_00 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U2;
-        type Offset = crate::consts::U0;
+        const OFFSET: u32 = 0;
     }
 
     /// All pads with prefix GPIO_SD.
@@ -471,140 +442,126 @@ pub mod gpio {
     const GPIO_13_PAD_ADDR: u32 = 0x401f8138;
     pub type GPIO_13 = crate::Pad<GPIO_13_MUX_ADDR, GPIO_13_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_13 {
+    impl crate::gpio::Pin<1> for GPIO_13 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U13;
+        const OFFSET: u32 = 13;
     }
 
     const GPIO_12_MUX_ADDR: u32 = 0x401f808c;
     const GPIO_12_PAD_ADDR: u32 = 0x401f813c;
     pub type GPIO_12 = crate::Pad<GPIO_12_MUX_ADDR, GPIO_12_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_12 {
+    impl crate::gpio::Pin<1> for GPIO_12 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U12;
+        const OFFSET: u32 = 12;
     }
 
     const GPIO_11_MUX_ADDR: u32 = 0x401f8090;
     const GPIO_11_PAD_ADDR: u32 = 0x401f8140;
     pub type GPIO_11 = crate::Pad<GPIO_11_MUX_ADDR, GPIO_11_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_11 {
+    impl crate::gpio::Pin<1> for GPIO_11 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U11;
+        const OFFSET: u32 = 11;
     }
 
     const GPIO_10_MUX_ADDR: u32 = 0x401f8094;
     const GPIO_10_PAD_ADDR: u32 = 0x401f8144;
     pub type GPIO_10 = crate::Pad<GPIO_10_MUX_ADDR, GPIO_10_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_10 {
+    impl crate::gpio::Pin<1> for GPIO_10 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U10;
+        const OFFSET: u32 = 10;
     }
 
     const GPIO_09_MUX_ADDR: u32 = 0x401f8098;
     const GPIO_09_PAD_ADDR: u32 = 0x401f8148;
     pub type GPIO_09 = crate::Pad<GPIO_09_MUX_ADDR, GPIO_09_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_09 {
+    impl crate::gpio::Pin<1> for GPIO_09 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U9;
+        const OFFSET: u32 = 9;
     }
 
     const GPIO_08_MUX_ADDR: u32 = 0x401f809c;
     const GPIO_08_PAD_ADDR: u32 = 0x401f814c;
     pub type GPIO_08 = crate::Pad<GPIO_08_MUX_ADDR, GPIO_08_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_08 {
+    impl crate::gpio::Pin<1> for GPIO_08 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U8;
+        const OFFSET: u32 = 8;
     }
 
     const GPIO_07_MUX_ADDR: u32 = 0x401f80a0;
     const GPIO_07_PAD_ADDR: u32 = 0x401f8150;
     pub type GPIO_07 = crate::Pad<GPIO_07_MUX_ADDR, GPIO_07_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_07 {
+    impl crate::gpio::Pin<1> for GPIO_07 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U7;
+        const OFFSET: u32 = 7;
     }
 
     const GPIO_06_MUX_ADDR: u32 = 0x401f80a4;
     const GPIO_06_PAD_ADDR: u32 = 0x401f8154;
     pub type GPIO_06 = crate::Pad<GPIO_06_MUX_ADDR, GPIO_06_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_06 {
+    impl crate::gpio::Pin<1> for GPIO_06 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U6;
+        const OFFSET: u32 = 6;
     }
 
     const GPIO_05_MUX_ADDR: u32 = 0x401f80a8;
     const GPIO_05_PAD_ADDR: u32 = 0x401f8158;
     pub type GPIO_05 = crate::Pad<GPIO_05_MUX_ADDR, GPIO_05_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_05 {
+    impl crate::gpio::Pin<1> for GPIO_05 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U5;
+        const OFFSET: u32 = 5;
     }
 
     const GPIO_04_MUX_ADDR: u32 = 0x401f80ac;
     const GPIO_04_PAD_ADDR: u32 = 0x401f815c;
     pub type GPIO_04 = crate::Pad<GPIO_04_MUX_ADDR, GPIO_04_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_04 {
+    impl crate::gpio::Pin<1> for GPIO_04 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U4;
+        const OFFSET: u32 = 4;
     }
 
     const GPIO_03_MUX_ADDR: u32 = 0x401f80b0;
     const GPIO_03_PAD_ADDR: u32 = 0x401f8160;
     pub type GPIO_03 = crate::Pad<GPIO_03_MUX_ADDR, GPIO_03_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_03 {
+    impl crate::gpio::Pin<1> for GPIO_03 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U3;
+        const OFFSET: u32 = 3;
     }
 
     const GPIO_02_MUX_ADDR: u32 = 0x401f80b4;
     const GPIO_02_PAD_ADDR: u32 = 0x401f8164;
     pub type GPIO_02 = crate::Pad<GPIO_02_MUX_ADDR, GPIO_02_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_02 {
+    impl crate::gpio::Pin<1> for GPIO_02 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U2;
+        const OFFSET: u32 = 2;
     }
 
     const GPIO_01_MUX_ADDR: u32 = 0x401f80b8;
     const GPIO_01_PAD_ADDR: u32 = 0x401f8168;
     pub type GPIO_01 = crate::Pad<GPIO_01_MUX_ADDR, GPIO_01_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_01 {
+    impl crate::gpio::Pin<1> for GPIO_01 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U1;
+        const OFFSET: u32 = 1;
     }
 
     const GPIO_00_MUX_ADDR: u32 = 0x401f80bc;
     const GPIO_00_PAD_ADDR: u32 = 0x401f816c;
     pub type GPIO_00 = crate::Pad<GPIO_00_MUX_ADDR, GPIO_00_PAD_ADDR>;
 
-    impl crate::gpio::Pin for GPIO_00 {
+    impl crate::gpio::Pin<1> for GPIO_00 {
         const ALT: u32 = 5;
-        type Module = crate::consts::U1;
-        type Offset = crate::consts::U0;
+        const OFFSET: u32 = 0;
     }
 
     /// All pads with prefix GPIO.
@@ -691,6 +648,7 @@ pub struct Pads {
     pub gpio_sd: gpio_sd::Pads,
     pub gpio: gpio::Pads,
 }
+
 impl Pads {
     /// Take all pads from this group
     ///
@@ -724,6 +682,7 @@ impl Pads {
         }
     }
 }
+
 /// All erased pads.
 pub struct ErasedPads {
     pub gpio_ad: gpio_ad::ErasedPads,
