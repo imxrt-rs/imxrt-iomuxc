@@ -4,6 +4,7 @@ mod pads;
 pub use pads::*;
 
 mod flexpwm;
+mod lpi2c;
 mod lpspi;
 mod lpuart;
 
