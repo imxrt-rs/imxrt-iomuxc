@@ -105,6 +105,22 @@ mod daisy {
         Daisy::new(0x400e8618 as *mut u32, 0);
     pub const DAISY_LPSPI4_LPSPI_SDO_SELECT_GPIO_DISP_B2_14: Daisy =
         Daisy::new(0x400e8618 as *mut u32, 1);
+    pub const DAISY_LPSPI5_IPP_IND_LPSPI_PCS_0_SELECT_GPIO_LPSR_03: Daisy =
+        Daisy::new(0x40c08094 as *mut u32, 0);
+    pub const DAISY_LPSPI5_IPP_IND_LPSPI_PCS_0_SELECT_GPIO_LPSR_13: Daisy =
+        Daisy::new(0x40c08094 as *mut u32, 1);
+    pub const DAISY_LPSPI5_IPP_IND_LPSPI_SCK_SELECT_GPIO_LPSR_02: Daisy =
+        Daisy::new(0x40c08098 as *mut u32, 0);
+    pub const DAISY_LPSPI5_IPP_IND_LPSPI_SCK_SELECT_GPIO_LPSR_12: Daisy =
+        Daisy::new(0x40c08098 as *mut u32, 1);
+    pub const DAISY_LPSPI5_IPP_IND_LPSPI_SDI_SELECT_GPIO_LPSR_05: Daisy =
+        Daisy::new(0x40c0809c as *mut u32, 0);
+    pub const DAISY_LPSPI5_IPP_IND_LPSPI_SDI_SELECT_GPIO_LPSR_15: Daisy =
+        Daisy::new(0x40c0809c as *mut u32, 1);
+    pub const DAISY_LPSPI5_IPP_IND_LPSPI_SDO_SELECT_GPIO_LPSR_04: Daisy =
+        Daisy::new(0x40c080a0 as *mut u32, 0);
+    pub const DAISY_LPSPI5_IPP_IND_LPSPI_SDO_SELECT_GPIO_LPSR_14: Daisy =
+        Daisy::new(0x40c080a0 as *mut u32, 1);
 }
 
 use daisy::*;
