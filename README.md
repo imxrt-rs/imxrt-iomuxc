@@ -1,135 +1,167 @@
 # imxrt-iomuxc
 
-i.MX RT pad definitions and pin configuration.
+i.MX RT pad definitions and pin configuration. Use this library to
 
-## Goals
+- configure a pad for a peripheral, and specify its electrical properties.
+- manage pad objects as ownable resources.
+- statically constrain pads to work with peripherals.
 
-- Lay the foundation for split i.MX RT hardware abstraction layers (HALs). The approach
-  de-couples one of the most chip-specific implementations -- the chip's pads -- from common
-  driver code.
-- Provide a better interface for pad configuration, as described in
-  [this issue](https://github.com/imxrt-rs/imxrt-rs/issues/26).
-- Define a common interface for pad configuration that can be used by HAL drivers,
-  and also by advanced drivers maintained outside of the HAL.
+`imxrt-iomuxc` targets the latest stable Rust compiler.
 
-## Structure
+## Getting started
 
-- `imxrt-iomuxc` defines a set of traits that are implemented
-  on pads. The traits specify that a pad may be used for a certain function,
-  such as a UART transfer pin or an I2C clock pin. The root crate also provides
-  common functions to configure pads. `imxrt-iomuxc` is used in crates that need
-  to treat pads as resources. Without any feature flags, the `imxrt-iomuxc` provides
-  the general pin configuration interface. There are no processor-specific APIs in
-  the default build.
-- `imxrt-iomuxc` feature flags, like `imxrt1060`, enable processor-specific pad
-  definitions and pin implementations.
-- `imxrt-iomuxc-build` provides **build-time** support for defining pads. It's
-  used to simply generate all of the pads. It also implements simple, common
-  functionality across pads, like GPIO pin traits.
+If you're already using [`imxrt-hal`](https://github.com/imxrt-rs/imxrt-hal) as
+you're hardware abstraction layer, there's nothing more to do. `imxrt-hal`
+re-exports this API and ensures compatibility with your i.MX RT processor. See
+the `imxrt-hal` documentation for more information on acquiring pads and
+instantiating drivers.
 
-## Users
+If you're defining a new i.MX RT hardware driver, consider using `imxrt-iomuxc`
+to constrain the pads that are compatible with your driver. Depend on the latest
+`imxrt-iomuxc` package, and do not enable any package features. Then, implement
+your APIs with the various `imxrt-iomuxc` pin traits. See the `imxrt-iomuxc` API
+documentation for examples. For even more examples, study the `imxrt-hal`
+package.
 
-i.MX RT HAL designers, or advanced driver designers, want to treat pads as resources.
-They want to create strongly-typed, infallible interfaces that ensure a pad supports
-a capability. These users depend on the traits defined by `imxrt-iomuxc` to create
-their driver interfaces. These drivers will accept pads across all i.MX RT chip variants.
-These designers *do not* enable any `imxrt-iomuxc` feature flags.
+If you're defining a board support package, consider using `imxrt-iomuxc` to
+rename the pads that are supported by your board. Depend on the latest
+`imxrt-iomuxc` package, and enable the feature for your i.MX RT processor. Then,
+expose type aliases and / or objects that rename i.MX RT processor pads
+according to your board. If you're looking for an example of this pattern,
+consult the [`teensy4-pins`](https://docs.rs/teensy4-pins) package.
 
-When users are ready to run their code on hardware, they enable a feature in the
-`imxrt-iomuxc` crate that describes their i.MX RT variant. Users who want to generalize
-their code for different i.MX RT variants enable more feature flags.
+## Supported chip
 
-## Comparison to Variant-Specific IOMUXC Crates
+The table below shows the chips and their corresponding crate feature. Note that
+chips are denoted by reference manuals and may support different variants. For
+instance, the 1060 feature supports 1061 and 1062 chip variants.
 
-A previous approach separated the `imxrt-iomuxc` interface and implementations
-across crates. Rather than having an `imxrt1060` feature in a single `imxrt-iomuxc`
-crate, we had separate crates, named like `imxrt1060-iomuxc`, that implemented the
-`imxrt-iomuxc` interfaces. We decided to use feature flags after realizing it was
-not only easier to maintain, but also equivalent to the multi-crate approach. This
-section compares the maintenance and equivalence of the two approaches.
+| Chip | Feature       |
+|------|---------------|
+| 1010 | `"imxrt1010"` |
+| 1060 | `"imxrt1060"` |
+| 1170 | `"imxrt1170"` |
 
-### Easier to maintain
+Read on if you're interested in adding support for another i.MX RT
+microcontroller, or if you want to expand existing support.
 
-A single crate with feature flags is easier to maintain than an interface crate with
-separate implementation crates:
+## Contributing
 
-- The interface crate does not need to support "public but internal" APIs. We signaled
-  these APIs behind `#[doc(hidden)]` attributes on public types. When using features,
-  these APIs are truly private. The approach reduces the documentation burden, since
-  we do not need to identify which APIs are truly public, and which APIs are internal.
-- It's easier to release and version a single crate than multiple crates. We don't need
-  to plan an approach for releasing separate interface and implementation crates. Users
-  do not need to be concerned with our versioning and release strategy.
-- It's easier to document and study. We may generate documentation for the interface
-  and all implementations simply using `cargo doc --all-features`. It's easier to link
-  documentation across the implementations and the interface.
+We appreciate your contributions. After discussing the development basics, this
+section describes how you can
 
-### Equivalence
+- add support for new i.MX RT chips.
+- implement pin traits on pads.
+- define new pin traits for peripherals.
 
-A single crate with feature flags is equivalent to an interface crate and separate
-implementation crates. Consider a user who wants to use the IOMUXC pin configuration
-interfaces. That user would depend on `imxrt-iomuxc`, regardless of the approach.
+Generally, open an issue if you're interested in any type of contribution, or if
+you find a defect.
 
-Now, consider a user who wants to use their code on an i.MX RT 1060 processor variant.
-Under the old approach, that user would include the `imxrt1060-iomuxc` crate, which
-includes the `imxrt-iomuxc` crate:
+### Development basics
 
-```toml
-[dependencies]
-imxrt1060-iomuxc = "0.1"
-# imxrt-iomuxc = "0.1" - implicit dependency
-```
+Build the package with `cargo`. The first command only builds the pin traits and
+configuration API; it does not include any chip support. The second command
+includes 1060 pad definitions and pin implementations. The third command
+includes all supported pad definitions and pin implementations for an ARM
+target.
 
-When using feature flags, the user enables the `imxrt1060` feature:
+    cargo build
+    cargo build --features=imxrt1060
+    cargo build --all-features --target=thumbv7em-none-eabihf
 
-```toml
-[dependencies]
-imxrt-iomuxc = { version = "0.1", features = ["imxrt1060"] }
-```
+All code must build for your host and for an embedded target. Notice how a
+target like `thumbv7em-none-eabihf` is optional.
 
-Both approaches result in the same changes to the dependency graph: the graph now includes code
-for i.MX RT 1060 processor pads.
+Run tests with
 
-Since features are additive,  users who want to support more processors enable more feature flags.
-This would have translated to the user explicitly including more crates:
+    cargo test --all-features
 
-```toml
-[dependencies]
-imxrt-iomuxc = { version = "0.1", features = ["imxrt102x", "imxrt1060"] }
+In particular, documementation tests may that the crate is built with the 1060
+feature. Please follow this precedent when adding documentation examples.
 
-# Equivalent:
+Generate documentation with `cargo doc`. You can optionally enable (all) chip
+features.
 
-[dependencies]
-imxrt102x-iomuxc = "0.1"
-imxrt1060-iomuxc = "0.1"
-# imxrt-iomuxc = "0.1" - implicit dependency
-```
+    cargo doc
+    cargo doc --features=imxrt1060
+    cargo doc --all-features
 
-Depending on the release strategy, the user would need to maintain the version for all
-implementation crates. The feature-flag approach requires a single version, which may
-make it easier for the user.
+If you're interested in generating the docs.rs documentation, use a nightly
+toolchain, and supply the `docsrs` configuration. This will include the
+documentation tags that highlight build configurations.
 
-### Discussion
+    cargo +nightly rustdoc --all-features -- --cfg=docsrs
 
-Since the approaches are equivalent, the change has no effect on a split i.MX RT HAL. An
-`imxrt-hal[-common]` crate would depend on the `imxrt-iomuxc` crate without feature flags.
-Then, a processor-specific HAL would depend on `imxrt-iomuxc` with the appropriate feature
-flag. We achieve the goals of a split HAL, as users are unconcerned with feature flags.
+### Adding support for new chips
 
-We realize that this approach perpetuates the need for feature flags. However,
-the `imxrt-iomuxc` crate is a much lower-level interface than the HAL crates; it's equivalent
-to a RAL crate or PAC. The `imxrt-iomuxc` crate is intended for HAL developers, not HAL users.
-HAL developers cannot escape feature flags, since using RALs and PACs already necessitates feature
-flags. By adopting a single `imxrt-iomuxc` crate with feature flags, HAL developers continue to use
-feature flags to support the i.MX RT variants.
+Use the [`iomuxc.py` script](./iomuxc.py) to generate all pads for a new i.MX RT
+chip. The script extracts pad definitions from a system view description (SVD)
+file. Consider using the SVDs maintained in [the `imxrt-ral`
+repository](https://github.com/imxrt-rs/imxrt-ral).
+
+Once you have an SVD and can generate the pads module, integrate the pads module
+into the package. Use the existing 1010, 1060, and 1170 support as your guide.
+As of now, the process roughly follows
+
+1.  Conditionally include the module in `lib.rs`.
+2.  Create a new directory for your chip, and add a `mod.rs` file. Include and
+    re-export your script-generated pads module.
+3.  Add a `Cargo.toml` feature for your chip.
+
+By the end of this process, you have definitions for your i.MX RT chip's pads.
+You should also have GPIO pin implementations. However, you do not have pin
+implementations for other peripherals. Read on to learn about that contribution
+process.
+
+### Extending pin implementations for existing pads
+
+This section assumes that a pin trait exists for your peripheral. If this
+doesn't exist, read the next section for guidance.
+
+When you implement a pin trait for a processor pad, you signal to users that
+this pad supports a particular peripheral function. As of this writing, **we
+write these implementations by hand** using the reference manual (RM) or SVD as
+a source of truth. The general [imxrt-rs project
+documentation](https://imxrt-rs.github.io) has tips for obtaining a RM. Once you
+have an RM, the table in the "External Signals and Pin Multiplexing" chapter
+should reveal the pads that support peripheral functions.
+
+To extend pin implementations, either append to the existing pin module for your
+chip, or create a new pin module for your chip. If your pin implementation
+requires daisy registers, consider using [the `daisy.py` script](./daisy.py) to
+extract them from a SVD file. (If you don't have SVD files, see the previous
+section.) Again, use the existing 1010, 1060, and 1170 support as your guide.
+
+We welcome any contribution to automate this process. See [the tracking
+issue](https://github.com/imxrt-rs/imxrt-iomuxc/issues/14) for more information.
+
+### Define new pin traits
+
+When you define a new pin trait, you specify all of the information needed for a
+pad to be configured for a particular peripheral function. For example, an
+LPUART pin trait needs to be concerned with specifing
+
+- the peripheral instance (LPUART1 or LPUART2?).
+- the function (transmit, receive?).
+- the alternate value for muxing.
+- any required electrical settings (no pulls, slow slew, etc.).
+
+The trait describes these parameters, and functions designed to those traits
+prepare the pads for the chosen configuration.
+
+The trait complexity may vary depending on the peripheral. If you're not sure
+what a trait might look like, start by studying the pad multiplexing options,
+then translate that into a trait. Consult the existing pin traits for different
+design techniques.
 
 ## License
 
 Licensed under either of
 
 - Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or
-  http://www.apache.org/licenses/LICENSE-2.0)
-- MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+  <http://www.apache.org/licenses/LICENSE-2.0>)
+- MIT license ([LICENSE-MIT](LICENSE-MIT) or
+  <http://opensource.org/licenses/MIT>)
 
 at your option.
 

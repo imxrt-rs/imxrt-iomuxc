@@ -1,23 +1,115 @@
-//! An interface for defining and configuring i.MX RT pads
+//! `imxrt-iomuxc` is a library for configuring i.MX RT processor pads. Using its API, you can
 //!
-//! `imxrt-iomuxc` provides traits for defining and configuring i.MX RT
-//! processor pads. A 'pad' is the physical input / output on an i.MX RT processor.
+//! - configure a pad for a peripheral, and specify its electrical properties.
+//! - manage pad objects as ownable resources.
+//! - statically constrain pads to work with peripherals.
+//!
+//! As an end user, you're expected to use `imxrt-iomuxc` through a hardware abstraction layer
+//! (HAL) or board support package (BSP). Specifically, you should have access to pad structs and
+//! objects, and you should be able to configure pads with the [`configure`] APIs.
+//!
+//! As a library developer who writes HALs or hardware drivers, you may use the `imxrt-iomuxc`
+//! pin traits in your APIs to statically ensure pad-peripheral compatibility. See the design
+//! guidance for examples on how to achieve this.
+//!
+//! # Definitions
+//!
+//! A 'pad' is the physical input / output on an i.MX RT processor.
 //! Pads may be configured for various functions. A pad may act as a UART pin, an I2C
 //! pin, or other types of pins. A 'pin' is a pad that's configured for a functional
 //! purpose. The traits let us say which pad can be used for which peripheral pin.
 //!
-//! Developers who write hardware abstraction layers (HALs) for i.MX RT processors may
-//! use the `imxrt-iomuxc` traits in their APIs. HAL implementers may also expose all
-//! the processor's pads for HAL users. The approach lets users treat pads as resources
-//! which will be consumed and used by processor peripherals.
+//! # Features
 //!
-//! Processor pads may be enabled using feature flags. For example, the `imxrt1060` feature
-//! flag exposes an `imxrt1060` module that defines all i.MX RT 1060 processor pads.
+//! Processor pads, and their pin implementations, are enabled with optional feature flags. For
+//! example, the `imxrt1060` feature flag exposes an `imxrt1060` module that defines all i.MX
+//! RT 1060 processor pads. Users and integrators are responsible for making sure an enabled
+//! feature makes sense for their system.
 //!
 //! # Design Guidance
 //!
 //! For recommendations on how you can use these traits, see the module-level documentation. The
 //! rest of this section describes general guidance for designing APIs with these traits.
+//!
+//! ## Matching pads and peripherals
+//!
+//! The pin traits allow you to restrict the pads and peripherals that comprise a peripheral. This
+//! lets you catch invalid peripheral configurations at compile time.
+//!
+//! In the example below, we implement a hypothetical `lpuart_new` function, which is responsible
+//! for preparing a LPUART peripheral. To properly configure the peripheral, we need the two
+//! pads that represent a peripheral's TX and RX pins. The implementation will use the
+//! `imxrt_iomuxc::lpuart::prepare()` function to prepare the pins.
+//!
+//! Note the trait bounds on `lpuart_new`. The usage requires that
+//!
+//! - the user provides one TX and one RX pin
+//! - the modules for each pin match
+//!
+//! ```no_run
+//! use imxrt_iomuxc as iomuxc;
+//! use iomuxc::lpuart::{Pin, Tx, Rx};
+//!
+//! # struct Lpuart<const N: u8>;
+//! /// Creates a UART peripheral from the TX and RX pads
+//! fn lpuart_new<T, R, const N: u8>(mut tx: T, mut rx: R) -> Lpuart<N>
+//! where
+//!     T: Pin<Direction = Tx, Module = iomuxc::consts::Const<N>>,
+//!     R: Pin<Direction = Rx, Module = <T as Pin>::Module>,
+//! {
+//!     iomuxc::lpuart::prepare(&mut tx);
+//!     iomuxc::lpuart::prepare(&mut rx);
+//!     // Prepare the rest of the peripheral, and return it...
+//!     # Lpuart
+//! }
+//!
+//! # let gpio_ad_b0_13 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_13::new() };
+//! # let gpio_ad_b0_12 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_12::new() };
+//! // GPIO_AD_B0_13 and GPIO_AD_B0_12 are a suitable pair of UART pins
+//! lpuart_new(gpio_ad_b0_12, gpio_ad_b0_13);
+//! ```
+//!
+//! Specifically, the trait bounds guard against non-UART pins:
+//!
+//! ```compile_fail
+//! # use imxrt_iomuxc as iomuxc;
+//! # use iomuxc::lpuart::{Pin, Tx, Rx};
+//! # struct Lpuart<const N: u8>;
+//! # fn lpuart_new<T, R, const N: u8>(mut tx: T, mut rx: R) -> Lpuart<N>
+//! # where
+//! #     T: Pin<Direction = Tx, Module = iomuxc::consts::Const<N>>,
+//! #     R: Pin<Direction = Rx, Module = <T as Pin>::Module>,
+//! # {
+//! #     iomuxc::lpuart::prepare(&mut tx);
+//! #     iomuxc::lpuart::prepare(&mut rx);
+//! #     Lpuart
+//! # }
+//! # let gpio_ad_b0_10 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_10::new() };
+//! # let gpio_ad_b0_11 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_11::new() };
+//! // Neither pad is a valid UART pin
+//! lpuart_new(gpio_ad_b0_10, gpio_ad_b0_11);
+//! ```
+//!
+//! It also guards against mismatched UART pins:
+//!
+//! ```compile_fail
+//! # use imxrt_iomuxc as iomuxc;
+//! # use iomuxc::lpuart::{Pin, Tx, Rx};
+//! # struct Lpuart<const N: u8>;
+//! # fn lpuart_new<T, R, const N: u8>(mut tx: T, mut rx: R) -> Lpuart<N>
+//! # where
+//! #     T: Pin<Direction = Tx, Module = iomuxc::consts::Const<N>>,
+//! #     R: Pin<Direction = Rx, Module = <T as Pin>::Module>,
+//! # {
+//! #     iomuxc::lpuart::prepare(&mut tx);
+//! #     iomuxc::lpuart::prepare(&mut rx);
+//! #     Lpuart
+//! # }
+//! # let gpio_ad_b0_13 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b0::GPIO_AD_B0_13::new() };
+//! # let gpio_ad_b1_02 = unsafe { imxrt_iomuxc::imxrt1060::gpio_ad_b1::GPIO_AD_B1_02::new() };
+//! // GPIO_AD_B1_02 is a UART2 TX pin, but GPIO_AD_B0_13 is a UART1 RX pin
+//! lpuart_new(gpio_ad_b1_02, gpio_ad_b0_13);
+//! ```
 //!
 //! ## Type-Erased Pads
 //!
@@ -27,34 +119,34 @@
 //! The API will expect that the user is responsible for manually configuring the type-erased pad.
 //!
 //! ```no_run
-//! use imxrt_iomuxc::{ErasedPad, lpuart::{Pin, Tx, Rx}};
+//! use imxrt_iomuxc::{self as iomuxc, ErasedPad, lpuart::{Pin, Tx, Rx}};
 //! # use imxrt_iomuxc::imxrt1060::gpio_ad_b0::{GPIO_AD_B0_13, GPIO_AD_B0_12};
-//! # pub struct UART;
+//! # pub struct Lpuart<const N: u8>;
 //!
-//! impl UART {
-//!     pub fn new<T, R>(mut tx: T, mut rx: R, /* ... */) -> UART
+//! impl<const N: u8> Lpuart<N> {
+//!     pub fn new<T, R>(mut tx: T, mut rx: R, /* ... */) -> Self
 //!     where
-//!         T: Pin<Direction = Tx>,
+//!         T: Pin<Direction = Tx, Module = iomuxc::consts::Const<N>>,
 //!         R: Pin<Direction = Rx, Module = <T as Pin>::Module>,
 //!     {
 //!         imxrt_iomuxc::lpuart::prepare(&mut tx);
 //!         imxrt_iomuxc::lpuart::prepare(&mut rx);
 //!         // ...
-//!         # UART
+//!         # Lpuart
 //!     }
 //!
-//!     pub fn new_unchecked(tx: ErasedPad, rx: ErasedPad, /* ... */) -> UART {
+//!     pub fn with_erased_pads(tx: ErasedPad, rx: ErasedPad, /* ... */) -> Self {
 //!         // ...
-//!         # UART
+//!         # Lpuart
 //!     }
 //! }
 //!
-//! // Preferred: create a UART peripheral with strongly-typed pads...
+//! // Preferred: create a LPUART peripheral with strongly-typed pads...
 //! let gpio_ad_b0_13 = unsafe { GPIO_AD_B0_13::new() };
 //! let gpio_ad_b0_12 = unsafe { GPIO_AD_B0_12::new() };
-//! let uart1 = UART::new(gpio_ad_b0_12, gpio_ad_b0_13);
+//! let uart1 = Lpuart::<1>::new(gpio_ad_b0_12, gpio_ad_b0_13);
 //!
-//! // Optional: create a UART peripheral from type-erased pads...
+//! // Optional: create a LPUART peripheral from type-erased pads...
 //! let gpio_ad_b0_13 = unsafe { GPIO_AD_B0_13::new() };
 //! let gpio_ad_b0_12 = unsafe { GPIO_AD_B0_12::new() };
 //!
@@ -74,8 +166,8 @@
 //! imxrt_iomuxc::alternate(&mut rx_pad, 2);
 //! imxrt_iomuxc::clear_sion(&mut tx_pad);
 //! imxrt_iomuxc::clear_sion(&mut rx_pad);
-//! // Pads are configured for UART settings
-//! let uart1 = UART::new_unchecked(tx_pad, rx_pad);
+//! // Pads are configured for LPUART settings
+//! let uart1 = Lpuart::<1>::with_erased_pads(tx_pad, rx_pad);
 //! ```
 
 #![no_std]
@@ -134,10 +226,15 @@ pub mod prelude {
     };
 }
 
-/// Type-level constants and traits
+/// Type-level constants and traits.
 pub mod consts {
+    /// A type-level constant.
+    ///
+    /// You can pattern match these in trait constraints. See the package documentation for
+    /// examples.
     #[derive(Debug)]
     pub enum Const<const N: u8> {}
+    #[doc(hidden)]
     pub trait Unsigned {
         const USIZE: usize;
         fn to_usize() -> usize {
