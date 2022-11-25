@@ -173,6 +173,10 @@ pub mod imxrt1010;
 #[cfg_attr(docsrs, doc(cfg(feature = "imxrt1060")))]
 pub mod imxrt1060;
 
+#[cfg(feature = "imxrt1170")]
+#[cfg_attr(docsrs, doc(cfg(feature = "imxrt1170")))]
+pub mod imxrt1170;
+
 /// An IOMUXC-capable pad which can support I/O multiplexing
 ///
 /// # Safety
@@ -485,19 +489,52 @@ impl Daisy {
 /// GPIO pad configuration
 pub mod gpio {
     /// A GPIO pin
-    pub trait Pin: super::Iomuxc {
+    ///
+    /// The constant `N` is the associated GPIO module
+    /// (a `3` for `GPIO3`).
+    pub trait Pin<const N: u8>: super::Iomuxc {
         /// The alternate value for this pad
         const ALT: u32;
-        /// The GPIO module; `U5` for `GPIO5`
-        type Module: super::consts::Unsigned;
         /// The offset; `U13` for `GPIO5_IO13`
-        type Offset: super::consts::Unsigned;
+        const OFFSET: u32;
     }
 
     /// Prepare a pad to be used as a GPIO pin
+    pub fn prepare<P: Pin<N>, const N: u8>(pin: &mut P) {
+        super::alternate(pin, P::ALT);
+    }
+}
+
+/// CCM pad configuration.
+pub mod ccm {
+    /// A CCM pin.
+    ///
+    /// These can be used for observing clock outputs, or for generating
+    /// outputs for your PMIC.
+    pub trait Pin: super::Iomuxc {
+        /// The alternate value for this pad.
+        const ALT: u32;
+        /// The pin function.
+        type Function: Function;
+    }
+
+    /// Prepare a pad to be used as a CCM pin.
     pub fn prepare<P: Pin>(pin: &mut P) {
         super::alternate(pin, P::ALT);
     }
+
+    mod private {
+        pub trait Sealed {}
+    }
+    /// A CCM pin function.
+    pub trait Function: private::Sealed {}
+
+    /// Observability output.
+    pub enum Observable<const N: u8> {}
+    impl private::Sealed for Observable<1> {}
+    impl private::Sealed for Observable<2> {}
+    impl Function for Observable<1> {}
+    impl Function for Observable<2> {}
 }
 
 #[cfg(test)]

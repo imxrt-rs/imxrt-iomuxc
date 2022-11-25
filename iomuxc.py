@@ -33,10 +33,23 @@ ERASE_DOCSTRING = """
 ///
 /// See `ErasedPads` for more information."""
 
-def iomuxc(path):
-    tree = ET.parse(path)
-    root = tree.getroot()
-    iomuxc = root.find("./peripherals/peripheral[name='IOMUXC']")
+
+class GpioImpl:
+    """A pad's GPIO implementation."""
+
+    __slots__ = [
+        "alt",
+        "module",
+        "offset",
+    ]
+
+    def __init__(self, alt, module, offset):
+        self.alt = alt
+        self.module = module
+        self.offset = offset
+
+
+def extract_pads(iomuxc):
     base_address = int(iomuxc.find("./baseAddress").text, 16)
 
     # Collect MUX and PAD absolute register addresses.
@@ -69,13 +82,21 @@ def iomuxc(path):
                     [gpio_offset] = re.findall("\d+", gpio_text)
                     gpio_module = 1
                     gpio_offset = int(gpio_offset)
+                # But wait! The 1176 SVD has a third form, "GPIO_MUXx_IOyz",
+                # which is mixed with the first form...
+                elif gpio_match := re.search("GPIO_MUX\d_IO\d", desc):
+                    gpio_text = gpio_match.group(0)
+                    [gpio_module, gpio_offset] = re.findall("\d+", gpio_text)
+                    gpio_module = int(gpio_module)
+                    gpio_offset = int(gpio_offset)
                 else:
                     # There's no (expected) GPIO alt. This path is handled
                     # later during code generation.
                     continue
-                pads[name]["GPIO_ALT"] = alt_value = int(alt.find("./value").text, 16)
-                pads[name]["GPIO_MODULE"] = gpio_module
-                pads[name]["GPIO_OFFSET"] = gpio_offset
+                alt_value = int(alt.find("./value").text, 16)
+                gpio_impls = pads[name].get("GPIO", [])
+                gpio_impls.append(GpioImpl(alt_value, gpio_module, gpio_offset))
+                pads[name]["GPIO"] = gpio_impls
 
         elif "SW_PAD_CTL_PAD_" in name:
             name = name.replace("SW_PAD_CTL_PAD_", "")
@@ -84,12 +105,25 @@ def iomuxc(path):
 
     # Sanity check.
     for name, registers in pads.items():
-        assert("PAD" in registers and "MUX" in registers)
+        assert "PAD" in registers and "MUX" in registers
+
+    return pads
+
+
+def iomuxc(path):
+    tree = ET.parse(path)
+    root = tree.getroot()
+    iomuxc = root.find("./peripherals/peripheral[name='IOMUXC']")
+    iomuxc_lpsr = root.find("./peripherals/peripheral[name='IOMUXC_LPSR']")
+
+    pads = extract_pads(iomuxc)
+    if iomuxc_lpsr:
+        pads |= extract_pads(iomuxc_lpsr)
 
     # Create pad groups.
     groups = defaultdict(list)
     for name in pads.keys():
-        group = name[:-len("_01")]
+        group = name[: -len("_01")]
         groups[group].append(name)
 
     # Generate Rust modules
@@ -115,22 +149,21 @@ def iomuxc(path):
             print(f"pub type {pad_name} = crate::Pad<{mux_reg_name}, {pad_reg_name}>;")
 
             # impl gpio::Pin
-            if "GPIO_ALT" in registers:
+            for gpio_impl in registers.get("GPIO", []):
                 print()
-                print(f"impl crate::gpio::Pin for {pad_name} {{")
-                print(f"const ALT: u32 = {registers['GPIO_ALT']};")
-                print(f"type Module = crate::consts::U{registers['GPIO_MODULE']};")
-                print(f"type Offset = crate::consts::U{registers['GPIO_OFFSET']};")
+                print(f"impl crate::gpio::Pin<{gpio_impl.module}> for {pad_name} {{")
+                print(f"const ALT: u32 = {gpio_impl.alt};")
+                print(f"const OFFSET: u32 = {gpio_impl.offset};")
                 print("}")
-            else:
-                print(f"// {pad_name} does not have a GPIO alternate.")
+            if registers.get("GPIO") is None:
+                print(f"// {pad_name} does not have any GPIO alternates.")
             print()
 
         # Pads struct
         print(f"/// All pads with prefix {group}.")
         print("pub struct Pads {")
         for pad_name in pad_names:
-            pad_number = pad_name[-len("01"):]
+            pad_number = pad_name[-len("01") :]
             print(f"pub p{pad_number}: {pad_name},")
         print("}")
 
@@ -146,14 +179,14 @@ def iomuxc(path):
         print(NEW_DOCSTRING)
         print("#[inline] pub const unsafe fn new() -> Self { Self {")
         for pad_name in pad_names:
-            pad_number = pad_name[-len("01"):]
+            pad_number = pad_name[-len("01") :]
             print(f"p{pad_number}: {pad_name}::new(),")
         print("} }")
 
         print(ERASE_DOCSTRING)
         print("#[inline] pub const fn erase(self) -> ErasedPads { [")
         for pad_name in sorted(pad_names):
-            pad_number = pad_name[-len("01"):]
+            pad_number = pad_name[-len("01") :]
             print(f"self.p{pad_number}.erase(),")
         print("] }")
         print("}")
@@ -167,6 +200,7 @@ def iomuxc(path):
     for group in groups.keys():
         print(f"pub {group.lower()}: {group.lower()}::Pads,")
     print("}")
+    print()
 
     print("impl Pads {")
     print(NEW_DOCSTRING)
@@ -180,6 +214,7 @@ def iomuxc(path):
         print(f"{group.lower()}: self.{group.lower()}.erase(),")
     print("} }")
     print("}")
+    print()
 
     # Generate top-level ErasedPads struct
     print("/// All erased pads.")
@@ -187,6 +222,7 @@ def iomuxc(path):
     for group in groups.keys():
         print(f"pub {group.lower()}: {group.lower()}::ErasedPads,")
     print("}")
+
 
 if __name__ == "__main__":
     iomuxc(sys.argv[1])

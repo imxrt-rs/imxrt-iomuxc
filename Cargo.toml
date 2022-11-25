@@ -13,6 +13,7 @@ keywords = ["imxrt", "nxp", "embedded", "no_std"]
 categories = ["embedded", "no-std"]
 
 [features]
+imxrt1170 = []
 imxrt1060 = []
 imxrt1010 = []
 

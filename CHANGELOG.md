@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 - **BREAKING** Remove typenum dependency, and use const generics. Requires
   at least Rust 1.51.
 
+- **BREAKING** the GPIO `Pin` trait is now generic over the GPIO module.
+  A const generic replaces the associated type `Module`.
+
 - **BREAKING** rename feature flags and module: `"imxrt106x" => "imxrt1060"`
 
   For rational on this change, see
@@ -25,8 +28,10 @@ All notable changes to this project will be documented in this file.
   - etc.
 
 - **BREAKING** in the ADC module, we remove the `ADC` trait. Users should
-  replace usages of `adc::ADC` with `consts::Unsigned`. The `Adc1` and `Adc2`
-  types are now aliases for `U1` and `U2`.
+  replace usages of `adc::ADC` with constants that indicate ADC1, ADC2, etc.
+
+  `gpio::Pin` is no longer a trait bound for the `adc::Pin` trait. Users who
+  relied on this guarantee should explicitly require the bound.
 
   `adc::Pin::INPUT` is now an associated `u32` constant, not a type. Cast the
   `u32` as needed for your implementation. See the before and after below for
@@ -60,6 +65,18 @@ All notable changes to this project will be documented in this file.
 
 - Add uSDHC pin traits.
 - Add select uSDHC pins for the i.MX RT 1060.
+
+- Basic i.MX RT 1170 support with the `"imxrt1170"` feature. Includes minimal
+  pad implementations for
+
+  - LPI2C
+  - LPSPI
+  - LPUART
+  - FlexPWM
+
+  that are sufficient for evaluating the 1170EVK.
+
+- Add CCM clock output pin trait with 1010, 1170 implementations.
 
 ## [0.1.5] - 2022-01-01
 

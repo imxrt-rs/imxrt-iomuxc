@@ -13,10 +13,7 @@ Copy and paste the constants into a Rust module.
 import xml.etree.ElementTree as ET
 
 
-def daisy_constant(path):
-    tree = ET.parse(path)
-    root = tree.getroot()
-    iomuxc = root.find("./peripherals/peripheral[name='IOMUXC']")
+def daisy_constant(iomuxc):
     base_address = int(iomuxc.find("./baseAddress").text, 16)
 
     for register in iomuxc.findall("./registers/register"):
@@ -35,7 +32,18 @@ def daisy_constant(path):
                     print(constant)
 
 
+def search_iomuxces(path):
+    tree = ET.parse(path)
+    root = tree.getroot()
+    iomuxc = root.find("./peripherals/peripheral[name='IOMUXC']")
+    iomuxc_lpsr = root.find("./peripherals/peripheral[name='IOMUXC_LPSR']")
+
+    if iomuxc:
+        daisy_constant(iomuxc)
+    if iomuxc_lpsr:
+        daisy_constant(iomuxc_lpsr)
+
 if __name__ == "__main__":
     import sys
 
-    daisy_constant(sys.argv[1])
+    search_iomuxces(sys.argv[1])
