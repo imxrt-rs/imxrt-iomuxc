@@ -66,6 +66,18 @@ All notable changes to this project will be documented in this file.
 - Add uSDHC pin traits.
 - Add select uSDHC pins for the i.MX RT 1060.
 
+- Basic i.MX RT 1170 support with the `"imxrt1170"` feature. Includes minimal
+  pad implementations for
+
+  - LPI2C
+  - LPSPI
+  - LPUART
+  - FlexPWM
+
+  that are sufficient for evaluating the 1170EVK.
+
+- Add CCM clock output pin trait with 1010, 1170 implementations.
+
 ## [0.1.5] - 2022-01-01
 
 ### Added
