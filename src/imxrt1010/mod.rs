@@ -93,11 +93,5 @@ mod lpi2c;
 mod lpspi;
 mod lpuart;
 
-include!(concat!(env!("OUT_DIR"), "/imxrt1010.rs"));
+mod pads;
 pub use pads::*;
-
-mod bases {
-    define_base!(GPIO_AD, 0x401F_8010, 0x401F_80C0);
-    define_base!(GPIO_SD, 0x401F_804C, 0x401F_80FC);
-    define_base!(GPIO, 0x401F_8088, 0x401F_8138);
-}

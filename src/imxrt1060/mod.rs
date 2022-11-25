@@ -95,15 +95,6 @@ mod lpspi;
 mod lpuart;
 mod sai;
 mod usdhc;
-include!(concat!(env!("OUT_DIR"), "/imxrt1060.rs"));
-pub use pads::*;
 
-mod bases {
-    define_base!(GPIO_EMC, 0x401F_8014, 0x401F_8204);
-    define_base!(GPIO_AD_B0, 0x401F_80BC, 0x401F_82AC);
-    define_base!(GPIO_AD_B1, 0x401F_80FC, 0x401F_82EC);
-    define_base!(GPIO_B0, 0x401F_813C, 0x401F_832C);
-    define_base!(GPIO_B1, 0x401F_817C, 0x401F_836C);
-    define_base!(GPIO_SD_B0, 0x401F_81BC, 0x401F_83AC);
-    define_base!(GPIO_SD_B1, 0x401F_81D4, 0x401F_83C4);
-}
+mod pads;
+pub use pads::*;
