@@ -43,3 +43,19 @@ jobs:
       with:
         command: test
         args: --verbose --all-features
+
+  # Check that documentation builds without warnings.
+  doc:
+    runs-on: ubuntu-latest
+    env:
+      RUSTDOCFLAGS: -D warnings
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: nightly
+        override: true
+    - uses: actions-rs/cargo@v1
+      with:
+        command: rustdoc
+        args: --all-features -- --cfg=docsrs
