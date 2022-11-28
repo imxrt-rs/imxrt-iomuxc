@@ -14,7 +14,9 @@ mod iomuxc {
 #[test]
 fn use_prelude() {
     use iomuxc::{
-        consts, flexpwm, gpio, lpi2c, lpspi, lpuart, Daisy, ErasedPad, Pad, WrongPadError,
+        adc, alternate, ccm, clear_sion, configure, consts, flexpwm, gpio, lpi2c, lpspi, lpuart,
+        sai, set_sion, usdhc, Config, Daisy, DriveStrength, ErasedPad, Hysteresis, OpenDrain, Pad,
+        PullKeeper, SlewRate, Speed, WrongPadError,
     };
 }
 

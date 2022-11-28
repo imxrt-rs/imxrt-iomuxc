@@ -222,7 +222,8 @@ pub mod prelude {
     pub use crate::config::{PullKeep, PullKeepSelect, PullUpDown};
 
     pub use crate::{
-        consts, flexpwm, gpio, lpi2c, lpspi, lpuart, usdhc, Daisy, ErasedPad, Pad, WrongPadError,
+        adc, alternate, ccm, clear_sion, consts, flexpwm, gpio, lpi2c, lpspi, lpuart, sai,
+        set_sion, usdhc, Daisy, ErasedPad, Pad, WrongPadError,
     };
 }
 
