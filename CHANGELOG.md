@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- **BREAKING** Update to Rust 2021 edition.
+
 - **BREAKING** Remove typenum dependency, and use const generics. Requires
   at least Rust 1.51.
 
