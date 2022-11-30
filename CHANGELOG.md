@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.2.0] 2022-11-30
+
 ### Changed
 
 - **BREAKING** Update to Rust 2021 edition.
@@ -145,7 +147,8 @@ First release
   - SPI
   - UART
 
-[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.5...v0.1
+[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.5...v0.2.0
 [0.1.5]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.2...v0.1.3
