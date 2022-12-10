@@ -122,9 +122,9 @@ When you implement a pin trait for a processor pad, you signal to users that
 this pad supports a particular peripheral function. As of this writing, **we
 write these implementations by hand** using the reference manual (RM) or SVD as
 a source of truth. The general [imxrt-rs project
-documentation](https://imxrt-rs.github.io) has tips for obtaining a RM. Once you
-have an RM, the table in the "External Signals and Pin Multiplexing" chapter
-should reveal the pads that support peripheral functions.
+documentation](https://imxrt-rs.github.io/book) has tips for obtaining a RM.
+Once you have an RM, the table in the "External Signals and Pin Multiplexing"
+chapter should reveal the pads that support peripheral functions.
 
 To extend pin implementations, either append to the existing pin module for your
 chip, or create a new pin module for your chip. If your pin implementation
