@@ -177,6 +177,8 @@
 pub mod adc;
 mod config;
 #[macro_use]
+pub mod flexcan;
+#[macro_use]
 pub mod flexpwm;
 #[macro_use]
 pub mod lpi2c;
@@ -222,7 +224,7 @@ pub mod prelude {
     pub use crate::config::{PullKeep, PullKeepSelect, PullUpDown};
 
     pub use crate::{
-        adc, alternate, ccm, clear_sion, consts, flexpwm, gpio, lpi2c, lpspi, lpuart, sai,
+        adc, alternate, ccm, clear_sion, consts, flexcan, flexpwm, gpio, lpi2c, lpspi, lpuart, sai,
         set_sion, usdhc, Daisy, ErasedPad, Pad, WrongPadError,
     };
 }

@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Add FlexCAN pin trait with implementations for select 1060 pads.
+
 ## [0.2.0] 2022-11-30
 
 ### Changed
