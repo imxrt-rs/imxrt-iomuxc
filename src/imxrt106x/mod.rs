@@ -89,6 +89,7 @@
 //! ```
 
 mod adc;
+mod can;
 mod i2c;
 mod pwm;
 mod sai;

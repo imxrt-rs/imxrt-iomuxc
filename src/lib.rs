@@ -87,6 +87,8 @@
 
 #[macro_use]
 pub mod adc;
+#[macro_use]
+pub mod can;
 mod config;
 #[macro_use]
 pub mod i2c;
