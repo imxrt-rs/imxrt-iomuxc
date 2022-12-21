@@ -342,7 +342,7 @@ impl Config {
             None => 0u32,
             Some(pk) => pk as u32,
         };
-        self.value = (self.value & !PULL_KEEPER_MASK) | (pk as u32);
+        self.value = (self.value & !PULL_KEEPER_MASK) | pk;
         self.mask |= PULL_KEEPER_MASK;
         self
     }
