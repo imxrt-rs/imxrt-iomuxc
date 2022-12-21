@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 - Add uSDHC pin traits.
 - Add select uSDHC pins for the i.MX RT 1060.
+- Add FlexCAN pin traits.
+- Add FlexCAN1 and 2 pins for the i.MX RT 1060.
 
 ## [0.1.5] - 2022-01-01
 
