@@ -15,6 +15,7 @@ categories = ["embedded", "no-std"]
 [features]
 imxrt1170 = []
 imxrt1060 = []
+imxrt1020 = []
 imxrt1010 = []
 
 [package.metadata.docs.rs]
