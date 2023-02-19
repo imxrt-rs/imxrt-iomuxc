@@ -10,16 +10,16 @@ use crate::{
 //
 
 // PCS0
-spi!(module: U1, alt: 0, pad: GPIO_AD_29, signal: Pcs0, daisy: DAISY_LPSPI1_LPSPI_PCS_0_SELECT_GPIO_AD_29);
+spi!(module: U1, alt: 0, pad: GPIO_AD_29, signal: Pcs0, daisy: Some(DAISY_LPSPI1_LPSPI_PCS_0_SELECT_GPIO_AD_29));
 
 // SCK
-spi!(module: U1, alt: 0, pad: GPIO_AD_28, signal: Sck, daisy: DAISY_LPSPI1_LPSPI_SCK_SELECT_GPIO_AD_28);
+spi!(module: U1, alt: 0, pad: GPIO_AD_28, signal: Sck, daisy: Some(DAISY_LPSPI1_LPSPI_SCK_SELECT_GPIO_AD_28));
 
 // SDI
-spi!(module: U1, alt: 0, pad: GPIO_AD_31, signal: Sdi, daisy: DAISY_LPSPI1_LPSPI_SDI_SELECT_GPIO_AD_31);
+spi!(module: U1, alt: 0, pad: GPIO_AD_31, signal: Sdi, daisy: Some(DAISY_LPSPI1_LPSPI_SDI_SELECT_GPIO_AD_31));
 
 // SDO
-spi!(module: U1, alt: 0, pad: GPIO_AD_30, signal: Sdo, daisy: DAISY_LPSPI1_LPSPI_SDO_SELECT_GPIO_AD_30);
+spi!(module: U1, alt: 0, pad: GPIO_AD_30, signal: Sdo, daisy: Some(DAISY_LPSPI1_LPSPI_SDO_SELECT_GPIO_AD_30));
 
 mod daisy {
     #![allow(unused)]

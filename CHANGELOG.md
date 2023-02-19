@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 - **BREAKING** Remove the deprecated pull / keeper configuration API.
 
+- **BREAKING** Change the type of the `lpspi::Pins::DAISY` associated constant
+  to an `Option<Daisy>`.
+
 - Add FlexCAN pin trait with implementations for select 1060 pads.
 
 - Add i.MX RT 1020 support with the `"imxrt1020"` feature. Includes select

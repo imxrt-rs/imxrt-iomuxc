@@ -12,80 +12,80 @@ use crate::{
 //
 
 // PCS0
-spi!(module: U1, alt: 1, pad: GPIO_AD_B0_11, signal: Pcs0, daisy: DAISY_LPSPI1_PCS0_GPIO_AD_B0_11);
-spi!(module: U1, alt: 4, pad: GPIO_SD_B0_03, signal: Pcs0, daisy: DAISY_LPSPI1_PCS0_GPIO_SD_B0_03);
+spi!(module: U1, alt: 1, pad: GPIO_AD_B0_11, signal: Pcs0, daisy: Some(DAISY_LPSPI1_PCS0_GPIO_AD_B0_11));
+spi!(module: U1, alt: 4, pad: GPIO_SD_B0_03, signal: Pcs0, daisy: Some(DAISY_LPSPI1_PCS0_GPIO_SD_B0_03));
 
 // SCK
-spi!(module: U1, alt: 1, pad: GPIO_AD_B0_10, signal: Sck, daisy: DAISY_LPSPI1_SCK_GPIO_AD_B0_10);
-spi!(module: U1, alt: 4, pad: GPIO_SD_B0_02, signal: Sck, daisy: DAISY_LPSPI1_SCK_GPIO_SD_B0_02);
+spi!(module: U1, alt: 1, pad: GPIO_AD_B0_10, signal: Sck, daisy: Some(DAISY_LPSPI1_SCK_GPIO_AD_B0_10));
+spi!(module: U1, alt: 4, pad: GPIO_SD_B0_02, signal: Sck, daisy: Some(DAISY_LPSPI1_SCK_GPIO_SD_B0_02));
 
 // SDI
-spi!(module: U1, alt: 1, pad: GPIO_AD_B0_13, signal: Sdi, daisy: DAISY_LPSPI1_SDI_GPIO_AD_B0_13);
-spi!(module: U1, alt: 4, pad: GPIO_SD_B0_05, signal: Sdi, daisy: DAISY_LPSPI1_SDI_GPIO_SD_B0_05);
+spi!(module: U1, alt: 1, pad: GPIO_AD_B0_13, signal: Sdi, daisy: Some(DAISY_LPSPI1_SDI_GPIO_AD_B0_13));
+spi!(module: U1, alt: 4, pad: GPIO_SD_B0_05, signal: Sdi, daisy: Some(DAISY_LPSPI1_SDI_GPIO_SD_B0_05));
 
 // SDO
-spi!(module: U1, alt: 1, pad: GPIO_AD_B0_12, signal: Sdo, daisy: DAISY_LPSPI1_SDO_GPIO_AD_B0_12);
-spi!(module: U1, alt: 4, pad: GPIO_SD_B0_04, signal: Sdo, daisy: DAISY_LPSPI1_SDO_GPIO_SD_B0_04);
+spi!(module: U1, alt: 1, pad: GPIO_AD_B0_12, signal: Sdo, daisy: Some(DAISY_LPSPI1_SDO_GPIO_AD_B0_12));
+spi!(module: U1, alt: 4, pad: GPIO_SD_B0_04, signal: Sdo, daisy: Some(DAISY_LPSPI1_SDO_GPIO_SD_B0_04));
 
 //
 // SPI2
 //
 
 // PCS0
-spi!(module: U2, alt: 4, pad: GPIO_EMC_01, signal: Pcs0, daisy: DAISY_LPSPI2_PCS0_GPIO_EMC_01);
-spi!(module: U2, alt: 4, pad: GPIO_EMC_11, signal: Pcs0, daisy: DAISY_LPSPI2_PCS0_GPIO_EMC_11);
-spi!(module: U2, alt: 4, pad: GPIO_SD_B1_06, signal: Pcs0, daisy: DAISY_LPSPI2_PCS0_GPIO_SD_B1_06);
+spi!(module: U2, alt: 4, pad: GPIO_EMC_01, signal: Pcs0, daisy: Some(DAISY_LPSPI2_PCS0_GPIO_EMC_01));
+spi!(module: U2, alt: 4, pad: GPIO_EMC_11, signal: Pcs0, daisy: Some(DAISY_LPSPI2_PCS0_GPIO_EMC_11));
+spi!(module: U2, alt: 4, pad: GPIO_SD_B1_06, signal: Pcs0, daisy: Some(DAISY_LPSPI2_PCS0_GPIO_SD_B1_06));
 
 // SCK
-spi!(module: U2, alt: 4, pad: GPIO_EMC_00, signal: Sck, daisy: DAISY_LPSPI2_SCK_GPIO_EMC_00);
-spi!(module: U2, alt: 4, pad: GPIO_EMC_10, signal: Sck, daisy: DAISY_LPSPI2_SCK_GPIO_EMC_10);
-spi!(module: U2, alt: 4, pad: GPIO_SD_B1_07, signal: Sck, daisy: DAISY_LPSPI2_SCK_GPIO_SD_B1_07);
+spi!(module: U2, alt: 4, pad: GPIO_EMC_00, signal: Sck, daisy: Some(DAISY_LPSPI2_SCK_GPIO_EMC_00));
+spi!(module: U2, alt: 4, pad: GPIO_EMC_10, signal: Sck, daisy: Some(DAISY_LPSPI2_SCK_GPIO_EMC_10));
+spi!(module: U2, alt: 4, pad: GPIO_SD_B1_07, signal: Sck, daisy: Some(DAISY_LPSPI2_SCK_GPIO_SD_B1_07));
 
 // SDI
-spi!(module: U2, alt: 4, pad: GPIO_EMC_03, signal: Sdi, daisy: DAISY_LPSPI2_SDI_GPIO_EMC_03);
-spi!(module: U2, alt: 4, pad: GPIO_EMC_13, signal: Sdi, daisy: DAISY_LPSPI2_SDI_GPIO_EMC_13);
-spi!(module: U2, alt: 4, pad: GPIO_SD_B1_09, signal: Sdi, daisy: DAISY_LPSPI2_SDI_GPIO_SD_B1_09);
+spi!(module: U2, alt: 4, pad: GPIO_EMC_03, signal: Sdi, daisy: Some(DAISY_LPSPI2_SDI_GPIO_EMC_03));
+spi!(module: U2, alt: 4, pad: GPIO_EMC_13, signal: Sdi, daisy: Some(DAISY_LPSPI2_SDI_GPIO_EMC_13));
+spi!(module: U2, alt: 4, pad: GPIO_SD_B1_09, signal: Sdi, daisy: Some(DAISY_LPSPI2_SDI_GPIO_SD_B1_09));
 
 // SD0
-spi!(module: U2, alt: 4, pad: GPIO_EMC_02, signal: Sdo, daisy: DAISY_LPSPI2_SDO_GPIO_EMC_02);
-spi!(module: U2, alt: 4, pad: GPIO_EMC_12, signal: Sdo, daisy: DAISY_LPSPI2_SDO_GPIO_EMC_12);
-spi!(module: U2, alt: 4, pad: GPIO_SD_B1_08, signal: Sdo, daisy: DAISY_LPSPI2_SDO_GPIO_SD_B1_08);
+spi!(module: U2, alt: 4, pad: GPIO_EMC_02, signal: Sdo, daisy: Some(DAISY_LPSPI2_SDO_GPIO_EMC_02));
+spi!(module: U2, alt: 4, pad: GPIO_EMC_12, signal: Sdo, daisy: Some(DAISY_LPSPI2_SDO_GPIO_EMC_12));
+spi!(module: U2, alt: 4, pad: GPIO_SD_B1_08, signal: Sdo, daisy: Some(DAISY_LPSPI2_SDO_GPIO_SD_B1_08));
 
 //
 // SPI3
 //
 
 // PCS0
-// spi!(module: U3, alt: 2, pad: GPIO_AD_B1_13, signal: Pcs0, daisy: None);
+spi!(module: U3, alt: 2, pad: GPIO_AD_B1_13, signal: Pcs0, daisy: None);
 
 // SCK
-// spi!(module: U3, alt: 2, pad: GPIO_AD_B1_12, signal: Sck, daisy: None);
+spi!(module: U3, alt: 2, pad: GPIO_AD_B1_12, signal: Sck, daisy: None);
 
 // SDI
-// spi!(module: U3, alt: 2, pad: GPIO_AD_B1_15, signal: Sdi, daisy: None);
+spi!(module: U3, alt: 2, pad: GPIO_AD_B1_15, signal: Sdi, daisy: None);
 
 // SDO
-// spi!(module: U3, alt: 2, pad: GPIO_AD_B1_14, signal: Sdo, daisy: None);
+spi!(module: U3, alt: 2, pad: GPIO_AD_B1_14, signal: Sdo, daisy: None);
 
 //
 // SPI4
 //
 
 // PCS0
-spi!(module: U4, alt: 2, pad: GPIO_AD_B1_03, signal: Pcs0, daisy: DAISY_LPSPI4_PCS0_GPIO_AD_B1_03);
-spi!(module: U4, alt: 4, pad: GPIO_EMC_33, signal: Pcs0, daisy: DAISY_LPSPI4_PCS0_GPIO_EMC_33);
+spi!(module: U4, alt: 2, pad: GPIO_AD_B1_03, signal: Pcs0, daisy: Some(DAISY_LPSPI4_PCS0_GPIO_AD_B1_03));
+spi!(module: U4, alt: 4, pad: GPIO_EMC_33, signal: Pcs0, daisy: Some(DAISY_LPSPI4_PCS0_GPIO_EMC_33));
 
 // SCK
-spi!(module: U4, alt: 2, pad: GPIO_AD_B1_02, signal: Sck, daisy: DAISY_LPSPI4_SCK_GPIO_AD_B1_02);
-spi!(module: U4, alt: 4, pad: GPIO_EMC_32, signal: Sck, daisy: DAISY_LPSPI4_SCK_GPIO_EMC_32);
+spi!(module: U4, alt: 2, pad: GPIO_AD_B1_02, signal: Sck, daisy: Some(DAISY_LPSPI4_SCK_GPIO_AD_B1_02));
+spi!(module: U4, alt: 4, pad: GPIO_EMC_32, signal: Sck, daisy: Some(DAISY_LPSPI4_SCK_GPIO_EMC_32));
 
 // SDI
-spi!(module: U4, alt: 2, pad: GPIO_AD_B1_05, signal: Sdi, daisy: DAISY_LPSPI4_SDI_GPIO_AD_B1_05);
-spi!(module: U4, alt: 4, pad: GPIO_EMC_35, signal: Sdi, daisy: DAISY_LPSPI4_SDI_GPIO_EMC_35);
+spi!(module: U4, alt: 2, pad: GPIO_AD_B1_05, signal: Sdi, daisy: Some(DAISY_LPSPI4_SDI_GPIO_AD_B1_05));
+spi!(module: U4, alt: 4, pad: GPIO_EMC_35, signal: Sdi, daisy: Some(DAISY_LPSPI4_SDI_GPIO_EMC_35));
 
 // SDO
-spi!(module: U4, alt: 2, pad: GPIO_AD_B1_04, signal: Sdi, daisy: DAISY_LPSPI4_SDO_GPIO_AD_B1_04);
-spi!(module: U4, alt: 4, pad: GPIO_EMC_34, signal: Sdi, daisy: DAISY_LPSPI4_SDO_GPIO_EMC_34);
+spi!(module: U4, alt: 2, pad: GPIO_AD_B1_04, signal: Sdi, daisy: Some(DAISY_LPSPI4_SDO_GPIO_AD_B1_04));
+spi!(module: U4, alt: 4, pad: GPIO_EMC_34, signal: Sdi, daisy: Some(DAISY_LPSPI4_SDO_GPIO_EMC_34));
 
 mod daisy {
     use super::Daisy;

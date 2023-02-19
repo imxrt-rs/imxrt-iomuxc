@@ -30,7 +30,7 @@ pub trait Pin: super::Iomuxc {
     /// Alternate value for this pin
     const ALT: u32;
     /// Daisy register
-    const DAISY: super::Daisy;
+    const DAISY: Option<super::Daisy>;
     /// SPI signal
     type Signal: Signal;
     /// SPI module; `U3` for `SPI3`
@@ -48,7 +48,9 @@ pub trait Pin: super::Iomuxc {
 pub fn prepare<P: Pin>(pin: &mut P) {
     super::alternate(pin, P::ALT);
     super::set_sion(pin);
-    unsafe { P::DAISY.write() };
+    if let Some(daisy) = P::DAISY {
+        unsafe { daisy.write() };
+    }
 }
 
 #[allow(unused)] // Used in chip-specific modules...
@@ -56,7 +58,7 @@ macro_rules! spi {
     (module: $module:ty, alt: $alt:expr, pad: $pad:ty, signal: $signal:ty, daisy: $daisy:expr) => {
         impl Pin for $pad {
             const ALT: u32 = $alt;
-            const DAISY: Daisy = $daisy;
+            const DAISY: Option<Daisy> = $daisy;
             type Signal = $signal;
             type Module = $module;
         }
