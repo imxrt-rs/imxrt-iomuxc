@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 
 - Add FlexCAN pin trait with implementations for select 1060 pads.
 
+- Add i.MX RT 1020 support with the `"imxrt1020"` feature. Includes select
+  pad implementations for
+
+  - LPI2C
+  - LPSPI
+  - LPUART
+  - CCM
+
 ## [0.2.0] 2022-11-30
 
 ### Changed

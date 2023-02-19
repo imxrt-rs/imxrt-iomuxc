@@ -269,6 +269,10 @@ pub mod consts {
 #[cfg_attr(docsrs, doc(cfg(feature = "imxrt1010")))]
 pub mod imxrt1010;
 
+#[cfg(feature = "imxrt1020")]
+#[cfg_attr(docsrs, doc(cfg(feature = "imxrt1020")))]
+pub mod imxrt1020;
+
 #[cfg(feature = "imxrt1060")]
 #[cfg_attr(docsrs, doc(cfg(feature = "imxrt1060")))]
 pub mod imxrt1060;

@@ -39,6 +39,7 @@ instance, the 1060 feature supports 1061 and 1062 chip variants.
 | Chip | Feature       |
 |------|---------------|
 | 1010 | `"imxrt1010"` |
+| 1020 | `"imxrt1020"` |
 | 1060 | `"imxrt1060"` |
 | 1170 | `"imxrt1170"` |
 
