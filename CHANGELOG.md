@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file.
 - **BREAKING** Change the type of the `lpspi::Pins::DAISY` associated constant
   to an `Option<Daisy>`.
 
+## [0.2.1] 2023-02-23
+
 - Add FlexCAN pin trait with implementations for select 1060 pads.
 
 - Add i.MX RT 1020 support with the `"imxrt1020"` feature. Includes select
@@ -163,6 +165,7 @@ First release
   - UART
 
 [Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...HEAD
+[0.2.1]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.5...v0.2.0
 [0.1.5]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.3...v0.1.4
