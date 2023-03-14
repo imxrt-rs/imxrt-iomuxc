@@ -9,13 +9,22 @@ pub enum Sck {}
 pub enum Sdo {}
 /// A tag that indicates a SPI data in pad
 pub enum Sdi {}
-/// A tag that indicates a SPI chip select pad
+/// A tag that indicates the Pcs0 chip select pad
 pub enum Pcs0 {}
+/// A tag that indicates the Pcs1 chip select pad
+pub enum Pcs1 {}
+/// A tag that indicates the Pcs2 chip select pad
+pub enum Pcs2 {}
+/// A tag that indicates the Pcs3 chip select pad
+pub enum Pcs3 {}
 
 impl Signal for Sck {}
 impl Signal for Sdo {}
 impl Signal for Sdi {}
 impl Signal for Pcs0 {}
+impl Signal for Pcs1 {}
+impl Signal for Pcs2 {}
+impl Signal for Pcs3 {}
 
 mod private {
     pub trait Sealed {}
@@ -23,6 +32,9 @@ mod private {
     impl Sealed for super::Sdo {}
     impl Sealed for super::Sdi {}
     impl Sealed for super::Pcs0 {}
+    impl Sealed for super::Pcs1 {}
+    impl Sealed for super::Pcs2 {}
+    impl Sealed for super::Pcs3 {}
 }
 
 /// A SPI pin

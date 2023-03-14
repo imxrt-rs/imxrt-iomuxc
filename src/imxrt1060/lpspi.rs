@@ -5,7 +5,7 @@ use super::pads::{
 };
 use crate::{
     consts::*,
-    lpspi::{Pcs0, Pin, Sck, Sdi, Sdo},
+    lpspi::{Pcs0, Pcs1, Pcs2, Pcs3, Pin, Sck, Sdi, Sdo},
     Daisy,
 };
 
@@ -56,6 +56,9 @@ spi!(module: U4, alt: 1, pad: GPIO_B1_05, signal: Sdi,  daisy: Some(DAISY_LPSPI4
 spi!(module: U4, alt: 3, pad: GPIO_B0_01, signal: Sdi,  daisy: Some(DAISY_LPSPI4_SDI_GPIO_B0_01));
 spi!(module: U4, alt: 1, pad: GPIO_B1_04, signal: Pcs0, daisy: Some(DAISY_LPSPI4_PCS0_GPIO_B1_04));
 spi!(module: U4, alt: 3, pad: GPIO_B0_00, signal: Pcs0, daisy: Some(DAISY_LPSPI4_PCS0_GPIO_B0_00));
+spi!(module: U4, alt: 2, pad: GPIO_B1_03, signal: Pcs1, daisy: None);
+spi!(module: U4, alt: 2, pad: GPIO_B1_02, signal: Pcs2, daisy: None);
+spi!(module: U4, alt: 6, pad: GPIO_B1_11, signal: Pcs3, daisy: None);
 
 /// Auto-generated DAISY values
 mod daisy {

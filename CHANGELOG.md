@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- **BREAKING** Add support for additional chip select pins for `lpspi4`.
+
 - **BREAKING** Remove the deprecated pull / keeper configuration API.
 
 - **BREAKING** Change the type of the `lpspi::Pins::DAISY` associated constant
