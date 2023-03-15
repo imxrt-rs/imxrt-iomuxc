@@ -11,6 +11,8 @@ All notable changes to this project will be documented in this file.
 - **BREAKING** Change the type of the `lpspi::Pin::DAISY` and `lpi2c::Pin::DAISY`
   associated constant to an `Option<Daisy>`.
 
+- Add optional `DAISY` associated constant to `flexpwm::Pin`.
+
 ## [0.2.1] 2023-02-23
 
 - Add FlexCAN pin trait with implementations for select 1060 pads.
