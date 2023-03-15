@@ -12,48 +12,48 @@ use crate::{
 //
 
 // SCL
-i2c!(module: U1, alt: 0, pad: GPIO_AD_B1_14,  signal: Scl, daisy: DAISY_LPI2C1_SCL_GPIO_AD_B1_14);
-i2c!(module: U1, alt: 6, pad: GPIO_EMC_02,    signal: Scl, daisy: DAISY_LPI2C1_SCL_GPIO_EMC_02);
+i2c!(module: U1, alt: 0, pad: GPIO_AD_B1_14,  signal: Scl, daisy: Some(DAISY_LPI2C1_SCL_GPIO_AD_B1_14));
+i2c!(module: U1, alt: 6, pad: GPIO_EMC_02,    signal: Scl, daisy: Some(DAISY_LPI2C1_SCL_GPIO_EMC_02));
 
 // SDA
-i2c!(module: U1, alt: 0, pad: GPIO_AD_B1_15,  signal: Sda, daisy: DAISY_LPI2C1_SDA_GPIO_AD_B1_15);
-i2c!(module: U1, alt: 6, pad: GPIO_EMC_03,    signal: Sda, daisy: DAISY_LPI2C1_SDA_GPIO_EMC_03);
+i2c!(module: U1, alt: 0, pad: GPIO_AD_B1_15,  signal: Sda, daisy: Some(DAISY_LPI2C1_SDA_GPIO_AD_B1_15));
+i2c!(module: U1, alt: 6, pad: GPIO_EMC_03,    signal: Sda, daisy: Some(DAISY_LPI2C1_SDA_GPIO_EMC_03));
 
 //
 // I2C2
 //
 
 // SCL
-i2c!(module: U2, alt: 0, pad: GPIO_AD_B1_08,  signal: Scl, daisy: DAISY_LPI2C2_SCL_GPIO_AD_B1_08);
-i2c!(module: U2, alt: 2, pad: GPIO_EMC_19,    signal: Scl, daisy: DAISY_LPI2C2_SCL_GPIO_EMC_19);
+i2c!(module: U2, alt: 0, pad: GPIO_AD_B1_08,  signal: Scl, daisy: Some(DAISY_LPI2C2_SCL_GPIO_AD_B1_08));
+i2c!(module: U2, alt: 2, pad: GPIO_EMC_19,    signal: Scl, daisy: Some(DAISY_LPI2C2_SCL_GPIO_EMC_19));
 
 // SDA
-i2c!(module: U2, alt: 0, pad: GPIO_AD_B1_09,  signal: Sda, daisy: DAISY_LPI2C2_SDA_GPIO_AD_B1_09);
-i2c!(module: U2, alt: 2, pad: GPIO_EMC_18,    signal: Sda, daisy: DAISY_LPI2C2_SDA_GPIO_EMC_18);
+i2c!(module: U2, alt: 0, pad: GPIO_AD_B1_09,  signal: Sda, daisy: Some(DAISY_LPI2C2_SDA_GPIO_AD_B1_09));
+i2c!(module: U2, alt: 2, pad: GPIO_EMC_18,    signal: Sda, daisy: Some(DAISY_LPI2C2_SDA_GPIO_EMC_18));
 
 //
 // I2C3
 //
 
 // SCL
-i2c!(module: U3, alt: 1, pad: GPIO_AD_B0_08,  signal: Scl, daisy: DAISY_LPI2C3_SCL_GPIO_AD_B0_08);
-i2c!(module: U3, alt: 4, pad: GPIO_SD_B0_00,  signal: Scl, daisy: DAISY_LPI2C3_SCL_GPIO_SD_B0_00);
+i2c!(module: U3, alt: 1, pad: GPIO_AD_B0_08,  signal: Scl, daisy: Some(DAISY_LPI2C3_SCL_GPIO_AD_B0_08));
+i2c!(module: U3, alt: 4, pad: GPIO_SD_B0_00,  signal: Scl, daisy: Some(DAISY_LPI2C3_SCL_GPIO_SD_B0_00));
 
 // SDA
-i2c!(module: U3, alt: 1, pad: GPIO_AD_B0_09,  signal: Sda, daisy: DAISY_LPI2C3_SDA_GPIO_AD_B0_09);
-i2c!(module: U3, alt: 4, pad: GPIO_SD_B0_01,  signal: Sda, daisy: DAISY_LPI2C3_SDA_GPIO_SD_B0_01);
+i2c!(module: U3, alt: 1, pad: GPIO_AD_B0_09,  signal: Sda, daisy: Some(DAISY_LPI2C3_SDA_GPIO_AD_B0_09));
+i2c!(module: U3, alt: 4, pad: GPIO_SD_B0_01,  signal: Sda, daisy: Some(DAISY_LPI2C3_SDA_GPIO_SD_B0_01));
 
 //
 // I2C4
 //
 
 // SCL
-i2c!(module: U4, alt: 2, pad: GPIO_EMC_11,    signal: Scl, daisy: DAISY_LPI2C4_SCL_GPIO_EMC_11);
-i2c!(module: U4, alt: 3, pad: GPIO_SD_B1_02,  signal: Scl, daisy: DAISY_LPI2C4_SCL_GPIO_SD_B1_02);
+i2c!(module: U4, alt: 2, pad: GPIO_EMC_11,    signal: Scl, daisy: Some(DAISY_LPI2C4_SCL_GPIO_EMC_11));
+i2c!(module: U4, alt: 3, pad: GPIO_SD_B1_02,  signal: Scl, daisy: Some(DAISY_LPI2C4_SCL_GPIO_SD_B1_02));
 
 // SDA
-i2c!(module: U4, alt: 2, pad: GPIO_EMC_10,    signal: Sda, daisy: DAISY_LPI2C4_SDA_GPIO_EMC_10);
-i2c!(module: U4, alt: 3, pad: GPIO_SD_B1_03,  signal: Sda, daisy: DAISY_LPI2C4_SDA_GPIO_SD_B1_03);
+i2c!(module: U4, alt: 2, pad: GPIO_EMC_10,    signal: Sda, daisy: Some(DAISY_LPI2C4_SDA_GPIO_EMC_10));
+i2c!(module: U4, alt: 3, pad: GPIO_SD_B1_03,  signal: Sda, daisy: Some(DAISY_LPI2C4_SDA_GPIO_SD_B1_03));
 
 mod daisy {
     use super::Daisy;

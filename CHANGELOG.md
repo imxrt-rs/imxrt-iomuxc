@@ -8,8 +8,8 @@ All notable changes to this project will be documented in this file.
 
 - **BREAKING** Remove the deprecated pull / keeper configuration API.
 
-- **BREAKING** Change the type of the `lpspi::Pins::DAISY` associated constant
-  to an `Option<Daisy>`.
+- **BREAKING** Change the type of the `lpspi::Pin::DAISY` and `lpi2c::Pin::DAISY`
+  associated constant to an `Option<Daisy>`.
 
 ## [0.2.1] 2023-02-23
 

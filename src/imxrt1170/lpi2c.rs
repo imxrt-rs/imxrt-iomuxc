@@ -10,8 +10,8 @@ use crate::{
 //
 // I2C5
 //
-i2c!(module: U5, alt: 0, pad: GPIO_LPSR_05, signal: Scl, daisy: DAISY_LPI2C5_IPP_IND_LPI2C_SCL_SELECT_GPIO_LPSR_05);
-i2c!(module: U5, alt: 0, pad: GPIO_LPSR_04, signal: Sda, daisy: DAISY_LPI2C5_IPP_IND_LPI2C_SDA_SELECT_GPIO_LPSR_04);
+i2c!(module: U5, alt: 0, pad: GPIO_LPSR_05, signal: Scl, daisy: Some(DAISY_LPI2C5_IPP_IND_LPI2C_SCL_SELECT_GPIO_LPSR_05));
+i2c!(module: U5, alt: 0, pad: GPIO_LPSR_04, signal: Sda, daisy: Some(DAISY_LPI2C5_IPP_IND_LPI2C_SDA_SELECT_GPIO_LPSR_04));
 
 mod daisy {
     #![allow(unused)]
