@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 
 - Add FlexIO pin definitions and implementations for 1060 pads.
 
+- Ensure that `adc::prepare()` configures an alternate value for ADC inputs.
+
 ## [0.2.1] 2023-02-23
 
 - Add FlexCAN pin trait with implementations for select 1060 pads.
