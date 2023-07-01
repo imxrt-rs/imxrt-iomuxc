@@ -24,10 +24,19 @@ pub fn prepare<P: Pin<N>, const N: u8>(pin: &mut P) {
     // GPIO, and we need to disable the keeper to prevent signal
     // jumps.
     super::configure(pin, super::Config::modify().set_pull_keeper(None));
-    // Not putting the ADC into the GPIO alternate. Reference
-    // manuals indicate that the alt (mode) doesn't matter. We're
-    // expecting that the GPIO input path is implicit, regardless
-    // of the alt.
+    // Set the GPIO alternate value.
+    //
+    // A general approach would add a constraint on the generic P for
+    // gpio::Pin<Q> (where Q is some other constant). This works, but it
+    // burdens those who design higher-level APIs, since they also need
+    // the constraint on their APIs. Hard-coding the alternate here is easier.
+    //
+    // Although not tested, it's also thought to be correct for ADC peripherals
+    // on the 1170. The ADC peripherals are in the M7 WAKEUP domain, and the alts
+    // for configuring the GPIOs for this domain are all '5'. If this call were
+    // to use the GPIO alternate for the CM4's LPSR domain (alt 10, for instance),
+    // the ADC pin may be misconfigured.
+    super::alternate(pin, 5);
 }
 
 #[allow(unused)] // Used in chip-specific modules...
