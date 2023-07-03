@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.2.2] 2023-07-03
+
 - Add optional `DAISY` associated constant to `flexpwm::Pin`.
 
 - Add FlexIO pin definitions and implementations for 1060 pads.
@@ -166,6 +168,7 @@ First release
   - UART
 
 [Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...HEAD
+[0.2.2]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.5...v0.2.0
 [0.1.5]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.4...v0.1.5
