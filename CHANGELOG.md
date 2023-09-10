@@ -11,6 +11,12 @@ All notable changes to this project will be documented in this file.
 - **BREAKING** Change the type of the `lpspi::Pin::DAISY` and `lpi2c::Pin::DAISY`
   associated constant to an `Option<Daisy>`.
 
+## [0.2.3] 2023-09-09
+
+- Add FlexIO pin implementations for 1010 and 1020 pads.
+
+## [0.2.2] 2023-07-03
+
 - Add optional `DAISY` associated constant to `flexpwm::Pin`.
 
 - Add FlexIO pin definitions and implementations for 1060 pads.
@@ -173,6 +179,8 @@ First release
   - UART
 
 [Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...HEAD
+[0.2.3]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.2...v0.2.3
+[0.2.2]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.5...v0.2.0
 [0.1.5]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.1.4...v0.1.5
