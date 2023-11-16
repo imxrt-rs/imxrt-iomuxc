@@ -8,6 +8,7 @@ mod flexpwm;
 mod lpi2c;
 mod lpspi;
 mod lpuart;
+mod sai;
 
 mod pads;
 pub use pads::*;
