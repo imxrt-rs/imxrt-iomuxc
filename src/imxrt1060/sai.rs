@@ -48,92 +48,92 @@ impl private::Sealed for TxData3RxData1 {}
 // SAI1
 //
 
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_08, signal: TxBclk, daisy: Some(DAISY_SAI1_TX_BCLK_GPIO_SD_B1_08) }
-sai! { module: U1, alt: 3, pad: GPIO_B1_02,    signal: TxBclk, daisy: Some(DAISY_SAI1_TX_BCLK_GPIO_B1_02) }
-sai! { module: U1, alt: 3, pad: GPIO_AD_B1_14, signal: TxBclk, daisy: Some(DAISY_SAI1_TX_BCLK_GPIO_AD_B1_14) }
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_08, signal: TxBclk, daisy: Some(DAISY_SAI1_TX_BCLK_GPIO_SD_B1_08));
+sai!(module: U1, alt: 3, pad: GPIO_B1_02,    signal: TxBclk, daisy: Some(DAISY_SAI1_TX_BCLK_GPIO_B1_02));
+sai!(module: U1, alt: 3, pad: GPIO_AD_B1_14, signal: TxBclk, daisy: Some(DAISY_SAI1_TX_BCLK_GPIO_AD_B1_14));
 
-sai! { module: U1, alt: 3, pad: GPIO_AD_B1_15, signal: TxSync, daisy: Some(DAISY_SAI1_TX_SYNC_GPIO_AD_B1_15) }
-sai! { module: U1, alt: 3, pad: GPIO_B1_03,    signal: TxSync, daisy: Some(DAISY_SAI1_TX_SYNC_GPIO_B1_03) }
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_09, signal: TxSync, daisy: Some(DAISY_SAI1_TX_SYNC_GPIO_SD_B1_09) }
+sai!(module: U1, alt: 3, pad: GPIO_AD_B1_15, signal: TxSync, daisy: Some(DAISY_SAI1_TX_SYNC_GPIO_AD_B1_15));
+sai!(module: U1, alt: 3, pad: GPIO_B1_03,    signal: TxSync, daisy: Some(DAISY_SAI1_TX_SYNC_GPIO_B1_03));
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_09, signal: TxSync, daisy: Some(DAISY_SAI1_TX_SYNC_GPIO_SD_B1_09));
 
-sai! { module: U1, alt: 3, pad: GPIO_B0_13,    signal: Mclk, daisy: Some(DAISY_SAI1_MCLK2_GPIO_B0_13) }
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_03, signal: Mclk, daisy: Some(DAISY_SAI1_MCLK2_GPIO_SD_B1_03) }
-sai! { module: U1, alt: 3, pad: GPIO_AD_B1_09, signal: Mclk, daisy: Some(DAISY_SAI1_MCLK2_GPIO_AD_B1_09) }
+sai!(module: U1, alt: 3, pad: GPIO_B0_13,    signal: Mclk, daisy: Some(DAISY_SAI1_MCLK2_GPIO_B0_13));
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_03, signal: Mclk, daisy: Some(DAISY_SAI1_MCLK2_GPIO_SD_B1_03));
+sai!(module: U1, alt: 3, pad: GPIO_AD_B1_09, signal: Mclk, daisy: Some(DAISY_SAI1_MCLK2_GPIO_AD_B1_09));
 
-sai! { module: U1, alt: 3, pad: GPIO_AD_B1_11, signal: RxBclk, daisy: Some(DAISY_SAI1_RX_BCLK_GPIO_AD_B1_11) }
-sai! { module: U1, alt: 3, pad: GPIO_B0_15,    signal: RxBclk, daisy: Some(DAISY_SAI1_RX_BCLK_GPIO_B0_15) }
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_05, signal: RxBclk, daisy: Some(DAISY_SAI1_RX_BCLK_GPIO_SD_B1_05) }
+sai!(module: U1, alt: 3, pad: GPIO_AD_B1_11, signal: RxBclk, daisy: Some(DAISY_SAI1_RX_BCLK_GPIO_AD_B1_11));
+sai!(module: U1, alt: 3, pad: GPIO_B0_15,    signal: RxBclk, daisy: Some(DAISY_SAI1_RX_BCLK_GPIO_B0_15));
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_05, signal: RxBclk, daisy: Some(DAISY_SAI1_RX_BCLK_GPIO_SD_B1_05));
 
-sai! { module: U1, alt: 3, pad: GPIO_AD_B1_10, signal: RxSync, daisy: Some(DAISY_SAI1_RX_SYNC_GPIO_AD_B1_10) }
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_04, signal: RxSync, daisy: Some(DAISY_SAI1_RX_SYNC_GPIO_SD_B1_04) }
-sai! { module: U1, alt: 3, pad: GPIO_B0_14,    signal: RxSync, daisy: Some(DAISY_SAI1_RX_SYNC_GPIO_B0_14) }
+sai!(module: U1, alt: 3, pad: GPIO_AD_B1_10, signal: RxSync, daisy: Some(DAISY_SAI1_RX_SYNC_GPIO_AD_B1_10));
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_04, signal: RxSync, daisy: Some(DAISY_SAI1_RX_SYNC_GPIO_SD_B1_04));
+sai!(module: U1, alt: 3, pad: GPIO_B0_14,    signal: RxSync, daisy: Some(DAISY_SAI1_RX_SYNC_GPIO_B0_14));
 
-sai! { module: U1, alt: 3, pad: GPIO_AD_B1_13, signal: TxData, daisy: None }
-sai! { module: U1, alt: 3, pad: GPIO_B1_01,    signal: TxData, daisy: None }
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_07, signal: TxData, daisy: None }
+sai!(module: U1, alt: 3, pad: GPIO_AD_B1_13, signal: TxData, daisy: None);
+sai!(module: U1, alt: 3, pad: GPIO_B1_01,    signal: TxData, daisy: None);
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_07, signal: TxData, daisy: None);
 
-sai! { module: U1, alt: 3, pad: GPIO_B1_00,    signal: RxData, daisy: Some(DAISY_SAI1_RX_DATA0_GPIO_B1_00) }
-sai! { module: U1, alt: 3, pad: GPIO_AD_B1_12, signal: RxData, daisy: Some(DAISY_SAI1_RX_DATA0_GPIO_AD_B1_12) }
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_06, signal: RxData, daisy: Some(DAISY_SAI1_RX_DATA0_GPIO_SD_B1_06) }
+sai!(module: U1, alt: 3, pad: GPIO_B1_00,    signal: RxData, daisy: Some(DAISY_SAI1_RX_DATA0_GPIO_B1_00));
+sai!(module: U1, alt: 3, pad: GPIO_AD_B1_12, signal: RxData, daisy: Some(DAISY_SAI1_RX_DATA0_GPIO_AD_B1_12));
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_06, signal: RxData, daisy: Some(DAISY_SAI1_RX_DATA0_GPIO_SD_B1_06));
 
-sai! { module: U1, alt: 3, pad: GPIO_B0_12,    signal: TxData1RxData3, daisy: Some(DAISY_SAI1_RX_DATA3_GPIO_B0_12) }
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_02, signal: TxData1RxData3, daisy: Some(DAISY_SAI1_RX_DATA3_GPIO_SD_B1_02) }
+sai!(module: U1, alt: 3, pad: GPIO_B0_12,    signal: TxData1RxData3, daisy: Some(DAISY_SAI1_RX_DATA3_GPIO_B0_12));
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_02, signal: TxData1RxData3, daisy: Some(DAISY_SAI1_RX_DATA3_GPIO_SD_B1_02));
 
-sai! { module: U1, alt: 3, pad: GPIO_B0_11,    signal: TxData2RxData2, daisy: Some(DAISY_SAI1_RX_DATA2_GPIO_B0_11) }
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_01, signal: TxData2RxData2, daisy: Some(DAISY_SAI1_RX_DATA2_GPIO_SD_B1_01) }
+sai!(module: U1, alt: 3, pad: GPIO_B0_11,    signal: TxData2RxData2, daisy: Some(DAISY_SAI1_RX_DATA2_GPIO_B0_11));
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_01, signal: TxData2RxData2, daisy: Some(DAISY_SAI1_RX_DATA2_GPIO_SD_B1_01));
 
-sai! { module: U1, alt: 3, pad: GPIO_B0_10,    signal: TxData3RxData1, daisy: Some(DAISY_SAI1_RX_DATA1_GPIO_B0_10) }
-sai! { module: U1, alt: 3, pad: GPIO_SD_B1_00, signal: TxData3RxData1, daisy: Some(DAISY_SAI1_RX_DATA1_GPIO_SD_B1_00) }
+sai!(module: U1, alt: 3, pad: GPIO_B0_10,    signal: TxData3RxData1, daisy: Some(DAISY_SAI1_RX_DATA1_GPIO_B0_10));
+sai!(module: U1, alt: 3, pad: GPIO_SD_B1_00, signal: TxData3RxData1, daisy: Some(DAISY_SAI1_RX_DATA1_GPIO_SD_B1_00));
 
 //
 // SAI2
 //
 
-sai! { module: U2, alt: 3, pad: GPIO_AD_B0_05, signal: TxBclk, daisy: Some(DAISY_SAI2_TX_BCLK_GPIO_AD_B0_05) }
-sai! { module: U2, alt: 2, pad: GPIO_EMC_06,   signal: TxBclk, daisy: Some(DAISY_SAI2_TX_BCLK_GPIO_EMC_06) }
+sai!(module: U2, alt: 3, pad: GPIO_AD_B0_05, signal: TxBclk, daisy: Some(DAISY_SAI2_TX_BCLK_GPIO_AD_B0_05));
+sai!(module: U2, alt: 2, pad: GPIO_EMC_06,   signal: TxBclk, daisy: Some(DAISY_SAI2_TX_BCLK_GPIO_EMC_06));
 
-sai! { module: U2, alt: 3, pad: GPIO_AD_B0_04, signal: TxSync, daisy: Some(DAISY_SAI2_TX_SYNC_GPIO_AD_B0_04) }
-sai! { module: U2, alt: 2, pad: GPIO_EMC_05,   signal: TxSync, daisy: Some(DAISY_SAI2_TX_SYNC_GPIO_EMC_05) }
+sai!(module: U2, alt: 3, pad: GPIO_AD_B0_04, signal: TxSync, daisy: Some(DAISY_SAI2_TX_SYNC_GPIO_AD_B0_04));
+sai!(module: U2, alt: 2, pad: GPIO_EMC_05,   signal: TxSync, daisy: Some(DAISY_SAI2_TX_SYNC_GPIO_EMC_05));
 
-sai! { module: U2, alt: 2, pad: GPIO_EMC_10,   signal: RxBclk, daisy: Some(DAISY_SAI2_RX_BCLK_GPIO_EMC_10) }
-sai! { module: U2, alt: 3, pad: GPIO_AD_B0_06, signal: RxBclk, daisy: Some(DAISY_SAI2_RX_BCLK_GPIO_AD_B0_06) }
+sai!(module: U2, alt: 2, pad: GPIO_EMC_10,   signal: RxBclk, daisy: Some(DAISY_SAI2_RX_BCLK_GPIO_EMC_10));
+sai!(module: U2, alt: 3, pad: GPIO_AD_B0_06, signal: RxBclk, daisy: Some(DAISY_SAI2_RX_BCLK_GPIO_AD_B0_06));
 
-sai! { module: U2, alt: 2, pad: GPIO_EMC_09,   signal: RxSync, daisy: Some(DAISY_SAI2_RX_SYNC_GPIO_EMC_09) }
-sai! { module: U2, alt: 3, pad: GPIO_AD_B0_07, signal: RxSync, daisy: Some(DAISY_SAI2_RX_SYNC_GPIO_AD_B0_07) }
+sai!(module: U2, alt: 2, pad: GPIO_EMC_09,   signal: RxSync, daisy: Some(DAISY_SAI2_RX_SYNC_GPIO_EMC_09));
+sai!(module: U2, alt: 3, pad: GPIO_AD_B0_07, signal: RxSync, daisy: Some(DAISY_SAI2_RX_SYNC_GPIO_AD_B0_07));
 
-sai! { module: U2, alt: 2, pad: GPIO_EMC_07,   signal: Mclk, daisy: Some(DAISY_SAI2_MCLK2_GPIO_EMC_07) }
-sai! { module: U2, alt: 3, pad: GPIO_AD_B0_10, signal: Mclk, daisy: Some(DAISY_SAI2_MCLK2_GPIO_AD_B0_10) }
+sai!(module: U2, alt: 2, pad: GPIO_EMC_07,   signal: Mclk, daisy: Some(DAISY_SAI2_MCLK2_GPIO_EMC_07));
+sai!(module: U2, alt: 3, pad: GPIO_AD_B0_10, signal: Mclk, daisy: Some(DAISY_SAI2_MCLK2_GPIO_AD_B0_10));
 
-sai! { module: U2, alt: 2, pad: GPIO_EMC_04,   signal: TxData, daisy: None }
-sai! { module: U2, alt: 3, pad: GPIO_AD_B0_09, signal: TxData, daisy: None }
+sai!(module: U2, alt: 2, pad: GPIO_EMC_04,   signal: TxData, daisy: None);
+sai!(module: U2, alt: 3, pad: GPIO_AD_B0_09, signal: TxData, daisy: None);
 
-sai! { module: U2, alt: 3, pad: GPIO_AD_B0_08, signal: RxData, daisy: Some(DAISY_SAI2_RX_DATA0_GPIO_AD_B0_08) }
-sai! { module: U2, alt: 2, pad: GPIO_EMC_08,   signal: RxData, daisy: Some(DAISY_SAI2_RX_DATA0_GPIO_EMC_08) }
+sai!(module: U2, alt: 3, pad: GPIO_AD_B0_08, signal: RxData, daisy: Some(DAISY_SAI2_RX_DATA0_GPIO_AD_B0_08));
+sai!(module: U2, alt: 2, pad: GPIO_EMC_08,   signal: RxData, daisy: Some(DAISY_SAI2_RX_DATA0_GPIO_EMC_08));
 
 //
 // SAI3
 //
 
-sai! { module: U3, alt: 3, pad: GPIO_EMC_38,   signal: TxBclk, daisy: Some(DAISY_SAI3_IPP_IND_SAI_TXBCLK_GPIO_EMC_38) }
-sai! { module: U3, alt: 8, pad: GPIO_SD_B1_03, signal: TxBclk, daisy: Some(DAISY_SAI3_IPP_IND_SAI_TXBCLK_GPIO_SD_B1_03) }
+sai!(module: U3, alt: 3, pad: GPIO_EMC_38,   signal: TxBclk, daisy: Some(DAISY_SAI3_IPP_IND_SAI_TXBCLK_GPIO_EMC_38));
+sai!(module: U3, alt: 8, pad: GPIO_SD_B1_03, signal: TxBclk, daisy: Some(DAISY_SAI3_IPP_IND_SAI_TXBCLK_GPIO_SD_B1_03));
 
-sai! { module: U3, alt: 3, pad: GPIO_EMC_39,   signal: TxSync, daisy: Some(DAISY_SAI3_IPP_IND_SAI_TXSYNC_GPIO_EMC_39) }
-sai! { module: U3, alt: 8, pad: GPIO_SD_B1_02, signal: TxSync, daisy: Some(DAISY_SAI3_IPP_IND_SAI_TXSYNC_GPIO_SD_B1_02) }
+sai!(module: U3, alt: 3, pad: GPIO_EMC_39,   signal: TxSync, daisy: Some(DAISY_SAI3_IPP_IND_SAI_TXSYNC_GPIO_EMC_39));
+sai!(module: U3, alt: 8, pad: GPIO_SD_B1_02, signal: TxSync, daisy: Some(DAISY_SAI3_IPP_IND_SAI_TXSYNC_GPIO_SD_B1_02));
 
-sai! { module: U3, alt: 3, pad: GPIO_EMC_35,   signal: RxBclk, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXBCLK_GPIO_EMC_35) }
-sai! { module: U3, alt: 8, pad: GPIO_SD_B1_06, signal: RxBclk, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXBCLK_GPIO_SD_B1_06) }
+sai!(module: U3, alt: 3, pad: GPIO_EMC_35,   signal: RxBclk, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXBCLK_GPIO_EMC_35));
+sai!(module: U3, alt: 8, pad: GPIO_SD_B1_06, signal: RxBclk, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXBCLK_GPIO_SD_B1_06));
 
-sai! { module: U3, alt: 3, pad: GPIO_EMC_34,   signal: RxSync, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXSYNC_GPIO_EMC_34) }
-sai! { module: U3, alt: 8, pad: GPIO_SD_B1_05, signal: RxSync, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXSYNC_GPIO_SD_B1_05) }
+sai!(module: U3, alt: 3, pad: GPIO_EMC_34,   signal: RxSync, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXSYNC_GPIO_EMC_34));
+sai!(module: U3, alt: 8, pad: GPIO_SD_B1_05, signal: RxSync, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXSYNC_GPIO_SD_B1_05));
 
-sai! { module: U3, alt: 3, pad: GPIO_EMC_37,   signal: Mclk, daisy: Some(DAISY_SAI3_IPG_CLK_SAI_MCLK_2_GPIO_EMC_37) }
-sai! { module: U3, alt: 8, pad: GPIO_SD_B1_04, signal: Mclk, daisy: Some(DAISY_SAI3_IPG_CLK_SAI_MCLK_2_GPIO_SD_B1_04) }
+sai!(module: U3, alt: 3, pad: GPIO_EMC_37,   signal: Mclk, daisy: Some(DAISY_SAI3_IPG_CLK_SAI_MCLK_2_GPIO_EMC_37));
+sai!(module: U3, alt: 8, pad: GPIO_SD_B1_04, signal: Mclk, daisy: Some(DAISY_SAI3_IPG_CLK_SAI_MCLK_2_GPIO_SD_B1_04));
 
-sai! { module: U3, alt: 3, pad: GPIO_EMC_36,   signal: TxData, daisy: None }
-sai! { module: U3, alt: 8, pad: GPIO_SD_B1_01, signal: TxData, daisy: None }
+sai!(module: U3, alt: 3, pad: GPIO_EMC_36,   signal: TxData, daisy: None);
+sai!(module: U3, alt: 8, pad: GPIO_SD_B1_01, signal: TxData, daisy: None);
 
-sai! { module: U3, alt: 3, pad: GPIO_EMC_33,   signal: RxData, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXDATA_0_GPIO_EMC_33) }
-sai! { module: U3, alt: 8, pad: GPIO_SD_B1_00, signal: RxData, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXDATA_0_GPIO_SD_B1_00) }
+sai!(module: U3, alt: 3, pad: GPIO_EMC_33,   signal: RxData, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXDATA_0_GPIO_EMC_33));
+sai!(module: U3, alt: 8, pad: GPIO_SD_B1_00, signal: RxData, daisy: Some(DAISY_SAI3_IPP_IND_SAI_RXDATA_0_GPIO_SD_B1_00));
 
 mod daisy {
     use super::Daisy;
