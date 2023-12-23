@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.2.5] 2023-12-23
+
+- Add SAI pin implementations for the 1020.
+
 ## [0.2.4] 2023-11-17
 
 - Add SAI pin implementations for the 1010.
@@ -176,6 +180,7 @@ First release
   - UART
 
 [Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...HEAD
+[0.2.5]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.3...v0.2.4
 [0.2.3]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.1...v0.2.2
