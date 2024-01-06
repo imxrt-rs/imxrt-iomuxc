@@ -14,7 +14,7 @@ mod pads;
 pub use pads::*;
 
 mod ccm {
-    pub use crate::ccm::{Function, Observable, Pin};
+    pub use crate::ccm::{Observable, Pin};
 
     impl Pin for super::pads::gpio_sd::GPIO_SD_02 {
         const ALT: u32 = 3;
