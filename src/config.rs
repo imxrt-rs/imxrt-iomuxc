@@ -361,6 +361,16 @@ impl Config {
     }
 }
 
+/// A workaround to set a pad's open drain configuration.
+///
+/// This is a best effort until we can use the [`config`] API on
+/// the 1170. See the issue tracker for more details.
+/// https://github.com/imxrt-rs/imxrt-iomuxc/issues/28
+pub(crate) fn set_open_drain<I: Iomuxc>(_pad: &mut I) {
+    #[cfg(any(feature = "imxrt1010", feature = "imxrt1020", feature = "imxrt1060"))]
+    configure(_pad, Config::modify().set_open_drain(OpenDrain::Enabled));
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -471,6 +481,17 @@ mod tests {
             configure(&mut pad, Config::zero().set_pull_keeper(Some(test.config)));
             assert_eq!(pad.0, 1 << 12 | 1 << 13 | test.value);
         }
+    }
+
+    #[test]
+    fn set_open_drain() {
+        let mut pad = Pad(0);
+        super::set_open_drain(&mut pad);
+        assert_eq!(pad.0, 1 << 11);
+
+        let mut pad = Pad(0xFFFF_F7FF);
+        super::set_open_drain(&mut pad);
+        assert_eq!(pad.0, 0xFFFFFFFF);
     }
 }
 

@@ -11,6 +11,8 @@ All notable changes to this project will be documented in this file.
 - **BREAKING** Change the type of the `lpspi::Pin::DAISY` and `lpi2c::Pin::DAISY`
   associated constant to an `Option<Daisy>`.
 
+Enable an open drain when preparing I2C pins on 10xx MCUs.
+
 ## [0.2.3] 2023-09-09
 
 - Add FlexIO pin implementations for 1010 and 1020 pads.
