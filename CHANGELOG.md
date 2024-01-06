@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Enable an open drain when preparing I2C pins on 10xx MCUs.
+
 ## [0.2.5] 2023-12-23
 
 - Add SAI pin implementations for the 1020.
