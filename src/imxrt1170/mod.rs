@@ -12,7 +12,7 @@ mod lpspi;
 mod lpuart;
 
 mod ccm {
-    pub use crate::ccm::{Function, Observable, Pin};
+    pub use crate::ccm::{Observable, Pin};
 
     impl Pin for super::pads::gpio_emc_b1::GPIO_EMC_B1_40 {
         const ALT: u32 = 9;
