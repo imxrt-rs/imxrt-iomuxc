@@ -1,6 +1,6 @@
 [package]
 name = "imxrt-iomuxc"
-version = "0.2.5"
+version = "0.2.6"
 authors = ["Ian McIntyre <ianpmcintyre@gmail.com>"]
 edition = "2021"
 description = """Pad configuration interface for NXP i.MX RT processors.
