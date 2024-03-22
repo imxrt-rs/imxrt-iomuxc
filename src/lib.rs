@@ -192,6 +192,8 @@ pub mod lpuart;
 pub mod sai;
 #[macro_use]
 pub mod usdhc;
+#[macro_use]
+pub mod semc;
 
 use core::ptr;
 
@@ -221,7 +223,7 @@ pub mod prelude {
 
     pub use crate::{
         adc, alternate, ccm, clear_sion, consts, flexcan, flexio, flexpwm, gpio, lpi2c, lpspi,
-        lpuart, sai, set_sion, usdhc, Daisy, ErasedPad, Pad, WrongPadError,
+        lpuart, sai, semc, set_sion, usdhc, Daisy, ErasedPad, Pad, WrongPadError,
     };
 }
 
