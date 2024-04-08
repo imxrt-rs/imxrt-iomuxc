@@ -1,6 +1,6 @@
 //! FlexIO pin implementation
 
-use super::pads::{gpio_ad_b1::*, gpio_b0::*, gpio_b1::*, gpio_emc::*};
+use super::pads::{gpio_b0::*, gpio_b1::*, gpio_emc::*};
 
 use crate::{flexio::Pin, Daisy};
 
