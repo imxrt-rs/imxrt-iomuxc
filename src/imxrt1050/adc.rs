@@ -1,7 +1,7 @@
 //! ADC pin implementations
 //!
-//! Implementation derived from Table 64-2: ADC External Signals
-//! from the iMXRT1060 Reference Manual, Rev 5. There is a similar
+//! Implementation derived from Table 66-2: ADC External Signals
+//! from the iMXRT1060 Reference Manual, Rev 2. There is a similar
 //! information available in Table 10-1: Muxing Options, in the IOMUXC
 //! section of the reference manual.
 

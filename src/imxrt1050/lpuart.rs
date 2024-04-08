@@ -64,8 +64,8 @@ mod daisy {
     pub const DAISY_LPUART2_RX_GPIO_AD_B1_03: Daisy = Daisy::new(0x401f852c as *mut u32, 1);
     pub const DAISY_LPUART2_TX_GPIO_SD_B1_11: Daisy = Daisy::new(0x401f8530 as *mut u32, 0);
     pub const DAISY_LPUART2_TX_GPIO_AD_B1_02: Daisy = Daisy::new(0x401f8530 as *mut u32, 1);
-    pub const DAISY_LPUART3_CTS_B_GPIO_EMC_15: Daisy = Daisy::new(0x401f8534 as *mut u32, 0);
-    pub const DAISY_LPUART3_CTS_B_GPIO_AD_B1_04: Daisy = Daisy::new(0x401f8534 as *mut u32, 1);
+    pub const DAISY_LPUART3_CT_GPIOS_B_EMC_15: Daisy = Daisy::new(0x401f8534 as *mut u32, 0);
+    pub const DAISY_LPUART3_CT_GPIOS_B_AD_B1_04: Daisy = Daisy::new(0x401f8534 as *mut u32, 1);
     pub const DAISY_LPUART3_RX_GPIO_AD_B1_07: Daisy = Daisy::new(0x401f8538 as *mut u32, 0);
     pub const DAISY_LPUART3_RX_GPIO_EMC_14: Daisy = Daisy::new(0x401f8538 as *mut u32, 1);
     pub const DAISY_LPUART3_RX_GPIO_B0_09: Daisy = Daisy::new(0x401f8538 as *mut u32, 2);
