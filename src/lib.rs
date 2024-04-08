@@ -269,6 +269,9 @@ pub mod imxrt1010;
 #[cfg_attr(docsrs, doc(cfg(feature = "imxrt1020")))]
 pub mod imxrt1020;
 
+#[cfg(any(feature = "imxrt1050", feature = "imxrt1060",))]
+mod common_1050_1060;
+
 #[cfg(feature = "imxrt1050")]
 #[cfg_attr(docsrs, doc(cfg(feature = "imxrt1050")))]
 pub mod imxrt1050;
