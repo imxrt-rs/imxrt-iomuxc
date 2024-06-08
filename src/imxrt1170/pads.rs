@@ -24,7 +24,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_01 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 1;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_01 {
@@ -38,7 +38,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_02 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 2;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_02 {
@@ -52,7 +52,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_03 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 3;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_03 {
@@ -66,7 +66,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_04 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 4;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_04 {
@@ -80,7 +80,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_05 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 5;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_05 {
@@ -94,7 +94,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_06 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 6;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_06 {
@@ -108,7 +108,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_07 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 7;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_07 {
@@ -122,7 +122,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_08 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 8;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_08 {
@@ -136,7 +136,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_09 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 9;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_09 {
@@ -150,7 +150,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_10 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 10;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_10 {
@@ -164,7 +164,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_11 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 11;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_11 {
@@ -178,7 +178,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_12 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 12;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_12 {
@@ -192,7 +192,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_13 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 13;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_13 {
@@ -206,7 +206,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_14 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 14;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_14 {
@@ -220,7 +220,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_15 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 15;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_15 {
@@ -234,7 +234,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_16 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 16;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_16 {
@@ -248,7 +248,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_17 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 17;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_17 {
@@ -262,7 +262,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_18 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 18;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_18 {
@@ -276,7 +276,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_19 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 19;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_19 {
@@ -290,7 +290,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_20 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 20;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_20 {
@@ -304,7 +304,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_21 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 21;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_21 {
@@ -318,7 +318,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_22 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 22;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_22 {
@@ -332,7 +332,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_23 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 23;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_23 {
@@ -346,7 +346,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_24 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 24;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_24 {
@@ -360,7 +360,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_25 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 25;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_25 {
@@ -374,7 +374,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_26 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 26;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_26 {
@@ -388,7 +388,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_27 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 27;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_27 {
@@ -402,7 +402,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_28 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 28;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_28 {
@@ -416,7 +416,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_29 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 29;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_29 {
@@ -430,7 +430,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_30 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 3;
+        const OFFSET: u32 = 30;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_30 {
@@ -444,7 +444,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<1> for GPIO_EMC_B1_31 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 3;
+        const OFFSET: u32 = 31;
     }
 
     impl crate::gpio::Pin<7> for GPIO_EMC_B1_31 {
@@ -472,7 +472,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B1_33 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 1;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B1_33 {
@@ -486,7 +486,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B1_34 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 2;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B1_34 {
@@ -500,7 +500,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B1_35 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 3;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B1_35 {
@@ -514,7 +514,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B1_36 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 4;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B1_36 {
@@ -528,7 +528,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B1_37 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 5;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B1_37 {
@@ -542,7 +542,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B1_38 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 6;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B1_38 {
@@ -556,7 +556,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B1_39 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 7;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B1_39 {
@@ -570,7 +570,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B1_40 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 8;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B1_40 {
@@ -584,7 +584,7 @@ pub mod gpio_emc_b1 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B1_41 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 9;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B1_41 {
@@ -763,7 +763,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_00 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 10;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_00 {
@@ -777,7 +777,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_01 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 11;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_01 {
@@ -791,7 +791,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_02 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 12;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_02 {
@@ -805,7 +805,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_03 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 13;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_03 {
@@ -819,7 +819,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_04 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 14;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_04 {
@@ -833,7 +833,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_05 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 15;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_05 {
@@ -847,7 +847,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_06 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 16;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_06 {
@@ -861,7 +861,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_07 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 17;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_07 {
@@ -875,7 +875,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_08 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 18;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_08 {
@@ -889,7 +889,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_09 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 19;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_09 {
@@ -903,7 +903,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_10 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 20;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_10 {
@@ -917,7 +917,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_11 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 21;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_11 {
@@ -931,7 +931,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_12 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 22;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_12 {
@@ -945,7 +945,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_13 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 23;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_13 {
@@ -959,7 +959,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_14 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 24;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_14 {
@@ -973,7 +973,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_15 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 25;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_15 {
@@ -987,7 +987,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_16 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 26;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_16 {
@@ -1001,7 +1001,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_17 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 27;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_17 {
@@ -1015,7 +1015,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_18 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 28;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_18 {
@@ -1029,7 +1029,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_19 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 29;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_19 {
@@ -1043,7 +1043,7 @@ pub mod gpio_emc_b2 {
 
     impl crate::gpio::Pin<2> for GPIO_EMC_B2_20 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 3;
+        const OFFSET: u32 = 30;
     }
 
     impl crate::gpio::Pin<8> for GPIO_EMC_B2_20 {
@@ -1159,7 +1159,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<2> for GPIO_AD_00 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 3;
+        const OFFSET: u32 = 31;
     }
 
     impl crate::gpio::Pin<8> for GPIO_AD_00 {
@@ -1187,7 +1187,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_02 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 1;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_02 {
@@ -1201,7 +1201,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_03 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 2;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_03 {
@@ -1215,7 +1215,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_04 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 3;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_04 {
@@ -1229,7 +1229,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_05 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 4;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_05 {
@@ -1243,7 +1243,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_06 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 5;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_06 {
@@ -1257,7 +1257,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_07 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 6;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_07 {
@@ -1271,7 +1271,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_08 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 7;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_08 {
@@ -1285,7 +1285,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_09 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 8;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_09 {
@@ -1299,7 +1299,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_10 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 9;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_10 {
@@ -1313,7 +1313,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_11 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 10;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_11 {
@@ -1327,7 +1327,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_12 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 11;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_12 {
@@ -1341,7 +1341,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_13 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 12;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_13 {
@@ -1355,7 +1355,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_14 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 13;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_14 {
@@ -1369,7 +1369,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_15 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 14;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_15 {
@@ -1383,7 +1383,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_16 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 15;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_16 {
@@ -1397,7 +1397,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_17 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 16;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_17 {
@@ -1411,7 +1411,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_18 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 17;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_18 {
@@ -1425,7 +1425,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_19 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 18;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_19 {
@@ -1439,7 +1439,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_20 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 19;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_20 {
@@ -1453,7 +1453,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_21 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 20;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_21 {
@@ -1467,7 +1467,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_22 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 21;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_22 {
@@ -1481,7 +1481,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_23 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 22;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_23 {
@@ -1495,7 +1495,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_24 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 23;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_24 {
@@ -1509,7 +1509,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_25 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 24;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_25 {
@@ -1523,7 +1523,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_26 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 25;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_26 {
@@ -1537,7 +1537,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_27 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 26;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_27 {
@@ -1551,7 +1551,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_28 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 27;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_28 {
@@ -1565,7 +1565,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_29 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 28;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_29 {
@@ -1579,7 +1579,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_30 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 29;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_30 {
@@ -1593,7 +1593,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_31 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 3;
+        const OFFSET: u32 = 30;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_31 {
@@ -1607,7 +1607,7 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<3> for GPIO_AD_32 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 3;
+        const OFFSET: u32 = 31;
     }
 
     impl crate::gpio::Pin<9> for GPIO_AD_32 {
@@ -1624,13 +1624,23 @@ pub mod gpio_ad {
         const OFFSET: u32 = 0;
     }
 
+    impl crate::gpio::Pin<10> for GPIO_AD_33 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 0;
+    }
+
     const GPIO_AD_34_MUX_ADDR: u32 = 0x400e8194;
     const GPIO_AD_34_PAD_ADDR: u32 = 0x400e83d8;
     pub type GPIO_AD_34 = crate::Pad<GPIO_AD_34_MUX_ADDR, GPIO_AD_34_PAD_ADDR>;
 
     impl crate::gpio::Pin<4> for GPIO_AD_34 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 1;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_AD_34 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 1;
     }
 
     const GPIO_AD_35_MUX_ADDR: u32 = 0x400e8198;
@@ -1639,7 +1649,12 @@ pub mod gpio_ad {
 
     impl crate::gpio::Pin<4> for GPIO_AD_35 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 2;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_AD_35 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 2;
     }
 
     /// All pads with prefix GPIO_AD.
@@ -1795,7 +1810,12 @@ pub mod gpio_sd_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B1_00 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 3;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B1_00 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 3;
     }
 
     const GPIO_SD_B1_01_MUX_ADDR: u32 = 0x400e81a0;
@@ -1804,7 +1824,12 @@ pub mod gpio_sd_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B1_01 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 4;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B1_01 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 4;
     }
 
     const GPIO_SD_B1_02_MUX_ADDR: u32 = 0x400e81a4;
@@ -1813,7 +1838,12 @@ pub mod gpio_sd_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B1_02 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 5;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B1_02 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 5;
     }
 
     const GPIO_SD_B1_03_MUX_ADDR: u32 = 0x400e81a8;
@@ -1822,7 +1852,12 @@ pub mod gpio_sd_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B1_03 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 6;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B1_03 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 6;
     }
 
     const GPIO_SD_B1_04_MUX_ADDR: u32 = 0x400e81ac;
@@ -1831,7 +1866,12 @@ pub mod gpio_sd_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B1_04 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 7;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B1_04 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 7;
     }
 
     const GPIO_SD_B1_05_MUX_ADDR: u32 = 0x400e81b0;
@@ -1840,7 +1880,12 @@ pub mod gpio_sd_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B1_05 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 8;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B1_05 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 8;
     }
 
     /// All pads with prefix GPIO_SD_B1.
@@ -1906,7 +1951,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_00 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 9;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_00 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 9;
     }
 
     const GPIO_SD_B2_01_MUX_ADDR: u32 = 0x400e81b8;
@@ -1915,7 +1965,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_01 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 10;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_01 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 10;
     }
 
     const GPIO_SD_B2_02_MUX_ADDR: u32 = 0x400e81bc;
@@ -1924,7 +1979,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_02 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 11;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_02 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 11;
     }
 
     const GPIO_SD_B2_03_MUX_ADDR: u32 = 0x400e81c0;
@@ -1933,7 +1993,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_03 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 12;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_03 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 12;
     }
 
     const GPIO_SD_B2_04_MUX_ADDR: u32 = 0x400e81c4;
@@ -1942,7 +2007,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_04 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 13;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_04 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 13;
     }
 
     const GPIO_SD_B2_05_MUX_ADDR: u32 = 0x400e81c8;
@@ -1951,7 +2021,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_05 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 14;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_05 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 14;
     }
 
     const GPIO_SD_B2_06_MUX_ADDR: u32 = 0x400e81cc;
@@ -1960,7 +2035,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_06 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 15;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_06 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 15;
     }
 
     const GPIO_SD_B2_07_MUX_ADDR: u32 = 0x400e81d0;
@@ -1969,7 +2049,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_07 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 16;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_07 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 16;
     }
 
     const GPIO_SD_B2_08_MUX_ADDR: u32 = 0x400e81d4;
@@ -1978,7 +2063,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_08 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 17;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_08 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 17;
     }
 
     const GPIO_SD_B2_09_MUX_ADDR: u32 = 0x400e81d8;
@@ -1987,7 +2077,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_09 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 18;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_09 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 18;
     }
 
     const GPIO_SD_B2_10_MUX_ADDR: u32 = 0x400e81dc;
@@ -1996,7 +2091,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_10 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 19;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_10 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 19;
     }
 
     const GPIO_SD_B2_11_MUX_ADDR: u32 = 0x400e81e0;
@@ -2005,7 +2105,12 @@ pub mod gpio_sd_b2 {
 
     impl crate::gpio::Pin<4> for GPIO_SD_B2_11 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 20;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_SD_B2_11 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 20;
     }
 
     /// All pads with prefix GPIO_SD_B2.
@@ -2089,7 +2194,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_00 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 21;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_00 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 21;
     }
 
     const GPIO_DISP_B1_01_MUX_ADDR: u32 = 0x400e81e8;
@@ -2098,7 +2208,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_01 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 22;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_01 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 22;
     }
 
     const GPIO_DISP_B1_02_MUX_ADDR: u32 = 0x400e81ec;
@@ -2107,7 +2222,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_02 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 23;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_02 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 23;
     }
 
     const GPIO_DISP_B1_03_MUX_ADDR: u32 = 0x400e81f0;
@@ -2116,7 +2236,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_03 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 24;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_03 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 24;
     }
 
     const GPIO_DISP_B1_04_MUX_ADDR: u32 = 0x400e81f4;
@@ -2125,7 +2250,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_04 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 25;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_04 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 25;
     }
 
     const GPIO_DISP_B1_05_MUX_ADDR: u32 = 0x400e81f8;
@@ -2134,7 +2264,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_05 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 26;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_05 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 26;
     }
 
     const GPIO_DISP_B1_06_MUX_ADDR: u32 = 0x400e81fc;
@@ -2143,7 +2278,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_06 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 27;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_06 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 27;
     }
 
     const GPIO_DISP_B1_07_MUX_ADDR: u32 = 0x400e8200;
@@ -2152,7 +2292,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_07 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 28;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_07 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 28;
     }
 
     const GPIO_DISP_B1_08_MUX_ADDR: u32 = 0x400e8204;
@@ -2161,7 +2306,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_08 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 2;
+        const OFFSET: u32 = 29;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_08 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 29;
     }
 
     const GPIO_DISP_B1_09_MUX_ADDR: u32 = 0x400e8208;
@@ -2170,7 +2320,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_09 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 3;
+        const OFFSET: u32 = 30;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_09 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 30;
     }
 
     const GPIO_DISP_B1_10_MUX_ADDR: u32 = 0x400e820c;
@@ -2179,7 +2334,12 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<4> for GPIO_DISP_B1_10 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 3;
+        const OFFSET: u32 = 31;
+    }
+
+    impl crate::gpio::Pin<10> for GPIO_DISP_B1_10 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 31;
     }
 
     const GPIO_DISP_B1_11_MUX_ADDR: u32 = 0x400e8210;
@@ -2188,6 +2348,11 @@ pub mod gpio_disp_b1 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B1_11 {
         const ALT: u32 = 5;
+        const OFFSET: u32 = 0;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B1_11 {
+        const ALT: u32 = 10;
         const OFFSET: u32 = 0;
     }
 
@@ -2272,7 +2437,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_00 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 1;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_00 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 1;
     }
 
     const GPIO_DISP_B2_01_MUX_ADDR: u32 = 0x400e8218;
@@ -2281,7 +2451,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_01 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 2;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_01 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 2;
     }
 
     const GPIO_DISP_B2_02_MUX_ADDR: u32 = 0x400e821c;
@@ -2290,7 +2465,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_02 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 3;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_02 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 3;
     }
 
     const GPIO_DISP_B2_03_MUX_ADDR: u32 = 0x400e8220;
@@ -2299,7 +2479,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_03 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 4;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_03 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 4;
     }
 
     const GPIO_DISP_B2_04_MUX_ADDR: u32 = 0x400e8224;
@@ -2308,7 +2493,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_04 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 5;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_04 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 5;
     }
 
     const GPIO_DISP_B2_05_MUX_ADDR: u32 = 0x400e8228;
@@ -2317,7 +2507,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_05 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 6;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_05 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 6;
     }
 
     const GPIO_DISP_B2_06_MUX_ADDR: u32 = 0x400e822c;
@@ -2326,7 +2521,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_06 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 7;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_06 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 7;
     }
 
     const GPIO_DISP_B2_07_MUX_ADDR: u32 = 0x400e8230;
@@ -2335,7 +2535,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_07 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 8;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_07 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 8;
     }
 
     const GPIO_DISP_B2_08_MUX_ADDR: u32 = 0x400e8234;
@@ -2344,7 +2549,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_08 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 9;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_08 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 9;
     }
 
     const GPIO_DISP_B2_09_MUX_ADDR: u32 = 0x400e8238;
@@ -2353,7 +2563,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_09 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 10;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_09 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 10;
     }
 
     const GPIO_DISP_B2_10_MUX_ADDR: u32 = 0x400e823c;
@@ -2362,7 +2577,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_10 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 11;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_10 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 11;
     }
 
     const GPIO_DISP_B2_11_MUX_ADDR: u32 = 0x400e8240;
@@ -2371,7 +2591,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_11 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 12;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_11 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 12;
     }
 
     const GPIO_DISP_B2_12_MUX_ADDR: u32 = 0x400e8244;
@@ -2380,7 +2605,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_12 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 13;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_12 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 13;
     }
 
     const GPIO_DISP_B2_13_MUX_ADDR: u32 = 0x400e8248;
@@ -2389,7 +2619,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_13 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 14;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_13 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 14;
     }
 
     const GPIO_DISP_B2_14_MUX_ADDR: u32 = 0x400e824c;
@@ -2398,7 +2633,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_14 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 15;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_14 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 15;
     }
 
     const GPIO_DISP_B2_15_MUX_ADDR: u32 = 0x400e8250;
@@ -2407,7 +2647,12 @@ pub mod gpio_disp_b2 {
 
     impl crate::gpio::Pin<5> for GPIO_DISP_B2_15 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 16;
+    }
+
+    impl crate::gpio::Pin<11> for GPIO_DISP_B2_15 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 16;
     }
 
     /// All pads with prefix GPIO_DISP_B2.
@@ -2506,13 +2751,23 @@ pub mod gpio_lpsr {
         const OFFSET: u32 = 0;
     }
 
+    impl crate::gpio::Pin<12> for GPIO_LPSR_00 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 0;
+    }
+
     const GPIO_LPSR_01_MUX_ADDR: u32 = 0x40c08004;
     const GPIO_LPSR_01_PAD_ADDR: u32 = 0x40c08044;
     pub type GPIO_LPSR_01 = crate::Pad<GPIO_LPSR_01_MUX_ADDR, GPIO_LPSR_01_PAD_ADDR>;
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_01 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 1;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_01 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 1;
     }
 
     const GPIO_LPSR_02_MUX_ADDR: u32 = 0x40c08008;
@@ -2521,7 +2776,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_02 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 2;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_02 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 2;
     }
 
     const GPIO_LPSR_03_MUX_ADDR: u32 = 0x40c0800c;
@@ -2530,7 +2790,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_03 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 3;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_03 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 3;
     }
 
     const GPIO_LPSR_04_MUX_ADDR: u32 = 0x40c08010;
@@ -2539,7 +2804,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_04 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 4;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_04 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 4;
     }
 
     const GPIO_LPSR_05_MUX_ADDR: u32 = 0x40c08014;
@@ -2548,7 +2818,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_05 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 5;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_05 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 5;
     }
 
     const GPIO_LPSR_06_MUX_ADDR: u32 = 0x40c08018;
@@ -2557,7 +2832,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_06 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 6;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_06 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 6;
     }
 
     const GPIO_LPSR_07_MUX_ADDR: u32 = 0x40c0801c;
@@ -2566,7 +2846,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_07 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 7;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_07 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 7;
     }
 
     const GPIO_LPSR_08_MUX_ADDR: u32 = 0x40c08020;
@@ -2575,7 +2860,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_08 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 8;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_08 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 8;
     }
 
     const GPIO_LPSR_09_MUX_ADDR: u32 = 0x40c08024;
@@ -2584,7 +2874,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_09 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 0;
+        const OFFSET: u32 = 9;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_09 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 9;
     }
 
     const GPIO_LPSR_10_MUX_ADDR: u32 = 0x40c08028;
@@ -2593,7 +2888,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_10 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 10;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_10 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 10;
     }
 
     const GPIO_LPSR_11_MUX_ADDR: u32 = 0x40c0802c;
@@ -2602,7 +2902,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_11 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 11;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_11 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 11;
     }
 
     const GPIO_LPSR_12_MUX_ADDR: u32 = 0x40c08030;
@@ -2611,7 +2916,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_12 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 12;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_12 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 12;
     }
 
     const GPIO_LPSR_13_MUX_ADDR: u32 = 0x40c08034;
@@ -2620,7 +2930,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_13 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 13;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_13 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 13;
     }
 
     const GPIO_LPSR_14_MUX_ADDR: u32 = 0x40c08038;
@@ -2629,7 +2944,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_14 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 14;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_14 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 14;
     }
 
     const GPIO_LPSR_15_MUX_ADDR: u32 = 0x40c0803c;
@@ -2638,7 +2958,12 @@ pub mod gpio_lpsr {
 
     impl crate::gpio::Pin<6> for GPIO_LPSR_15 {
         const ALT: u32 = 5;
-        const OFFSET: u32 = 1;
+        const OFFSET: u32 = 15;
+    }
+
+    impl crate::gpio::Pin<12> for GPIO_LPSR_15 {
+        const ALT: u32 = 10;
+        const OFFSET: u32 = 15;
     }
 
     /// All pads with prefix GPIO_LPSR.
