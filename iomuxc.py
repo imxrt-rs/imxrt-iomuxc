@@ -70,7 +70,7 @@ def extract_pads(iomuxc):
                 desc = alt.find("./description").text
 
                 # This is the path taken on nearly all i.MX RT variants...
-                if gpio_match := re.search("GPIO\d_IO\d{2}", desc):
+                if gpio_match := re.search("GPIO\d{1,2}_IO\d{2}", desc):
                     gpio_text = gpio_match.group(0)
                     [gpio_module, gpio_offset] = re.findall("\d+", gpio_text)
                     gpio_module = int(gpio_module)
@@ -84,7 +84,7 @@ def extract_pads(iomuxc):
                     gpio_offset = int(gpio_offset)
                 # But wait! The 1176 SVD has a third form, "GPIO_MUXx_IOyz",
                 # which is mixed with the first form...
-                elif gpio_match := re.search("GPIO_MUX\d_IO\d", desc):
+                elif gpio_match := re.search("GPIO_MUX\d_IO\d{2}", desc):
                     gpio_text = gpio_match.group(0)
                     [gpio_module, gpio_offset] = re.findall("\d+", gpio_text)
                     gpio_module = int(gpio_module)
