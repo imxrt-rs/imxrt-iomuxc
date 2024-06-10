@@ -15,7 +15,7 @@ import sys
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 
-NEW_DOCSTRING = """
+NEW_DOCSTRING = r"""
 /// Take all pads from this group
 ///
 /// # Safety
@@ -24,7 +24,7 @@ NEW_DOCSTRING = """
 /// Subsequent calls may return pads that are mutably aliased
 /// elsewhere. Consider calling new() at the start of your program."""
 
-ERASE_DOCSTRING = """
+ERASE_DOCSTRING = r"""
 /// Erase all of the pads
 ///
 /// The return type is an array, where the index indicates the
@@ -70,23 +70,23 @@ def extract_pads(iomuxc):
                 desc = alt.find("./description").text
 
                 # This is the path taken on nearly all i.MX RT variants...
-                if gpio_match := re.search("GPIO\d{1,2}_IO\d{2}", desc):
+                if gpio_match := re.search(r"GPIO\d{1,2}_IO\d{2}", desc):
                     gpio_text = gpio_match.group(0)
-                    [gpio_module, gpio_offset] = re.findall("\d+", gpio_text)
+                    [gpio_module, gpio_offset] = re.findall(r"\d+", gpio_text)
                     gpio_module = int(gpio_module)
                     gpio_offset = int(gpio_offset)
                 # ...except for the 1010, which references "GPIO1_IOxx"
                 # as "GPIOMUX_IOxx".
-                elif gpio_match := re.search("GPIOMUX_IO\d{2}", desc):
+                elif gpio_match := re.search(r"GPIOMUX_IO\d{2}", desc):
                     gpio_text = gpio_match.group(0)
-                    [gpio_offset] = re.findall("\d+", gpio_text)
+                    [gpio_offset] = re.findall(r"\d+", gpio_text)
                     gpio_module = 1
                     gpio_offset = int(gpio_offset)
                 # But wait! The 1176 SVD has a third form, "GPIO_MUXx_IOyz",
                 # which is mixed with the first form...
-                elif gpio_match := re.search("GPIO_MUX\d_IO\d{2}", desc):
+                elif gpio_match := re.search(r"GPIO_MUX\d_IO\d{2}", desc):
                     gpio_text = gpio_match.group(0)
-                    [gpio_module, gpio_offset] = re.findall("\d+", gpio_text)
+                    [gpio_module, gpio_offset] = re.findall(r"\d+", gpio_text)
                     gpio_module = int(gpio_module)
                     gpio_offset = int(gpio_offset)
                 else:
@@ -117,7 +117,7 @@ def iomuxc(path):
     iomuxc_lpsr = root.find("./peripherals/peripheral[name='IOMUXC_LPSR']")
 
     pads = extract_pads(iomuxc)
-    if iomuxc_lpsr:
+    if iomuxc_lpsr is not None:
         pads |= extract_pads(iomuxc_lpsr)
 
     # Create pad groups.
