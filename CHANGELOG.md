@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.2.7] 2024-06-10
+
+- Fix many 1170 GPIO implementations, most which incorrectly specified their
+  offset. Introduce a few missing GPIO implementations.
+
 ## [0.2.6] 2024-01-27
 
 - Enable an open drain when preparing I2C pins on 10xx MCUs.
@@ -184,6 +189,7 @@ First release
   - UART
 
 [Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...HEAD
+[0.2.7]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.3...v0.2.4
