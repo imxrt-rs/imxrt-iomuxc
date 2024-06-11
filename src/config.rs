@@ -367,7 +367,12 @@ impl Config {
 /// the 1170. See the issue tracker for more details.
 /// https://github.com/imxrt-rs/imxrt-iomuxc/issues/28
 pub(crate) fn set_open_drain<I: Iomuxc>(_pad: &mut I) {
-    #[cfg(any(feature = "imxrt1010", feature = "imxrt1020", feature = "imxrt1060"))]
+    #[cfg(any(
+        feature = "imxrt1010",
+        feature = "imxrt1020",
+        feature = "imxrt1050",
+        feature = "imxrt1060"
+    ))]
     configure(_pad, Config::modify().set_open_drain(OpenDrain::Enabled));
 }
 
