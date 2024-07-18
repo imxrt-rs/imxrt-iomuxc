@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.2.8] 2024-07-18
+
 - Add remaining FlexPWM pins for the 1060 MCUs.
 
 ## [0.2.7] 2024-06-10
@@ -191,6 +193,7 @@ First release
   - UART
 
 [Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...HEAD
+[0.2.8]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.4...v0.2.5
