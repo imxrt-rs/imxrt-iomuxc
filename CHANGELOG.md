@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Add remaining FlexPWM pins for the 1060 MCUs.
+
 ## [0.2.7] 2024-06-10
 
 - Fix many 1170 GPIO implementations, most which incorrectly specified their
