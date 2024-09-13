@@ -1,4 +1,5 @@
 use super::pads::gpio_ad::*;
+use super::pads::gpio_disp_b1::*;
 use crate::{
     consts::*,
     lpuart::{Pin, Rx, Tx},
@@ -10,6 +11,8 @@ use crate::{
 //
 uart!(module: U1, alt: 0, pad: GPIO_AD_24, direction: Tx, daisy: Some(DAISY_LPUART1_LPUART_TXD_SELECT_GPIO_AD_24));
 uart!(module: U1, alt: 0, pad: GPIO_AD_25, direction: Rx, daisy: Some(DAISY_LPUART1_LPUART_RXD_SELECT_GPIO_AD_25));
+uart!(module: U1, alt: 9, pad: GPIO_DISP_B1_02, direction: Tx, daisy: Some(DAISY_LPUART1_LPUART_TXD_SELECT_GPIO_DISP_B1_02));
+uart!(module: U1, alt: 9, pad: GPIO_DISP_B1_03, direction: Rx, daisy: Some(DAISY_LPUART1_LPUART_RXD_SELECT_GPIO_DISP_B1_03));
 
 mod daisy {
     #![allow(unused)]
