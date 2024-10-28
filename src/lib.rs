@@ -277,6 +277,10 @@ pub mod imxrt1060;
 #[cfg_attr(docsrs, doc(cfg(feature = "imxrt1170")))]
 pub mod imxrt1170;
 
+#[cfg(feature = "imxrt1180")]
+#[cfg_attr(docsrs, doc(cfg(feature = "imxrt1180")))]
+pub mod imxrt1180;
+
 /// An IOMUXC-capable pad which can support I/O multiplexing
 ///
 /// # Safety

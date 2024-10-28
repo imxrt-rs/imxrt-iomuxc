@@ -15,6 +15,8 @@ Enable an open drain when preparing I2C pins on 10xx MCUs.
 
 - Add remaining FlexPWM pins for the 1060 MCUs.
 
+- Add i.MX RT 1180 support with the `"imxrt1180"` feature.
+
 ## [0.2.7] 2024-06-10
 
 - Fix many 1170 GPIO implementations, most which incorrectly specified their

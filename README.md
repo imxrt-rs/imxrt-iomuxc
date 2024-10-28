@@ -42,6 +42,7 @@ instance, the 1060 feature supports 1061 and 1062 chip variants.
 | 1020 | `"imxrt1020"` |
 | 1060 | `"imxrt1060"` |
 | 1170 | `"imxrt1170"` |
+| 1180 | `"imxrt1180"` |
 
 Read on if you're interested in adding support for another i.MX RT
 microcontroller, or if you want to expand existing support.

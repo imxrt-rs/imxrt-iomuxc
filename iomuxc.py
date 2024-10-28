@@ -115,10 +115,13 @@ def iomuxc(path):
     root = tree.getroot()
     iomuxc = root.find("./peripherals/peripheral[name='IOMUXC']")
     iomuxc_lpsr = root.find("./peripherals/peripheral[name='IOMUXC_LPSR']")
+    iomuxc_aon = root.find("./peripherals/peripheral[name='IOMUXC_AON']")
 
     pads = extract_pads(iomuxc)
     if iomuxc_lpsr is not None:
         pads |= extract_pads(iomuxc_lpsr)
+    if iomuxc_aon is not None:
+        pads |= extract_pads(iomuxc_aon)
 
     # Create pad groups.
     groups = defaultdict(list)
