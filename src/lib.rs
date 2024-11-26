@@ -645,9 +645,6 @@ pub mod ccm {
 mod tests {
     use super::*;
 
-    #[derive(Debug)]
-    struct TestBase;
-
     type TestPad = Pad<0, 0>;
 
     #[test]
