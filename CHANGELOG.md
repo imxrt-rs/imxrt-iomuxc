@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.3.0] 2024-12-02
+
 - **BREAKING** Add support for additional chip select pins for `lpspi4`.
 
 - **BREAKING** Remove the deprecated pull / keeper configuration API.
@@ -11,11 +13,11 @@ All notable changes to this project will be documented in this file.
 - **BREAKING** Change the type of the `lpspi::Pin::DAISY` and `lpi2c::Pin::DAISY`
   associated constant to an `Option<Daisy>`.
 
-Enable an open drain when preparing I2C pins on 10xx MCUs.
+- Add i.MX RT 1180 support with the `"imxrt1180"` feature.
+
+## [0.2.8] 2024-07-18
 
 - Add remaining FlexPWM pins for the 1060 MCUs.
-
-- Add i.MX RT 1180 support with the `"imxrt1180"` feature.
 
 ## [0.2.7] 2024-06-10
 
@@ -201,7 +203,9 @@ First release
   - SPI
   - UART
 
-[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.8...v0.3.0
+[0.2.8]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.4...v0.2.5
