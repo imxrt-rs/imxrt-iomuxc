@@ -16,6 +16,7 @@ categories = ["embedded", "no-std"]
 imxrt1180 = []
 imxrt1170 = []
 imxrt1060 = []
+imxrt1050 = []
 imxrt1020 = []
 imxrt1010 = []
 
