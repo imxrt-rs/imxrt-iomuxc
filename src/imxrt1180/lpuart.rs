@@ -17,7 +17,9 @@ uart!(module: U3, alt: 0b0011, pad: GPIO_EMC_B1_02, direction: Rx, daisy: Some(D
 uart!(module: U3, alt: 0b0110, pad: GPIO_AD_14, direction: Rx, daisy: Some(DAISY_LPUART3_IPP_IND_LPUART_RXD_SELECT_GPIO_AD_14));
 uart!(module: U3, alt: 0b0011, pad: GPIO_EMC_B1_03, direction: Tx, daisy: Some(DAISY_LPUART3_IPP_IND_LPUART_TXD_SELECT_GPIO_EMC_B1_03));
 uart!(module: U3, alt: 0b0110, pad: GPIO_AD_13, direction: Tx, daisy: Some(DAISY_LPUART3_IPP_IND_LPUART_TXD_SELECT_GPIO_AD_13));
-uart!(module: U5, alt: 0b0011, pad: GPIO_EMC_B1_15, direction: Rx, daisy: Some(DAISY_LPUART5_IPP_IND_LPUART_RXD_SELECT_GPIO_EMC_B1_15));
+uart!(module: U4, alt: 0b0010, pad: GPIO_EMC_B1_12, direction: Tx, daisy: None);
+uart!(module: U4, alt: 0b0010, pad: GPIO_EMC_B1_13, direction: Rx, daisy: None);
+uart!(module: U5, alt: 0b0010, pad: GPIO_EMC_B1_15, direction: Rx, daisy: Some(DAISY_LPUART5_IPP_IND_LPUART_RXD_SELECT_GPIO_EMC_B1_15));
 uart!(module: U5, alt: 0b0010, pad: GPIO_EMC_B1_36, direction: Rx, daisy: Some(DAISY_LPUART5_IPP_IND_LPUART_RXD_SELECT_GPIO_EMC_B1_36));
 uart!(module: U5, alt: 0b0010, pad: GPIO_EMC_B2_18, direction: Rx, daisy: Some(DAISY_LPUART5_IPP_IND_LPUART_RXD_SELECT_GPIO_EMC_B2_18));
 uart!(module: U5, alt: 0b0001, pad: GPIO_AD_27, direction: Rx, daisy: Some(DAISY_LPUART5_IPP_IND_LPUART_RXD_SELECT_GPIO_AD_27));
