@@ -5,3 +5,5 @@
 
 mod pads;
 pub use pads::*;
+
+mod lpuart;

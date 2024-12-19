@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Add all LPUART pads for RT1180.
+
 ## [0.3.0] 2024-12-02
 
 - **BREAKING** Add support for additional chip select pins for `lpspi4`.

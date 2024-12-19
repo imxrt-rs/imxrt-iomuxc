@@ -36,11 +36,14 @@ def search_iomuxces(path):
     tree = ET.parse(path)
     root = tree.getroot()
     iomuxc = root.find("./peripherals/peripheral[name='IOMUXC']")
+    iomuxc_aon = root.find("./peripherals/peripheral[name='IOMUXC_AON']")
     iomuxc_lpsr = root.find("./peripherals/peripheral[name='IOMUXC_LPSR']")
 
-    if iomuxc:
+    if iomuxc is not None:
         daisy_constant(iomuxc)
-    if iomuxc_lpsr:
+    if iomuxc_aon is not None:
+        daisy_constant(iomuxc_aon)
+    if iomuxc_lpsr is not None:
         daisy_constant(iomuxc_lpsr)
 
 if __name__ == "__main__":
