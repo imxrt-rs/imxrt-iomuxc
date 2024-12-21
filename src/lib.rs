@@ -192,6 +192,8 @@ pub mod lpuart;
 pub mod sai;
 #[macro_use]
 pub mod usdhc;
+#[macro_use]
+pub mod semc;
 
 use core::ptr;
 
@@ -221,7 +223,7 @@ pub mod prelude {
 
     pub use crate::{
         adc, alternate, ccm, clear_sion, consts, flexcan, flexio, flexpwm, gpio, lpi2c, lpspi,
-        lpuart, sai, set_sion, usdhc, Daisy, ErasedPad, Pad, WrongPadError,
+        lpuart, sai, semc, set_sion, usdhc, Daisy, ErasedPad, Pad, WrongPadError,
     };
 }
 
@@ -268,6 +270,13 @@ pub mod imxrt1010;
 #[cfg(feature = "imxrt1020")]
 #[cfg_attr(docsrs, doc(cfg(feature = "imxrt1020")))]
 pub mod imxrt1020;
+
+#[cfg(any(feature = "imxrt1050", feature = "imxrt1060",))]
+mod common_1050_1060;
+
+#[cfg(feature = "imxrt1050")]
+#[cfg_attr(docsrs, doc(cfg(feature = "imxrt1050")))]
+pub mod imxrt1050;
 
 #[cfg(feature = "imxrt1060")]
 #[cfg_attr(docsrs, doc(cfg(feature = "imxrt1060")))]
