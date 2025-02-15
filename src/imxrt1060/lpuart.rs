@@ -34,8 +34,8 @@ uart!(module: U4, alt: 2, pad: GPIO_B1_00, direction: Tx, daisy: Some(DAISY_LPUA
 //
 // UART5
 //
-
-// TODO
+uart!(module: U5, alt: 1, pad: GPIO_B1_13, direction: Rx, daisy: Some(DAISY_LPUART5_RX_GPIO_B1_13));
+uart!(module: U5, alt: 1, pad: GPIO_B1_12, direction: Tx, daisy: Some(DAISY_LPUART5_TX_GPIO_B1_12));
 
 //
 // UART6
