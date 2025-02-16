@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 - Add all LPUART pads for RT1180.
+- Add select LPUART5 pins for the 1060 MCUs.
 
 ## [0.3.0] 2024-12-02
 
@@ -16,6 +17,10 @@ All notable changes to this project will be documented in this file.
   associated constant to an `Option<Daisy>`.
 
 - Add i.MX RT 1180 support with the `"imxrt1180"` feature.
+
+## [0.2.9] 2025-02-16
+
+- Add select LPUART5 pins for the 1060 MCUs.
 
 ## [0.2.8] 2024-07-18
 
@@ -207,6 +212,7 @@ First release
 
 [Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.3.0...HEAD
 [0.3.0]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.8...v0.3.0
+[0.2.9]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.8...v0.2.9
 [0.2.8]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.5...v0.2.6
