@@ -1,6 +1,8 @@
 //! I2C pin implementations
 
-use super::pads::{gpio_ad_b0::*, gpio_ad_b1::*, gpio_sd_b0::*};
+use super::pads::{
+    gpio_ad_b0::*, gpio_ad_b1::*, gpio_b0::*, gpio_emc::*, gpio_sd_b0::*, gpio_sd_b1::*,
+};
 use crate::{
     consts::*,
     lpi2c::{Pin, Scl, Sda},
@@ -12,12 +14,17 @@ use crate::{
 //
 i2c!(module: U1, alt: 3, pad: GPIO_AD_B1_00, signal: Scl, daisy: DAISY_LPI2C1_SCL_GPIO_AD_B1_00);
 i2c!(module: U1, alt: 3, pad: GPIO_AD_B1_01, signal: Sda, daisy: DAISY_LPI2C1_SDA_GPIO_AD_B1_01);
+i2c!(module: U1, alt: 2, pad: GPIO_SD_B1_04, signal: Scl, daisy: DAISY_LPI2C1_SCL_GPIO_SD_B1_04);
+i2c!(module: U1, alt: 2, pad: GPIO_SD_B1_05, signal: Sda, daisy: DAISY_LPI2C1_SDA_GPIO_SD_B1_05);
 
 //
 // I2C2
 //
 
-// TODO
+i2c!(module: U2, alt: 2, pad: GPIO_B0_04, signal: Scl, daisy: DAISY_LPI2C2_SCL_GPIO_B0_04);
+i2c!(module: U2, alt: 2, pad: GPIO_B0_05, signal: Sda, daisy: DAISY_LPI2C2_SDA_GPIO_B0_05);
+i2c!(module: U2, alt: 3, pad: GPIO_SD_B1_11, signal: Scl, daisy: DAISY_LPI2C2_SCL_GPIO_SD_B1_11);
+i2c!(module: U2, alt: 3, pad: GPIO_SD_B1_10, signal: Sda, daisy: DAISY_LPI2C2_SDA_GPIO_SD_B1_10);
 
 //
 // I2C3
@@ -26,12 +33,16 @@ i2c!(module: U3, alt: 1, pad: GPIO_AD_B1_07, signal: Scl, daisy: DAISY_LPI2C3_SC
 i2c!(module: U3, alt: 1, pad: GPIO_AD_B1_06, signal: Sda, daisy: DAISY_LPI2C3_SDA_GPIO_AD_B1_06);
 i2c!(module: U3, alt: 2, pad: GPIO_SD_B0_00, signal: Scl, daisy: DAISY_LPI2C3_SCL_GPIO_SD_B0_00);
 i2c!(module: U3, alt: 2, pad: GPIO_SD_B0_01, signal: Sda, daisy: DAISY_LPI2C3_SDA_GPIO_SD_B0_01);
+i2c!(module: U3, alt: 2, pad: GPIO_EMC_22, signal: Scl, daisy: DAISY_LPI2C3_SCL_GPIO_EMC_22);
+i2c!(module: U3, alt: 2, pad: GPIO_EMC_21, signal: Sda, daisy: DAISY_LPI2C3_SDA_GPIO_EMC_21);
 
 //
 // I2C4
 //
 i2c!(module: U4, alt: 0, pad: GPIO_AD_B0_12, signal: Scl, daisy: DAISY_LPI2C4_SCL_GPIO_AD_B0_12);
 i2c!(module: U4, alt: 0, pad: GPIO_AD_B0_13, signal: Sda, daisy: DAISY_LPI2C4_SDA_GPIO_AD_B0_13);
+i2c!(module: U4, alt: 2, pad: GPIO_EMC_12, signal: Scl, daisy: DAISY_LPI2C4_SCL_GPIO_EMC_12);
+i2c!(module: U4, alt: 2, pad: GPIO_EMC_11, signal: Sda, daisy: DAISY_LPI2C4_SDA_GPIO_EMC_11);
 
 /// Auto-generated Daisy constants
 mod daisy {
