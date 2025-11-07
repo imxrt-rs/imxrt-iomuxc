@@ -22,6 +22,14 @@ All notable changes to this project will be documented in this file.
 
 - Add i.MX RT 1180 support with the `"imxrt1180"` feature.
 
+## [0.2.11] 2025-11-07
+
+- Finish LPI2C implementations on 1060 MCUs.
+
+## [0.2.10] 2025-07-19
+
+- Add some LPUART1 pins for the 1170 MCUs.
+
 ## [0.2.9] 2025-02-16
 
 - Add select LPUART5 pins for the 1060 MCUs.
@@ -217,6 +225,8 @@ First release
 [Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.3.0...HEAD
 [0.3.1]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...v0.3.0
+[0.2.11]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.10...v0.2.11
+[0.2.10]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.9...v0.2.10
 [0.2.9]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.8...v0.2.9
 [0.2.8]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.6...v0.2.7
