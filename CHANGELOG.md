@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Add all FlexIO pins for the 1170 MCUs.
+
 ## [0.3.1] 2025-11-07
 
 - Add all LPUART pads for RT1180.
