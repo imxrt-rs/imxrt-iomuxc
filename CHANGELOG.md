@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+- Add all FlexIO pins for the 1170 MCUs.
+
 ## [0.2.11] 2025-11-07
 
 - Finish LPI2C implementations on 1060 MCUs.
