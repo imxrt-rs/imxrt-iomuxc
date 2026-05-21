@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.3.2] 2026-05-21
+
 - Add all FlexIO pins for the 1170 MCUs.
 
 ## [0.3.1] 2025-11-07
@@ -23,6 +25,10 @@ All notable changes to this project will be documented in this file.
   associated constant to an `Option<Daisy>`.
 
 - Add i.MX RT 1180 support with the `"imxrt1180"` feature.
+
+## [0.2.12] 2026-05-21
+
+- Add all FlexIO pins for the 1170 MCUs.
 
 ## [0.2.11] 2025-11-07
 
@@ -225,8 +231,10 @@ First release
   - UART
 
 [Unreleased]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.3.0...HEAD
+[0.3.2]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.0...v0.3.0
+[0.2.12]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.11...v0.2.12
 [0.2.11]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.10...v0.2.11
 [0.2.10]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.9...v0.2.10
 [0.2.9]: https://github.com/imxrt-rs/imxrt-iomuxc/compare/v0.2.8...v0.2.9
