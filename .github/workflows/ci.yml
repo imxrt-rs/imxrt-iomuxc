@@ -1,6 +1,6 @@
 name: CI
 
-on: [push, pull_request]  
+on: [ push, pull_request ]  
 
 jobs:
 
@@ -8,41 +8,25 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: rustup component add rustfmt
-    - name: Check library formatting
-      uses: actions-rs/cargo@v1
-      with:
-        command: fmt
-        args: --verbose --all -- --check
+    - uses: actions/checkout@v6
+    - run: rustup toolchain install stable --no-self-update --profile minimal --component rustfmt
+    - run: cargo fmt --all -- --check
   
   # Lint the library
   clippy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        components: clippy
-        override: true
-        profile: minimal
-    - uses: actions-rs/clippy-check@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        args: --verbose --all-features -- -D warnings
-        name: Lint the library
+    - uses: actions/checkout@v6
+    - run: rustup toolchain install stable --no-self-update --profile minimal --component clippy
+    - run: cargo clippy --all-features -- -D warnings
 
   # Run all tests
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run unit and documentation tests
-      uses: actions-rs/cargo@v1
-      with:
-        command: test
-        args: --verbose --all-features
+    - uses: actions/checkout@v6
+    - run: rustup toolchain install stable --no-self-update --profile minimal
+    - run: cargo test --all-features
 
   # Check that documentation builds without warnings.
   doc:
@@ -50,12 +34,6 @@ jobs:
     env:
       RUSTDOCFLAGS: -D warnings
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions-rs/toolchain@v1
-      with:
-        toolchain: nightly
-        override: true
-    - uses: actions-rs/cargo@v1
-      with:
-        command: rustdoc
-        args: --all-features -- --cfg=docsrs
+    - uses: actions/checkout@v6
+    - run: rustup toolchain install nightly --no-self-update --profile minimal
+    - run: cargo +nightly rustdoc --all-features -- --cfg=docsrs
